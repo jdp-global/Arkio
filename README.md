@@ -1,6 +1,5 @@
 Arkio Library Documentation
 ===========================
----
 An iOS client library for [Data.com](http://data.com) by Salesforce.
 
 
@@ -27,7 +26,7 @@ pod install
 After installation, include the library header file somewhere in your code:
 
 ```
-#include "FourMarks.h"
+#include "Arkio.h"
 ```
 
 ##Contact
