@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		18E5E32C183F86E6000C8D78 /* Install AppleDocs */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 18E5E32D183F86E7000C8D78 /* Build configuration list for PBXAggregateTarget "Install AppleDocs" */;
+			buildPhases = (
+				18E5E330183F8726000C8D78 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Install AppleDocs";
+			productName = "Install AppleDocs";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		18E5E2F7183F66C4000C8D78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E5E2F6183F66C4000C8D78 /* Foundation.framework */; };
 		18E5E2FC183F66C4000C8D78 /* Arkio.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18E5E2FB183F66C4000C8D78 /* Arkio.h */; };
@@ -16,6 +30,11 @@
 		18E5E30B183F66C4000C8D78 /* libArkio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E5E2F3183F66C4000C8D78 /* libArkio.a */; };
 		18E5E311183F66C4000C8D78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18E5E30F183F66C4000C8D78 /* InfoPlist.strings */; };
 		18E5E313183F66C4000C8D78 /* ArkioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5E312183F66C4000C8D78 /* ArkioTests.m */; };
+		18E5E320183F6E13000C8D78 /* ARKSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5E31F183F6E13000C8D78 /* ARKSession.m */; };
+		18E5E325183F7076000C8D78 /* ARKUserCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5E324183F7076000C8D78 /* ARKUserCredentials.m */; };
+		18E5E328183F7162000C8D78 /* ARKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5E327183F7162000C8D78 /* ARKUser.m */; };
+		18E5E32B183F76D7000C8D78 /* ARKServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5E32A183F76D7000C8D78 /* ARKServer.m */; };
+		1AEE3DEEA9964CE3B0D146FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4784280918B14DDA883C3890 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +72,17 @@
 		18E5E30E183F66C4000C8D78 /* ArkioTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ArkioTests-Info.plist"; sourceTree = "<group>"; };
 		18E5E310183F66C4000C8D78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		18E5E312183F66C4000C8D78 /* ArkioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArkioTests.m; sourceTree = "<group>"; };
+		18E5E31E183F6E13000C8D78 /* ARKSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKSession.h; sourceTree = "<group>"; };
+		18E5E31F183F6E13000C8D78 /* ARKSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKSession.m; sourceTree = "<group>"; };
+		18E5E323183F7076000C8D78 /* ARKUserCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKUserCredentials.h; sourceTree = "<group>"; };
+		18E5E324183F7076000C8D78 /* ARKUserCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKUserCredentials.m; sourceTree = "<group>"; };
+		18E5E326183F7162000C8D78 /* ARKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKUser.h; sourceTree = "<group>"; };
+		18E5E327183F7162000C8D78 /* ARKUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKUser.m; sourceTree = "<group>"; };
+		18E5E329183F76D7000C8D78 /* ARKServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKServer.h; sourceTree = "<group>"; };
+		18E5E32A183F76D7000C8D78 /* ARKServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKServer.m; sourceTree = "<group>"; };
+		18E5E331183F8894000C8D78 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		4784280918B14DDA883C3890 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F69568D91757450CAE1A9922 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18E5E2F7183F66C4000C8D78 /* Foundation.framework in Frameworks */,
+				1AEE3DEEA9964CE3B0D146FC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +116,8 @@
 				18E5E30C183F66C4000C8D78 /* ArkioTests */,
 				18E5E2F5183F66C4000C8D78 /* Frameworks */,
 				18E5E2F4183F66C4000C8D78 /* Products */,
+				18E5E331183F8894000C8D78 /* README.md */,
+				F69568D91757450CAE1A9922 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +136,7 @@
 				18E5E2F6183F66C4000C8D78 /* Foundation.framework */,
 				18E5E304183F66C4000C8D78 /* XCTest.framework */,
 				18E5E307183F66C4000C8D78 /* UIKit.framework */,
+				4784280918B14DDA883C3890 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,6 +146,8 @@
 			children = (
 				18E5E2FB183F66C4000C8D78 /* Arkio.h */,
 				18E5E2FD183F66C4000C8D78 /* Arkio.m */,
+				18E5E31C183F6DAB000C8D78 /* Networking */,
+				18E5E31D183F6DC0000C8D78 /* Model */,
 				18E5E2F9183F66C4000C8D78 /* Supporting Files */,
 			);
 			path = Arkio;
@@ -143,6 +179,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		18E5E31C183F6DAB000C8D78 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				18E5E31E183F6E13000C8D78 /* ARKSession.h */,
+				18E5E31F183F6E13000C8D78 /* ARKSession.m */,
+				18E5E329183F76D7000C8D78 /* ARKServer.h */,
+				18E5E32A183F76D7000C8D78 /* ARKServer.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		18E5E31D183F6DC0000C8D78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18E5E326183F7162000C8D78 /* ARKUser.h */,
+				18E5E327183F7162000C8D78 /* ARKUser.m */,
+				18E5E323183F7076000C8D78 /* ARKUserCredentials.h */,
+				18E5E324183F7076000C8D78 /* ARKUserCredentials.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,9 +208,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18E5E316183F66C4000C8D78 /* Build configuration list for PBXNativeTarget "Arkio" */;
 			buildPhases = (
+				0358141C2A4E4D3A8E6326A1 /* Check Pods Manifest.lock */,
 				18E5E2EF183F66C4000C8D78 /* Sources */,
 				18E5E2F0183F66C4000C8D78 /* Frameworks */,
 				18E5E2F1183F66C4000C8D78 /* CopyFiles */,
+				AC39998958854597A40CD221 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -187,6 +247,7 @@
 		18E5E2EB183F66C4000C8D78 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = ARK;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Alien Hitcher";
 			};
@@ -204,6 +265,7 @@
 			targets = (
 				18E5E2F2183F66C4000C8D78 /* Arkio */,
 				18E5E302183F66C4000C8D78 /* ArkioTests */,
+				18E5E32C183F86E6000C8D78 /* Install AppleDocs */,
 			);
 		};
 /* End PBXProject section */
@@ -219,12 +281,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0358141C2A4E4D3A8E6326A1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		18E5E330183F8726000C8D78 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/appledoc \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"Alien Hitcher\" \\\n--company-id \"com.alienhitcher\" \\\n--output \"${PROJECT_DIR}/AppleDocs\" \\\n--install-docset \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--merge-categories \\\n--exit-threshold 2 \\\n--docset-platform-family iphoneos \\\n--ignore \"*.m\" \\\n--include \"${PROJECT_DIR}/${PROJECT_NAME}/Documentation/Images\" \\\n--ignore \"LoadableCategory.h\" \\\n--index-desc \"${PROJECT_DIR}/README.md\" \\\n\"${PROJECT_DIR}/${PROJECT_NAME}\"";
+		};
+		AC39998958854597A40CD221 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		18E5E2EF183F66C4000C8D78 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				18E5E2FE183F66C4000C8D78 /* Arkio.m in Sources */,
+				18E5E328183F7162000C8D78 /* ARKUser.m in Sources */,
+				18E5E325183F7076000C8D78 /* ARKUserCredentials.m in Sources */,
+				18E5E32B183F76D7000C8D78 /* ARKServer.m in Sources */,
+				18E5E320183F6E13000C8D78 /* ARKSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +404,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -323,6 +436,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -330,11 +444,13 @@
 		};
 		18E5E317183F66C4000C8D78 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F69568D91757450CAE1A9922 /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/Arkio.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Arkio/Arkio-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -342,11 +458,13 @@
 		};
 		18E5E318183F66C4000C8D78 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F69568D91757450CAE1A9922 /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/Arkio.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Arkio/Arkio-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -390,6 +508,20 @@
 			};
 			name = Release;
 		};
+		18E5E32E183F86E7000C8D78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		18E5E32F183F86E7000C8D78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -409,12 +541,22 @@
 				18E5E318183F66C4000C8D78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18E5E319183F66C4000C8D78 /* Build configuration list for PBXNativeTarget "ArkioTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				18E5E31A183F66C4000C8D78 /* Debug */,
 				18E5E31B183F66C4000C8D78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18E5E32D183F86E7000C8D78 /* Build configuration list for PBXAggregateTarget "Install AppleDocs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18E5E32E183F86E7000C8D78 /* Debug */,
+				18E5E32F183F86E7000C8D78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
