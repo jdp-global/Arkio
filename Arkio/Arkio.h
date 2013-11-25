@@ -107,7 +107,7 @@ typedef NS_ENUM(NSInteger, ARKPropertyType) {
     ARKEmployeeRangeProperty,
     
     /**
-     *  The annual revenue for a company.
+     *  The annual revenue of a company.
      */
     ARKRevenueProperty,
     
@@ -277,10 +277,33 @@ typedef NS_ENUM(NSInteger, ARKContactLevel) {
 };
 
 /**
+ *  The type of fact that can be challanged for a contact.
+ */
+typedef NS_ENUM(NSInteger, ARKFactType) {
+    /**
+     *  Email address.
+     */
+    ARKEmailFact,
+    /**
+     *  Phone number.
+     */
+    ARKPhoneNumberFact
+};
+
+/**
  *  Welcome to the Arkio library documentation.
  *
  *  Arkio is an Objective-C client library for the Data.com API service.
  */
 @interface Arkio : NSObject
+
+/**
+ *  Converts an `ARKFactType` to a string representation.
+ *
+ *  @param type The `ARKFactType` to convert.
+ *
+ *  @return A string representing the `ARKFactType` given.
+ */
++ (NSString *)stringForFactType:(ARKFactType)type;
 
 @end
