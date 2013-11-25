@@ -25,7 +25,89 @@
 
 #import "ARKSession.h"
 
+#import "ARKServer.h"
+#import "ARKUser.h"
+#import "ARKUserCredentials.h"
+#import "ARKURLFactory.h"
+
+@interface ARKSession ()
+@property (nonatomic, strong, readwrite) ARKUser *user;
+@property (nonatomic, strong, readwrite) ARKServer *server;
+@property (nonatomic, strong) ARKURLFactory *URLFactory;
+
+@end
+
 @implementation ARKSession
 
-#warning add a description
+#pragma mark - Designated Object Initializers
+
+
+- (instancetype)initWithUsername:(NSString *)username password:(NSString *)password
+{
+    self = [self init];
+    if (self) {
+        ARKUserCredentials *credentials = [[ARKUserCredentials alloc] initWithUsername:username
+                                                                              password:password];
+        ARKUser *user = [[ARKUser alloc] initWithUserCredentials:credentials];
+        self.user = user;
+#warning may need to rename server as it seems to conflict with a mach mig_subsystem property
+        self.server = [[ARKServer alloc] init];
+    }
+    return self;
+}
+
+- (instancetype)initWithUser:(ARKUser *)user
+{
+    self = [self init];
+    if (self) {
+        self.user = user;
+#warning may need to rename server as it seems to conflict with a mach mig_subsystem property
+        self.server = [[ARKServer alloc] init];
+        
+    }
+    return self;
+}
+
+- (instancetype)initWithUsername:(NSString *)username
+                        password:(NSString *)password
+                          server:(ARKServer *)server
+{
+    self = [self init];
+    if (self) {
+        ARKUserCredentials *credentials = [[ARKUserCredentials alloc] initWithUsername:username
+                                                                              password:password];
+        ARKUser *user = [[ARKUser alloc] initWithUserCredentials:credentials];
+        self.user = user;
+#warning may need to rename server as it seems to conflict with a mach mig_subsystem property
+        self.server = server;
+    }
+    return self;
+}
+
+- (instancetype)initWithUser:(ARKUser *)user
+                      server:(ARKServer *)server
+
+{
+    self = [self init];
+    if (self) {
+        self.user = user;
+        self.server = server;
+    }
+    return self;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+#warning todo: try to pull the API token from the Info.plist file arkio.api.developer.token
+        self.URLFactory = [[ARKURLFactory alloc] initWithSession:self];
+    }
+    return self;
+}
+
+
+#warning add a description method
+
+
 @end
