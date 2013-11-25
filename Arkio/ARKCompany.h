@@ -30,31 +30,134 @@
  */
 @interface ARKCompany : NSObject
 
+/**
+ *  The unique identifier of a company in Data.com.
+ */
 @property (nonatomic, strong) NSNumber *companyId;
+
+/**
+ *  The name of a company.
+ */
 @property (nonatomic, strong) NSString *name;
+
+/**
+ *  The land-line phone number of a company.
+ */
 @property (nonatomic, strong) NSString *phone;
+
+/**
+ *  The URL of a company's website.
+ */
 @property (nonatomic, strong) NSURL *website;
+
+/**
+ *  The stock symbol for a publically traded company.
+ */
 @property (nonatomic, strong) NSString *stockSymbol;
+
+/**
+ *  Indicates whether a public company's shares are traded on the stock exchange.
+ */
 @property (nonatomic, strong) NSString *stockExchange;
+
+/**
+ *  The user ownership type of a company.
+ */
 @property (nonatomic, strong) NSString *ownership;
+
+/**
+ *  The Fortune 500 rank of a company.
+ */
 @property (nonatomic, strong) NSNumber *fortuneRank;
+
+/**
+ *  The number of people currently employed by a company.
+ */
 @property (nonatomic, strong) NSNumber *employeeCount;
+
+/**
+ *  The minimum and maximum range within which the employee count value falls.
+ */
 @property (nonatomic, strong) NSString *employeeRange;
+
+/**
+ *  The annual revenue of a company.
+ */
 @property (nonatomic, strong) NSString *revenue;
+
+/**
+ *  Primary Industry Code.
+ */
 @property (nonatomic, strong) NSString *industry1;
+
+/**
+ *  Secondary Industry Code.
+ */
 @property (nonatomic, strong) NSString *industry2;
+
+/**
+ *  Tertiary Industry Code.
+ */
 @property (nonatomic, strong) NSString *industry3;
+
+/**
+ *  Primary Sub-Industry Code.
+ */
 @property (nonatomic, strong) NSString *subIndustry1;
+
+/**
+ *  Secondary Sub-Industry Code.
+ */
 @property (nonatomic, strong) NSString *subIndustry2;
+
+/**
+ *  Tertiary Sub-Industry Code.
+ */
 @property (nonatomic, strong) NSString *subIndustry3;
+
+/**
+ *  The Standard Industrial Classification System Code for a company.
+ */
 @property (nonatomic, strong) NSString *sicCode;
+
+/**
+ *  Address Line 1.
+ */
 @property (nonatomic, strong) NSString *address;
+
+/**
+ *  City name.
+ */
 @property (nonatomic, strong) NSString *city;
+
+/**
+ *  State name.
+ */
 @property (nonatomic, strong) NSString *state;
+
+/**
+ *  Zip/Postal Code.
+ */
 @property (nonatomic, strong) NSString *zip;
+
+/**
+ *  Country name.
+ */
 @property (nonatomic, strong) NSString *country;
+
+/**
+ *  The number of contacts for a company.
+ */
 @property (nonatomic, strong) NSNumber *activeContacts;
+
+/**
+ *  A LinkedIn Profile URL.
+ */
 @property (nonatomic, strong) NSURL *linkInJigsaw;
+
+/**
+ *  Creation date.
+ */
 @property (nonatomic, strong) NSDate *createdOn;
 
 @end
