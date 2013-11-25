@@ -79,10 +79,7 @@
 	[string appendFormat:@"self.employeeCount = \'%@\'\n", self.employeeCount];
 	[string appendFormat:@"self.employeeRange = \'%@\'\n", self.employeeRange];
 	[string appendFormat:@"self.revenue = \'%@\'\n", self.revenue];
-	
-	[self.log debug:@"jigsawCompany.description: \n"];
-	[self.log debug:@"%@", string];
-	
+		
 	return (NSString *)string;
 }
 
