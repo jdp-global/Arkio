@@ -30,6 +30,34 @@
  */
 - (NSInteger)pointBalanceWithData:(NSData *)data error:(NSError **)error;
 
+///---------------------
+/// @name Model Entities
+///---------------------
+
+#pragma mark - Contact Serialization
+
+/**
+ *  Parses a list of `ARKContact` objects from a block of JSON data.
+ *
+ *  @param data  The JSON data to parse for contacts.
+ *  @param error An error is set if something went wrong during the underlying JSON serialization.
+ *
+ *  @return An array of `ARKContact` objects.
+ */
+- (NSArray *)contactsWithData:(NSData *)data error:(NSError **)error;
+
+#pragma mark - Company Serialization
+
+/**
+ *  Parses a list of `ARKCompany` objects from a block of JSON data.
+ *
+ *  @param data  The JSON data to parse for companies.
+ *  @param error An error is set if something went wrong during the underlying JSON serialization.
+ *
+ *  @return An array of `ARKCompany` objects.
+ */
+- (NSArray *)companiesWithData:(NSData *)data error:(NSError **)error;
+
 #pragma mark - Error Handling
 
 ///---------------------
@@ -37,7 +65,7 @@
 ///---------------------
 
 /**
- *  Extracts an API error code from a block of JSON data.
+ *  Parses an API error code from a block of JSON data.
  *
  *  @param data  The JSON data to inspect for an error code.
  *  @param error An error is set if something went wrong during the underlying JSON serialization.
@@ -47,7 +75,7 @@
 - (NSInteger)errorCodeWithData:(NSData *)data error:(NSError **)error;
 
 /**
- *  Extracts an NSError from a block of JSON data for the given message key.
+ *  Parses an NSError from a block of JSON data for the given message key.
  *
  *  @param data  The JSON data to inspect for an error.
  *  @param key   The error message key to inspect the JSON data for.
@@ -58,7 +86,7 @@
 - (NSError *)errorWithData:(NSData *)data key:(NSString *)key error:(NSError **)error;
 
 /**
- *  Extracts an NSError from a block of JSON data.
+ *  Parses an NSError from a block of JSON data.
  *
  *  @param data  The JSON data to inspect for an error.
  *  @param error An error is set if something went wrong during the underlying JSON serialization.
