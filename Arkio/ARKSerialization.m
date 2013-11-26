@@ -17,6 +17,8 @@
 
 static NSString *ARKDefaultAPIErrorCodeKey = @"errorCode";
 static NSString *ARKDefaultAPIErrorMessageKey = @"errorMsg";
+static NSString *ARKContactsAPIKey = @"contacts";
+static NSString *ARKCompaniesAPIKey = @"companies";
 
 static NSDateFormatter *ARKAPIDateFormatter;
 
@@ -62,6 +64,56 @@ static NSDateFormatter *ARKAPIDateFormatter;
 	return [points longValue];
 }
 
+#pragma mark - Contact Serialization
+
+- (NSArray *)contactsWithData:(NSData *)data error:(NSError **)error
+{
+    if (data == nil) return nil;
+    
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
+                                                         options:0
+                                                           error:(NSError *__autoreleasing *)&error];
+    // return on error
+    if (dict == nil) return nil;
+
+	NSArray *contactDicts = [dict objectForKey:ARKContactsAPIKey];
+	NSMutableArray *contacts = [[NSMutableArray alloc] initWithCapacity:1];
+	
+	for (NSDictionary *dict in contactDicts) {
+		
+		ARKContact *contact = [self contactWithDictionary:dict];
+		[contacts addObject:contact];
+        contact = nil;
+	}
+
+	return contacts;
+}
+
+
+#pragma mark - Company Serialization
+
+- (NSArray *)companiesWithData:(NSData *)data error:(NSError **)error
+{
+    if (data == nil) return nil;
+
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
+                                                         options:0
+                                                           error:(NSError *__autoreleasing *)&error];
+    // return on error
+    if (dict == nil) return nil;
+
+	NSArray *companyDicts = [dict objectForKey:ARKCompaniesAPIKey];
+    NSMutableArray *companies = [[NSMutableArray alloc] initWithCapacity:1];
+	
+	for (NSDictionary *dict in companyDicts) {
+		
+		ARKCompany *company = [self companyWithDictionary:dict];
+		[companies addObject:company];
+		company = nil;
+	}
+    
+	return companies;
+}
 
 #pragma mark - Error Handling
 
