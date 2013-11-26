@@ -24,6 +24,8 @@
 		1827D2501842102000CE7FF3 /* ARKContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827D24F1842102000CE7FF3 /* ARKContact.m */; };
 		1827D2531842265400CE7FF3 /* ARKCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827D2521842265400CE7FF3 /* ARKCompany.m */; };
 		18D887E4184367AC0008AAC2 /* ARKURLFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D887E3184367AC0008AAC2 /* ARKURLFactory.m */; };
+		18D887E71843C48B0008AAC2 /* ARKSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D887E61843C48B0008AAC2 /* ARKSerialization.m */; };
+		18D887EB1843D1BC0008AAC2 /* ARKError.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D887EA1843D1BC0008AAC2 /* ARKError.m */; };
 		18E5E2F7183F66C4000C8D78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E5E2F6183F66C4000C8D78 /* Foundation.framework */; };
 		18E5E2FC183F66C4000C8D78 /* Arkio.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18E5E2FB183F66C4000C8D78 /* Arkio.h */; };
 		18E5E2FE183F66C4000C8D78 /* Arkio.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5E2FD183F66C4000C8D78 /* Arkio.m */; };
@@ -37,6 +39,7 @@
 		18E5E325183F7076000C8D78 /* ARKUserCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5E324183F7076000C8D78 /* ARKUserCredentials.m */; };
 		18E5E328183F7162000C8D78 /* ARKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5E327183F7162000C8D78 /* ARKUser.m */; };
 		18E5E32B183F76D7000C8D78 /* ARKServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5E32A183F76D7000C8D78 /* ARKServer.m */; };
+		18F3CA001844CBAE00695C37 /* ARKEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3C9FF1844CBAE00695C37 /* ARKEntity.m */; };
 		1AEE3DEEA9964CE3B0D146FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4784280918B14DDA883C3890 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +73,10 @@
 		1827D2521842265400CE7FF3 /* ARKCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompany.m; sourceTree = "<group>"; };
 		18D887E2184367AC0008AAC2 /* ARKURLFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKURLFactory.h; sourceTree = "<group>"; };
 		18D887E3184367AC0008AAC2 /* ARKURLFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKURLFactory.m; sourceTree = "<group>"; };
+		18D887E51843C48B0008AAC2 /* ARKSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKSerialization.h; sourceTree = "<group>"; };
+		18D887E61843C48B0008AAC2 /* ARKSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKSerialization.m; sourceTree = "<group>"; };
+		18D887E91843D1BC0008AAC2 /* ARKError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKError.h; sourceTree = "<group>"; };
+		18D887EA1843D1BC0008AAC2 /* ARKError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKError.m; sourceTree = "<group>"; };
 		18E5E2F3183F66C4000C8D78 /* libArkio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libArkio.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E5E2F6183F66C4000C8D78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18E5E2FA183F66C4000C8D78 /* Arkio-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Arkio-Prefix.pch"; sourceTree = "<group>"; };
@@ -90,6 +97,9 @@
 		18E5E329183F76D7000C8D78 /* ARKServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKServer.h; sourceTree = "<group>"; };
 		18E5E32A183F76D7000C8D78 /* ARKServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKServer.m; sourceTree = "<group>"; };
 		18E5E331183F8894000C8D78 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		18F3C9FC1844A60A00695C37 /* ARKErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKErrors.h; sourceTree = "<group>"; };
+		18F3C9FE1844CBAE00695C37 /* ARKEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKEntity.h; sourceTree = "<group>"; };
+		18F3C9FF1844CBAE00695C37 /* ARKEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKEntity.m; sourceTree = "<group>"; };
 		4784280918B14DDA883C3890 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F69568D91757450CAE1A9922 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +128,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18D887E81843CA6A0008AAC2 /* Error Handling */ = {
+			isa = PBXGroup;
+			children = (
+				18F3C9FC1844A60A00695C37 /* ARKErrors.h */,
+				18D887E91843D1BC0008AAC2 /* ARKError.h */,
+				18D887EA1843D1BC0008AAC2 /* ARKError.m */,
+			);
+			name = "Error Handling";
+			sourceTree = "<group>";
+		};
 		18E5E2EA183F66C4000C8D78 = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +175,7 @@
 			children = (
 				18E5E2FB183F66C4000C8D78 /* Arkio.h */,
 				18E5E2FD183F66C4000C8D78 /* Arkio.m */,
+				18D887E81843CA6A0008AAC2 /* Error Handling */,
 				18E5E31C183F6DAB000C8D78 /* Networking */,
 				18E5E31D183F6DC0000C8D78 /* Model */,
 				18E5E2F9183F66C4000C8D78 /* Supporting Files */,
@@ -197,6 +218,8 @@
 				18E5E32A183F76D7000C8D78 /* ARKServer.m */,
 				18D887E2184367AC0008AAC2 /* ARKURLFactory.h */,
 				18D887E3184367AC0008AAC2 /* ARKURLFactory.m */,
+				18D887E51843C48B0008AAC2 /* ARKSerialization.h */,
+				18D887E61843C48B0008AAC2 /* ARKSerialization.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -204,6 +227,8 @@
 		18E5E31D183F6DC0000C8D78 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				18F3C9FE1844CBAE00695C37 /* ARKEntity.h */,
+				18F3C9FF1844CBAE00695C37 /* ARKEntity.m */,
 				1827D24E1842102000CE7FF3 /* ARKContact.h */,
 				1827D24F1842102000CE7FF3 /* ARKContact.m */,
 				1827D2511842265400CE7FF3 /* ARKCompany.h */,
@@ -349,8 +374,11 @@
 			files = (
 				18E5E2FE183F66C4000C8D78 /* Arkio.m in Sources */,
 				18E5E328183F7162000C8D78 /* ARKUser.m in Sources */,
+				18D887E71843C48B0008AAC2 /* ARKSerialization.m in Sources */,
 				18E5E325183F7076000C8D78 /* ARKUserCredentials.m in Sources */,
 				18D887E4184367AC0008AAC2 /* ARKURLFactory.m in Sources */,
+				18D887EB1843D1BC0008AAC2 /* ARKError.m in Sources */,
+				18F3CA001844CBAE00695C37 /* ARKEntity.m in Sources */,
 				18E5E32B183F76D7000C8D78 /* ARKServer.m in Sources */,
 				18E5E320183F6E13000C8D78 /* ARKSession.m in Sources */,
 				1827D2501842102000CE7FF3 /* ARKContact.m in Sources */,
