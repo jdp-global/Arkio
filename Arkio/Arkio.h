@@ -32,6 +32,11 @@
 // Model
 #import "ARKUser.h"
 #import "ARKUserCredentials.h"
+#import "ARKContact.h"
+
+// Error Handling
+#import "ARKErrors.h"
+#import "ARKError.h"
 
 /**
  *  A lite-weight representation of the service's entity types.
