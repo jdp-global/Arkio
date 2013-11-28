@@ -151,6 +151,16 @@
 /// @name Company Request URLs
 ///------------------------------------------
 
+
+/**
+ *  Creates and returns a company statistics URL for requesting the contact count statistics for a given company ID.
+ *
+ *  @param companyId The unique identifier for a company in Data.com.
+ *
+ *  @return A company statistics URL for the given company ID.
+ */
+- (NSURL *)companyStatisticsURLWithID:(long)companyId;
+
 /**
  *  Creates and returns a company request URL with the given company ID number.
  *
@@ -159,6 +169,7 @@
  *  @return A company request URL for the given company ID.
  */
 - (NSURL *)companyURLWithID:(NSNumber *)number;
+#warning change NSNumber to long.
 
 /**
  *  Creates and returns a company search URL with the given search string and result offset.

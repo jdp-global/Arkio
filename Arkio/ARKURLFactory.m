@@ -336,6 +336,18 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
 }
 
 #pragma mark - Company URLs
+- (NSURL *)companyStatisticsURLWithID:(long)companyId
+{
+    NSMutableString *urlString = [NSMutableString stringWithCapacity:10];
+
+    [urlString setString:[self.session.server.endpoint absoluteString]];
+	[urlString appendFormat:@"companyContactCount/%ld.json?token=", companyId];
+	[urlString appendString:self.session.APIDeveloperToken];
+    
+    return [NSURL URLWithString:urlString];
+}
+
+
 - (NSURL *)companyURLWithID:(NSNumber *)number
 {
     NSMutableString *urlString = [NSMutableString stringWithCapacity:10];
