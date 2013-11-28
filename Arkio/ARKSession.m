@@ -29,11 +29,22 @@
 #import "ARKUser.h"
 #import "ARKUserCredentials.h"
 #import "ARKURLFactory.h"
+#import "ARKSerialization.h"
+#import "NSURL+ARKNetworking.h"
+#import "ARKCompanyStatistics.h"
+
+#import "AFNetworking.h"
+
+NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
 
 @interface ARKSession ()
 @property (nonatomic, strong, readwrite) ARKUser *user;
 @property (nonatomic, strong, readwrite) ARKServer *server;
 @property (nonatomic, strong) ARKURLFactory *URLFactory;
+@property (nonatomic, strong) ARKSerialization *serializer;
+@property (nonatomic, strong) AFHTTPSessionManager *http;
+
+- (void)initialize;
 
 @end
 
@@ -50,8 +61,8 @@
                                                                               password:password];
         ARKUser *user = [[ARKUser alloc] initWithUserCredentials:credentials];
         self.user = user;
-#warning may need to rename server as it seems to conflict with a mach mig_subsystem property
         self.server = [[ARKServer alloc] init];
+        [self initialize];
     }
     return self;
 }
@@ -61,8 +72,8 @@
     self = [self init];
     if (self) {
         self.user = user;
-#warning may need to rename server as it seems to conflict with a mach mig_subsystem property
         self.server = [[ARKServer alloc] init];
+        [self initialize];
         
     }
     return self;
@@ -78,8 +89,8 @@
                                                                               password:password];
         ARKUser *user = [[ARKUser alloc] initWithUserCredentials:credentials];
         self.user = user;
-#warning may need to rename server as it seems to conflict with a mach mig_subsystem property
         self.server = server;
+        [self initialize];
     }
     return self;
 }
@@ -92,6 +103,7 @@
     if (self) {
         self.user = user;
         self.server = server;
+        [self initialize];
     }
     return self;
 }
@@ -100,14 +112,110 @@
 {
     self = [super init];
     if (self) {
-#warning todo: try to pull the API token from the Info.plist file arkio.api.developer.token
+        
         self.URLFactory = [[ARKURLFactory alloc] initWithSession:self];
+        
+        //  pull the API token from the Info.plist file
+        NSDictionary *infoDict = [[NSBundle bundleForClass:[self class]] infoDictionary];
+        if ([infoDict objectForKey:kARKAPIDeveloperTokenKey]) {
+            self.APIDeveloperToken = [infoDict objectForKey:kARKAPIDeveloperTokenKey];
+        }
     }
     return self;
 }
 
 
+#pragma mark - User / Authentication
+
+- (void)authenticate:(void (^)(BOOL authenticated, ARKError *error))success
+             failure:(void (^)(NSError *error))failure
+{
+    NSURL *url = [self.URLFactory userAuthURL];
+
+    [self.http GET:[url path]
+        parameters:[url queryDictionary]
+           success:^(NSURLSessionDataTask *task, id responseObject) {
+               
+               ARKError *arkError = nil;
+               NSInteger points = [self.serializer pointBalanceWithDictionary:(NSDictionary *)responseObject error:&arkError];
+               
+               success((points > 0)? YES : NO, arkError);
+           }
+           failure:^(NSURLSessionDataTask *task, NSError *error) {
+               
+               // mark an HTTP response code of 403 as a authentication failure
+               NSRange range = [[error localizedDescription] rangeOfString:@"(403)"];
+               if (range.location != NSNotFound) {
+                   ARKError *arkError = [ARKError errorWithCode:ARKValidationError message:NSLocalizedString(@"Invalid username or password.", nil)];
+                   success(NO, arkError);
+               }
+               else {
+                   // HTTP request failed for some other reason
+                   failure(error);
+               }
+           }
+     ];
+}
+
+
+- (void)userInformation:(void (^)(long points, ARKError *error))success
+                failure:(void (^)(NSError *error))failure
+{
+    NSURL *url = [self.URLFactory userInfoURL];
+    
+    [self.http GET:[url path]
+        parameters:[url queryDictionary]
+           success:^(NSURLSessionDataTask *task, id responseObject) {
+               
+               ARKError *arkError = nil;
+               NSInteger points = [self.serializer pointBalanceWithDictionary:(NSDictionary *)responseObject error:&arkError];
+               
+               success(points, arkError);
+           }
+           failure:^(NSURLSessionDataTask *task, NSError *error) {
+               
+               // HTTP request failed for some other reason
+               failure(error);
+           }
+     ];
+}
+
+
+#pragma mark - Company Requests
+
+- (void)statisticsForCompanyID:(long)companyID
+                       success:(void (^)(ARKCompanyStatistics *stats, ARKError *error))success
+                       failure:(void (^)(NSError *error))failure
+{
+    NSURL *url = [self.URLFactory companyStatisticsURLWithID:companyID];
+    
+    [self.http GET:[url path]
+        parameters:[url queryDictionary]
+           success:^(NSURLSessionDataTask *task, id responseObject) {
+               
+               ARKError *arkError = nil;
+               ARKCompanyStatistics *stats = [self.serializer companyStatisticsWithDictionary:(NSDictionary *)responseObject
+                                                                                        error:&arkError];
+               success(stats, arkError);
+           }
+           failure:^(NSURLSessionDataTask *task, NSError *error) {
+               failure(error);
+           }
+     ];
+}
+
+
+
+
+
 #warning add a description method
 
+
+#pragma mark - Class Extentions
+- (void)initialize
+{
+    self.http = [[AFHTTPSessionManager alloc] initWithBaseURL:self.server.endpoint];
+    self.serializer = [[ARKSerialization alloc] init];
+}
 
 @end

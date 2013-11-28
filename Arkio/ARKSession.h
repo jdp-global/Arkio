@@ -27,6 +27,8 @@
 
 @class ARKUser;
 @class ARKServer;
+@class ARKError;
+@class ARKCompanyStatistics;
 
 /**
  *  The `ARKSession` class provides methods for interacting with the Data.com API service on an `ARKServer` for an `ARKUser`.
@@ -109,6 +111,57 @@
 - (instancetype)initWithUser:(ARKUser *)user
                       server:(ARKServer *)server;
 
+#pragma mark - User / Authentication
+
+///-------------------------------------
+/// @name User / Authentication Requests
+///-------------------------------------
+
+/**
+ *  Authenticate a session with the Data.com service
+ *
+ *  @param success A block object to execute when the task finishes succcesfully. This block has no return value and takes two argumenta: a boolean variable indicating whether the user authenticated successfully, and an ARKError object which is not nil if the API returned an application error.
+ *  @param failure A block object to execute at the completion of an unsuccessful request. This block has no return value and takes one argument: the error that occured during the request.
+ */
+- (void)authenticate:(void (^)(BOOL authenticated, ARKError *error))success
+             failure:(void (^)(NSError *error))failure;
+
+
+/**
+ *  Requests the user information (account point balance) for the current session user.
+ *
+ *  @param success A block object to execute when the task finishes succcesfully. This block has no return value and takes two argumenta: a long variable containing the number of points on a user's account balance, and an ARKError object which is not nil if the API returned an application error.
+ *  @param failure A block object to execute at the completion of an unsuccessful request. This block has no return value and takes one argument: the error that occured during the request.
+ */
+- (void)userInformation:(void (^)(long points, ARKError *error))success
+                failure:(void (^)(NSError *error))failure;
+
+#pragma mark - Company Requests
+
+///-----------------------
+/// @name Company Requests
+///-----------------------
+
+/**
+ *  Requests the count statistics for a company.
+ *
+ *  @param companyID The unique identifier of the company we're requesting the count statistics of.
+ *  @param success   A block object to execute when the task finishes succcesfully. This block has no return value and takes two argumenta: an `ARKCompanyStatistics` object containing the count statistics, and an ARKError object which is not nil if the API returned an application error.
+ *  @param failure   A block object to execute at the completion of an unsuccessful request. This block has no return value and takes one argument: the error that occured during the request.
+ */
+- (void)statisticsForCompanyID:(long)companyID
+                       success:(void (^)(ARKCompanyStatistics *stats, ARKError *error))success
+                       failure:(void (^)(NSError *error))failure;
+
+
+#pragma mark - Contact Requests
+
+///-----------------------
+/// @name Contact Requests
+///-----------------------
+
 
 
 @end
+
+extern NSString * const kARKAPIDeveloperTokenKey;
