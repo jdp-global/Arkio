@@ -18,5 +18,11 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>arkio.account.username</key>
+	<string></string>
+	<key>arkio.account.password</key>
+	<string></string>
+	<key>arkio.api.developer.token</key>
+	<string></string>
 </dict>
 </plist>
