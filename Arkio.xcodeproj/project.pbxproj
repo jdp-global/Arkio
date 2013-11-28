@@ -21,8 +21,20 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		181339B81846283E0008F3E3 /* NSURL+ARKNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 181339B71846283E0008F3E3 /* NSURL+ARKNetworking.m */; };
+		181339BC184629B10008F3E3 /* NSString+ARKNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 181339BB184629B10008F3E3 /* NSString+ARKNetworking.m */; };
+		181339BF184636F30008F3E3 /* ARKXCNetworkingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 181339BE184636F30008F3E3 /* ARKXCNetworkingTest.m */; };
+		181339C31846410A0008F3E3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E5E304183F66C4000C8D78 /* XCTest.framework */; };
+		181339C7184645070008F3E3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181339C6184645070008F3E3 /* CoreGraphics.framework */; };
+		181339C91846453E0008F3E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181339C81846453E0008F3E3 /* SystemConfiguration.framework */; };
+		181339CB184672130008F3E3 /* ARKAuthenticationRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 181339CA184672130008F3E3 /* ARKAuthenticationRequestTest.m */; };
 		1827D2501842102000CE7FF3 /* ARKContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827D24F1842102000CE7FF3 /* ARKContact.m */; };
 		1827D2531842265400CE7FF3 /* ARKCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827D2521842265400CE7FF3 /* ARKCompany.m */; };
+		186009A61847510600EB13F0 /* ARKUserInformationRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 186009A51847510600EB13F0 /* ARKUserInformationRequestTest.m */; };
+		186009A8184751D300EB13F0 /* ARKSearchContactsRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 186009A7184751D300EB13F0 /* ARKSearchContactsRequestTest.m */; };
+		186009AB18475C5500EB13F0 /* ARKCompanyStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 186009AA18475C5500EB13F0 /* ARKCompanyStatistics.m */; };
+		186009AE184760C800EB13F0 /* ARKCompanyStatistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 186009AD184760C800EB13F0 /* ARKCompanyStatistic.m */; };
+		186009B318476D1600EB13F0 /* ARKCompanyStatisticsRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 186009B218476D1600EB13F0 /* ARKCompanyStatisticsRequestTest.m */; };
 		18D887E4184367AC0008AAC2 /* ARKURLFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D887E3184367AC0008AAC2 /* ARKURLFactory.m */; };
 		18D887E71843C48B0008AAC2 /* ARKSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D887E61843C48B0008AAC2 /* ARKSerialization.m */; };
 		18D887EB1843D1BC0008AAC2 /* ARKError.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D887EA1843D1BC0008AAC2 /* ARKError.m */; };
@@ -67,10 +79,27 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		181339B61846283E0008F3E3 /* NSURL+ARKNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+ARKNetworking.h"; sourceTree = "<group>"; };
+		181339B71846283E0008F3E3 /* NSURL+ARKNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ARKNetworking.m"; sourceTree = "<group>"; };
+		181339BA184629B10008F3E3 /* NSString+ARKNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ARKNetworking.h"; sourceTree = "<group>"; };
+		181339BB184629B10008F3E3 /* NSString+ARKNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ARKNetworking.m"; sourceTree = "<group>"; };
+		181339BD184636F30008F3E3 /* ARKXCNetworkingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKXCNetworkingTest.h; sourceTree = "<group>"; };
+		181339BE184636F30008F3E3 /* ARKXCNetworkingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKXCNetworkingTest.m; sourceTree = "<group>"; };
+		181339C4184644E70008F3E3 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		181339C6184645070008F3E3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		181339C81846453E0008F3E3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		181339CA184672130008F3E3 /* ARKAuthenticationRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKAuthenticationRequestTest.m; sourceTree = "<group>"; };
 		1827D24E1842102000CE7FF3 /* ARKContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKContact.h; sourceTree = "<group>"; };
 		1827D24F1842102000CE7FF3 /* ARKContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKContact.m; sourceTree = "<group>"; };
 		1827D2511842265400CE7FF3 /* ARKCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKCompany.h; sourceTree = "<group>"; };
 		1827D2521842265400CE7FF3 /* ARKCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompany.m; sourceTree = "<group>"; };
+		186009A51847510600EB13F0 /* ARKUserInformationRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKUserInformationRequestTest.m; sourceTree = "<group>"; };
+		186009A7184751D300EB13F0 /* ARKSearchContactsRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKSearchContactsRequestTest.m; sourceTree = "<group>"; };
+		186009A918475C5500EB13F0 /* ARKCompanyStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKCompanyStatistics.h; sourceTree = "<group>"; };
+		186009AA18475C5500EB13F0 /* ARKCompanyStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompanyStatistics.m; sourceTree = "<group>"; };
+		186009AC184760C800EB13F0 /* ARKCompanyStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKCompanyStatistic.h; sourceTree = "<group>"; };
+		186009AD184760C800EB13F0 /* ARKCompanyStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompanyStatistic.m; sourceTree = "<group>"; };
+		186009B218476D1600EB13F0 /* ARKCompanyStatisticsRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompanyStatisticsRequestTest.m; sourceTree = "<group>"; };
 		18D887E2184367AC0008AAC2 /* ARKURLFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKURLFactory.h; sourceTree = "<group>"; };
 		18D887E3184367AC0008AAC2 /* ARKURLFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKURLFactory.m; sourceTree = "<group>"; };
 		18D887E51843C48B0008AAC2 /* ARKSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKSerialization.h; sourceTree = "<group>"; };
@@ -109,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181339C31846410A0008F3E3 /* XCTest.framework in Frameworks */,
 				18E5E2F7183F66C4000C8D78 /* Foundation.framework in Frameworks */,
 				1AEE3DEEA9964CE3B0D146FC /* libPods.a in Frameworks */,
 			);
@@ -118,6 +148,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181339C91846453E0008F3E3 /* SystemConfiguration.framework in Frameworks */,
+				181339C7184645070008F3E3 /* CoreGraphics.framework in Frameworks */,
 				18E5E305183F66C4000C8D78 /* XCTest.framework in Frameworks */,
 				18E5E308183F66C4000C8D78 /* UIKit.framework in Frameworks */,
 				18E5E30B183F66C4000C8D78 /* libArkio.a in Frameworks */,
@@ -128,6 +160,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181339B9184629350008F3E3 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				181339B61846283E0008F3E3 /* NSURL+ARKNetworking.h */,
+				181339B71846283E0008F3E3 /* NSURL+ARKNetworking.m */,
+				181339BA184629B10008F3E3 /* NSString+ARKNetworking.h */,
+				181339BB184629B10008F3E3 /* NSString+ARKNetworking.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		181339CC184672670008F3E3 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				181339BD184636F30008F3E3 /* ARKXCNetworkingTest.h */,
+				181339BE184636F30008F3E3 /* ARKXCNetworkingTest.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
 		18D887E81843CA6A0008AAC2 /* Error Handling */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +214,9 @@
 		18E5E2F5183F66C4000C8D78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				181339C81846453E0008F3E3 /* SystemConfiguration.framework */,
+				181339C6184645070008F3E3 /* CoreGraphics.framework */,
+				181339C4184644E70008F3E3 /* libPods.a */,
 				18E5E2F6183F66C4000C8D78 /* Foundation.framework */,
 				18E5E304183F66C4000C8D78 /* XCTest.framework */,
 				18E5E307183F66C4000C8D78 /* UIKit.framework */,
@@ -175,6 +230,7 @@
 			children = (
 				18E5E2FB183F66C4000C8D78 /* Arkio.h */,
 				18E5E2FD183F66C4000C8D78 /* Arkio.m */,
+				181339B9184629350008F3E3 /* Categories */,
 				18D887E81843CA6A0008AAC2 /* Error Handling */,
 				18E5E31C183F6DAB000C8D78 /* Networking */,
 				18E5E31D183F6DC0000C8D78 /* Model */,
@@ -194,7 +250,12 @@
 		18E5E30C183F66C4000C8D78 /* ArkioTests */ = {
 			isa = PBXGroup;
 			children = (
+				181339CC184672670008F3E3 /* Core */,
 				18E5E312183F66C4000C8D78 /* ArkioTests.m */,
+				181339CA184672130008F3E3 /* ARKAuthenticationRequestTest.m */,
+				186009A51847510600EB13F0 /* ARKUserInformationRequestTest.m */,
+				186009B218476D1600EB13F0 /* ARKCompanyStatisticsRequestTest.m */,
+				186009A7184751D300EB13F0 /* ARKSearchContactsRequestTest.m */,
 				18E5E30D183F66C4000C8D78 /* Supporting Files */,
 			);
 			path = ArkioTests;
@@ -233,6 +294,10 @@
 				1827D24F1842102000CE7FF3 /* ARKContact.m */,
 				1827D2511842265400CE7FF3 /* ARKCompany.h */,
 				1827D2521842265400CE7FF3 /* ARKCompany.m */,
+				186009A918475C5500EB13F0 /* ARKCompanyStatistics.h */,
+				186009AA18475C5500EB13F0 /* ARKCompanyStatistics.m */,
+				186009AC184760C800EB13F0 /* ARKCompanyStatistic.h */,
+				186009AD184760C800EB13F0 /* ARKCompanyStatistic.m */,
 				18E5E326183F7162000C8D78 /* ARKUser.h */,
 				18E5E327183F7162000C8D78 /* ARKUser.m */,
 				18E5E323183F7076000C8D78 /* ARKUserCredentials.h */,
@@ -290,6 +355,11 @@
 				CLASSPREFIX = ARK;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Alien Hitcher";
+				TargetAttributes = {
+					18E5E302183F66C4000C8D78 = {
+						TestTargetID = 18E5E2F2183F66C4000C8D78;
+					};
+				};
 			};
 			buildConfigurationList = 18E5E2EE183F66C4000C8D78 /* Build configuration list for PBXProject "Arkio" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -372,15 +442,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				186009AB18475C5500EB13F0 /* ARKCompanyStatistics.m in Sources */,
 				18E5E2FE183F66C4000C8D78 /* Arkio.m in Sources */,
+				181339B81846283E0008F3E3 /* NSURL+ARKNetworking.m in Sources */,
 				18E5E328183F7162000C8D78 /* ARKUser.m in Sources */,
 				18D887E71843C48B0008AAC2 /* ARKSerialization.m in Sources */,
+				186009AE184760C800EB13F0 /* ARKCompanyStatistic.m in Sources */,
 				18E5E325183F7076000C8D78 /* ARKUserCredentials.m in Sources */,
 				18D887E4184367AC0008AAC2 /* ARKURLFactory.m in Sources */,
 				18D887EB1843D1BC0008AAC2 /* ARKError.m in Sources */,
 				18F3CA001844CBAE00695C37 /* ARKEntity.m in Sources */,
 				18E5E32B183F76D7000C8D78 /* ARKServer.m in Sources */,
 				18E5E320183F6E13000C8D78 /* ARKSession.m in Sources */,
+				181339BC184629B10008F3E3 /* NSString+ARKNetworking.m in Sources */,
 				1827D2501842102000CE7FF3 /* ARKContact.m in Sources */,
 				1827D2531842265400CE7FF3 /* ARKCompany.m in Sources */,
 			);
@@ -391,6 +465,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				18E5E313183F66C4000C8D78 /* ArkioTests.m in Sources */,
+				186009B318476D1600EB13F0 /* ARKCompanyStatisticsRequestTest.m in Sources */,
+				181339CB184672130008F3E3 /* ARKAuthenticationRequestTest.m in Sources */,
+				186009A61847510600EB13F0 /* ARKUserInformationRequestTest.m in Sources */,
+				186009A8184751D300EB13F0 /* ARKSearchContactsRequestTest.m in Sources */,
+				181339BF184636F30008F3E3 /* ARKXCNetworkingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,12 +572,23 @@
 			baseConfigurationReference = F69568D91757450CAE1A9922 /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/Arkio.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Arkio/Arkio-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					XCTest,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
 			};
 			name = Debug;
 		};
@@ -507,12 +597,23 @@
 			baseConfigurationReference = F69568D91757450CAE1A9922 /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/Arkio.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Arkio/Arkio-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					XCTest,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
 			};
 			name = Release;
 		};
@@ -523,7 +624,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Arkio/Arkio-Prefix.pch";
@@ -531,8 +631,18 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers\"",
+				);
 				INFOPLIST_FILE = "ArkioTests/ArkioTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-all_load",
+				);
+				POD_ROOT = "${SRCROOT}/Pods";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -544,12 +654,21 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Arkio/Arkio-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers\"",
+				);
 				INFOPLIST_FILE = "ArkioTests/ArkioTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-all_load",
+				);
+				POD_ROOT = "${SRCROOT}/Pods";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
