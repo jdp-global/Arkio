@@ -25,6 +25,9 @@
 
 #import "ARKUserCredentials.h"
 
+NSString * const kARKAccountUsernameKey = @"arkio.account.username";
+NSString * const kARKAccountPasswordKey = @"arkio.account.password";
+
 @implementation ARKUserCredentials
 
 #pragma mark - Designated Object Initializers
@@ -38,6 +41,33 @@
 		self.password = password;
 	}
 	return self;
+}
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [self init];
+    if (self) {
+        if (![dictionary objectForKey:kARKAccountUsernameKey] ||
+            ![dictionary objectForKey:kARKAccountPasswordKey]) {
+            return nil;
+        }
+        
+        self.username = [dictionary objectForKey:kARKAccountUsernameKey];
+        self.password = [dictionary objectForKey:kARKAccountPasswordKey];
+    }
+    
+    return self;
+}
+
++ (instancetype)defaultCredentials
+{
+    NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:kARKAccountUsernameKey];
+    NSString *password = [[NSUserDefaults standardUserDefaults] stringForKey:kARKAccountPasswordKey];
+
+    ARKUserCredentials *defaultCredentials = [[ARKUserCredentials alloc] initWithUsername:username
+                                                                                 password:password];
+    
+    return defaultCredentials;
 }
 
 #warning add a description

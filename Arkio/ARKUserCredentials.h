@@ -42,6 +42,10 @@
 
 #pragma mark - Designated Object Initializers
 
+///-------------------------------------------------
+///  @name Creating and Intializing User Credentials
+///-------------------------------------------------
+
 /**
  *  Initializes a new user credentials instance with the given user name and password.
  *
@@ -52,4 +56,29 @@
  */
 - (instancetype)initWithUsername:(NSString *)username password:(NSString *)password;
 
+/**
+ *  Creates a user credential object and initializes the username and password values by retrieving them from the dictionary with the following keys:
+ *
+ *  - `"arkio.account.username"` - stored as plain text
+ *  - `"arkio.account.password"` - stored as plain text
+ *
+ *  @param dictionary a dictionary containing username and password values mapped as described in the discussion.
+ *
+ *  @return an account instance initialized from values stored in the given dictionary
+ */
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
+/**
+ *  This method creates a user credentials object and initializes the username and password values by retrieving them from `NSUserDefaults` with the following keys:
+ *
+ *  - `"arkio.account.username"` - store the username as an `NSString` object
+ *  - `"arkio.account.password"` - store the password as an unecrypted `NSString` object
+ *
+ *  @return A user credentials instance initialized with values from `NSUserDefaults`.
+ */
++ (instancetype)defaultCredentials;
+
 @end
+
+extern NSString * const kARKAccountUsernameKey;
+extern NSString * const kARKAccountPasswordKey;
