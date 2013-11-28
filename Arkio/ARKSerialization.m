@@ -13,19 +13,32 @@
 #import "ARKCompany.h"
 #import "ARKError.h"
 #import "ARKErrors.h"
+#import "ARKCompanyStatistics.h"
+#import "ARKCompanyStatistic.h"
 
+static NSString * const kJigsawSecureHost = @"https://www.jigsaw.com";
 
-static NSString *ARKDefaultAPIErrorCodeKey = @"errorCode";
-static NSString *ARKDefaultAPIErrorMessageKey = @"errorMsg";
-static NSString *ARKContactsAPIKey = @"contacts";
-static NSString *ARKCompaniesAPIKey = @"companies";
+static NSString * const kARKDefaultAPIErrorCodeKey = @"errorCode";
+static NSString * const kARKDefaultAPIErrorMessageKey = @"errorMsg";
+static NSString * const kARKContactsAPIKey = @"contacts";
+static NSString * const kARKCompaniesAPIKey = @"companies";
+static NSString * const kARKIDAPIKey = @"id";
+static NSString * const kARKURLAPIKey = @"url";
+static NSString * const kARKCountAPIKey = @"count";
+static NSString * const kARKTotalCountAPIKey = @"totalCount";
+static NSString * const kARKLevelsAPIKey = @"levels";
+static NSString * const kARKDeparmentsAPIKey = @"departments";
 
 static NSDateFormatter *ARKAPIDateFormatter;
+static NSURL *ARKAPIJigsawBaseURL;
 
 @interface ARKSerialization ()
 
 - (ARKContact *)contactWithDictionary:(NSDictionary *)dict;
 - (ARKCompany *)companyWithDictionary:(NSDictionary *)dict;
+
+// builds a set of ARKCompanyStatistic objects from a JSON object (array) for a given group type
+- (NSSet *)group:(ARKStatisticGroupType)type statistics:(NSArray *)statistics;
 
 @end
 
@@ -36,32 +49,26 @@ static NSDateFormatter *ARKAPIDateFormatter;
 {
     ARKAPIDateFormatter = [[NSDateFormatter alloc] init];
     [ARKAPIDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    
+    ARKAPIJigsawBaseURL = [NSURL URLWithString:kJigsawSecureHost];
 }
 
 #pragma mark - User Account
 
-- (NSInteger)pointBalanceWithData:(NSData *)data error:(NSError **)error
+- (NSInteger)pointBalanceWithDictionary:(NSDictionary *)dictionary error:(ARKError **)error
 {
-    if (data == nil) return 0;
-    
-    id obj = [NSJSONSerialization JSONObjectWithData:data
-                                             options:0
-                                               error:(NSError *__autoreleasing *)&error];
-    // return on error
-    if (obj == nil) return ARKUnknownError;
-
-    NSDictionary *dict = nil;
-    
-    if ([obj isKindOfClass:[NSDictionary class]]) {
-        dict = obj;
-    }
-    else {
-        dict = [obj objectAtIndex:0];
+    if (dictionary == nil) {
+        *error = [ARKError errorWithCode:ARKInvalidArgumentsError message:@"Dictionary argument is nil."];
+        return -1;
     }
 
-    NSNumber *points = [dict objectForKey:kARKPointsKey];
-    
+    NSNumber *points = [dictionary objectForKey:kARKPointsKey];
+    if (!points) {
+        *error = [ARKError errorWithCode:ARKValueNoFoundError message:@"No points value returned."];
+        return -1;
+    }
 	return [points longValue];
+
 }
 
 #pragma mark - Contact Serialization
@@ -76,7 +83,7 @@ static NSDateFormatter *ARKAPIDateFormatter;
     // return on error
     if (dict == nil) return nil;
 
-	NSArray *contactDicts = [dict objectForKey:ARKContactsAPIKey];
+	NSArray *contactDicts = [dict objectForKey:kARKContactsAPIKey];
 	NSMutableArray *contacts = [[NSMutableArray alloc] initWithCapacity:1];
 	
 	for (NSDictionary *dict in contactDicts) {
@@ -102,7 +109,7 @@ static NSDateFormatter *ARKAPIDateFormatter;
     // return on error
     if (dict == nil) return nil;
 
-	NSArray *companyDicts = [dict objectForKey:ARKCompaniesAPIKey];
+	NSArray *companyDicts = [dict objectForKey:kARKCompaniesAPIKey];
     NSMutableArray *companies = [[NSMutableArray alloc] initWithCapacity:1];
 	
 	for (NSDictionary *dict in companyDicts) {
@@ -113,6 +120,40 @@ static NSDateFormatter *ARKAPIDateFormatter;
 	}
     
 	return companies;
+}
+
+- (ARKCompanyStatistics *)companyStatisticsWithDictionary:(NSDictionary *)dictionary
+                                                    error:(ARKError **)error
+{
+    if (dictionary == nil) {
+        *error = [ARKError errorWithCode:ARKInvalidArgumentsError message:@"Dictionary argument is nil."];
+        return nil;
+    }
+
+    // company ID
+    NSNumber *companyID = [dictionary objectForKey:kARKIDAPIKey];
+#warning TODO test for nil to return with error
+    
+    ARKCompanyStatistics *stats = [[ARKCompanyStatistics alloc] initWithCompanyID:[companyID longValue]];
+    
+    // URL
+    NSString *urlString = [dictionary objectForKey:kARKURLAPIKey];
+    if (urlString && urlString.length > 0) {
+        NSURL *url = [NSURL URLWithString:urlString];
+        [stats setUrl:url];
+    }
+    
+    // total contacts
+    NSNumber *total = [dictionary objectForKey:kARKTotalCountAPIKey];
+    if (total) {
+        [stats setCount:[total longValue]];
+    }
+
+    // department and level breakdowns
+    [stats setDepartments:[self group:ARKStatisticGroupDepartment statistics:[dictionary objectForKey:kARKDeparmentsAPIKey]]];
+    [stats setLevels:[self group:ARKStatisticGroupLevel statistics:[dictionary objectForKey:kARKLevelsAPIKey]]];
+    
+    return stats;
 }
 
 #pragma mark - Error Handling
@@ -138,7 +179,7 @@ static NSDateFormatter *ARKAPIDateFormatter;
         dict = [obj objectAtIndex:0];
     }
     
-    NSString *codeString = (NSString *)[dict objectForKey:ARKDefaultAPIErrorCodeKey];
+    NSString *codeString = (NSString *)[dict objectForKey:kARKDefaultAPIErrorCodeKey];
 
     if (codeString) {
         code = [codeString intValue];
@@ -168,7 +209,7 @@ static NSDateFormatter *ARKAPIDateFormatter;
 
     // pull out the error code
     NSInteger code = ARKUnknownError;
-    NSString *codeString = (NSString *)[dict objectForKey:ARKDefaultAPIErrorCodeKey];
+    NSString *codeString = (NSString *)[dict objectForKey:kARKDefaultAPIErrorCodeKey];
     
     if (codeString) {
         code = [codeString intValue];
@@ -189,7 +230,7 @@ static NSDateFormatter *ARKAPIDateFormatter;
 
 - (NSError *)errorWithData:(NSData *)data error:(NSError **)error
 {
-    return [self errorWithData:data key:ARKDefaultAPIErrorMessageKey error:(NSError *__autoreleasing *)&error];
+    return [self errorWithData:data key:kARKDefaultAPIErrorMessageKey error:(NSError *__autoreleasing *)&error];
 }
 
 
@@ -250,7 +291,8 @@ static NSDateFormatter *ARKAPIDateFormatter;
 	[company setZip:[dict objectForKey:kARKZipKey]];
 	[company setCountry:[dict objectForKey:kARKCountryKey]];
 	[company setActiveContacts:[NSNumber numberWithInt:[[dict objectForKey:kARKActiveContactsKey] intValue]]];
-	[company setLinkInJigsaw:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",[dict objectForKey:kARKLinkInJigsawKey]]]];
+	[company setLinkInJigsaw:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",
+                                                   [dict objectForKey:kARKLinkInJigsawKey]]]];
 	
 	NSString *dateString = [dict objectForKey:kARKUpdatedDateKey];
 	NSDate *createdDate = [ARKAPIDateFormatter dateFromString:dateString];
@@ -259,4 +301,32 @@ static NSDateFormatter *ARKAPIDateFormatter;
 	return company;
 }
 
+- (NSSet *)group:(ARKStatisticGroupType)type statistics:(NSArray *)statistics
+{
+    NSMutableSet *groups = [NSMutableSet setWithCapacity:[statistics count]];
+
+    for (NSDictionary *dict in statistics) {
+
+        ARKCompanyStatistic *stat = [[ARKCompanyStatistic alloc] initWithGroupType:type];
+        
+        // name
+        [stat setName:[dict objectForKey:kARKNameKey]];
+
+        // contact count
+        NSNumber *count = [dict objectForKey:kARKCountAPIKey];
+        if (count) {
+            [stat setCount:[count longValue]];
+        }
+
+        // url
+        NSString *path = [dict objectForKey:kARKURLAPIKey];
+        if (path) {
+            [stat setUrl:[NSURL URLWithString:path relativeToURL:ARKAPIJigsawBaseURL]];
+        }
+        
+        [groups addObject:stat];
+    }
+    
+    return groups;
+}
 @end
