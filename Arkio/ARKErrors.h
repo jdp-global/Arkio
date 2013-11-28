@@ -12,7 +12,9 @@ enum {
     
     ARKUnknownError = -1,
     
-    ARKJSONSerializationError   = 1,        // error has occurred in underlying JSON Serialization call.
-    ARKInvalidArgumentsError    = 2         // method contract wasn't upheld.
+    ARKJSONSerializationError   = 1,        // error has occurred in underlying JSON Serialization call
+    ARKInvalidArgumentsError    = 2,        // method contract wasn't upheld
+    ARKValueNoFoundError        = 3,        // expected value is missing
+    ARKValidationError          = 4         // invalid data encountered
 };
 
