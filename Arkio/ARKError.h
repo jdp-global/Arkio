@@ -51,9 +51,9 @@
 /**
  *  Arkio Error Domain
  */
-extern NSString *const ARKErrorDomain;
+extern NSString * const ARKErrorDomain;
 
 /**
  *  Default message for unknown errors.
  */
-extern NSString *const ARKAnUnknownErrorOccurredMessageKey;
+extern NSString * const ARKAnUnknownErrorOccurredMessageKey;
