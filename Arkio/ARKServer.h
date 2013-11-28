@@ -96,7 +96,7 @@
 
 @end
 
-extern NSString *kArkioApiHostKey;
-extern NSString *kArkioApiPathKey;
-extern NSString *kArkioApiUrlKey;
-extern NSString *kArkioApiDefaultEndpoint;
+extern NSString  * const kArkioApiHostKey;
+extern NSString  * const kArkioApiPathKey;
+extern NSString  * const kArkioApiUrlKey;
+extern NSString  * const kArkioApiDefaultEndpoint;
