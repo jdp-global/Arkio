@@ -16,44 +16,44 @@
 @end
 
 // common keys
-extern NSString * kARKAddressKey;
-extern NSString * kARKCityKey;
-extern NSString * kARKStateKey;
-extern NSString * kARKCountryKey;
-extern NSString * kARKZipKey;
-extern NSString * kARKPhoneKey;
-extern NSString * kARKUpdatedDateKey;
+extern NSString * const kARKAddressKey;
+extern NSString * const kARKCityKey;
+extern NSString * const kARKStateKey;
+extern NSString * const kARKCountryKey;
+extern NSString * const kARKZipKey;
+extern NSString * const kARKPhoneKey;
+extern NSString * const kARKUpdatedDateKey;
 
 // contact keys
-extern NSString * kARKContactIDKey;
-extern NSString * kARKTitleKey;
-extern NSString * kARKCompanyNameKey;
-extern NSString * kARKFirstNameKey;
-extern NSString * kARKLastNameKey;
-extern NSString * kARKContactURLKey;
-extern NSString * kARKAreaCodeKey;
-extern NSString * kARKEmailKey;
-extern NSString * kARKOwnedKey;
-extern NSString * kARKOwnedTypeKey;
+extern NSString * const kARKContactIDKey;
+extern NSString * const kARKTitleKey;
+extern NSString * const kARKCompanyNameKey;
+extern NSString * const kARKFirstNameKey;
+extern NSString * const kARKLastNameKey;
+extern NSString * const kARKContactURLKey;
+extern NSString * const kARKAreaCodeKey;
+extern NSString * const kARKEmailKey;
+extern NSString * const kARKOwnedKey;
+extern NSString * const kARKOwnedTypeKey;
 
 // company keys
-extern NSString * kARKCompanyIDKey;
-extern NSString * kARKNameKey;
-extern NSString * kARKWebsiteKey;
-extern NSString * kARKStockSymbolKey;
-extern NSString * kARKStockExchangeKey;
-extern NSString * kARKOwnershipKey;
-extern NSString * kARKFortuneRankKey;
-extern NSString * kARKEmployeeCountKey;
-extern NSString * kARKEmployeeRangeKey;
-extern NSString * kARKRevenueRangeKey;
-extern NSString * kARKIndustry1Key;
-extern NSString * kARKIndustry2Key;
-extern NSString * kARKIndustry3Key;
-extern NSString * kARKSubIndustry1Key;
-extern NSString * kARKSubIndustry2Key;
-extern NSString * kARKSubIndustry3Key;
-extern NSString * kARKSICCodeKey;
-extern NSString * kARKActiveContactsKey;
-extern NSString * kARKLinkInJigsawKey;
-extern NSString * kARKPointsKey;
+extern NSString * const kARKCompanyIDKey;
+extern NSString * const kARKNameKey;
+extern NSString * const kARKWebsiteKey;
+extern NSString * const kARKStockSymbolKey;
+extern NSString * const kARKStockExchangeKey;
+extern NSString * const kARKOwnershipKey;
+extern NSString * const kARKFortuneRankKey;
+extern NSString * const kARKEmployeeCountKey;
+extern NSString * const kARKEmployeeRangeKey;
+extern NSString * const kARKRevenueRangeKey;
+extern NSString * const kARKIndustry1Key;
+extern NSString * const kARKIndustry2Key;
+extern NSString * const kARKIndustry3Key;
+extern NSString * const kARKSubIndustry1Key;
+extern NSString * const kARKSubIndustry2Key;
+extern NSString * const kARKSubIndustry3Key;
+extern NSString * const kARKSICCodeKey;
+extern NSString * const kARKActiveContactsKey;
+extern NSString * const kARKLinkInJigsawKey;
+extern NSString * const kARKPointsKey;
