@@ -28,7 +28,11 @@
 @class ARKUser;
 @class ARKServer;
 @class ARKError;
+@class ARKCompany;
 @class ARKCompanyStatistics;
+@class ARKCompanySearchResult;
+@class ARKContact;
+@class ARKContactSearchResult;
 
 /**
  *  The `ARKSession` class provides methods for interacting with the Data.com API service on an `ARKServer` for an `ARKUser`.
@@ -49,8 +53,6 @@
  *  The Data.com API Developer Token to send with each request.
  */
 @property (nonatomic, strong) NSString *APIDeveloperToken;
-
-
 
 #pragma mark - Designated Object Initializers
 ///------------------------------------------
@@ -114,7 +116,7 @@
 #pragma mark - User / Authentication
 
 ///-------------------------------------
-/// @name User / Authentication Requests
+/// @name User and Authentication Requests
 ///-------------------------------------
 
 /**
@@ -136,11 +138,34 @@
 - (void)userInformation:(void (^)(long points, ARKError *error))success
                 failure:(void (^)(NSError *error))failure;
 
+#pragma mark - Contact Requests
+
+///--------------------------------------
+/// @name Contact Search and Get Requests
+///--------------------------------------
+
+/**
+ *  Requests contacts with an email address or name matching the given string.
+ *
+ *  @param string The text to apply to the search query.
+ *  @param offset A numeric offset which to begin returning results from.
+ *  @param size   An `int` containing the number of results to return.
+ *  @param success  A block object to execute when the task finishes succcesfully. This block has no return value and takes two arguments: an `ARKCompanySearchResult` object containing the companies from the result set and an ARKError object which is not nil if the API returned an application error.
+ *  @param failure A block object to execute at the completion of an unsuccessful request. This block has no return value and takes one argument: the error that occured during the request. 
+ */
+- (void)searchContactsWithString:(NSString *)string
+                          offset:(int)offset
+                            size:(int)size
+                         success:(void (^)(ARKContactSearchResult *result, ARKError *error))success
+                         failure:(void (^)(NSError *error))failure;
+
+;
+
 #pragma mark - Company Requests
 
-///-----------------------
-/// @name Company Requests
-///-----------------------
+///--------------------------------------
+/// @name Company Search and Get Requests
+///--------------------------------------
 
 /**
  *  Requests the count statistics for a company.
@@ -154,12 +179,40 @@
                        failure:(void (^)(NSError *error))failure;
 
 
-#pragma mark - Contact Requests
+/**
+ *  Requests a search for companies who match on the given string.
+ *
+ *  Search text can match on any of the following Company fields:
+ *
+ *  - company name
+ *  - website domain name
+ *  - stock ticker symbol
+ *
+ *  @param string   The text to apply to the search query.
+ *  @param offset   A numeric offset which to begin returning results from.
+ *  @param size     An `int` containing the number of results to return.
+ *  @param detailed Set to `YES` to have detailed information for each contact, otherwise set to `NO`.
+ *  @param success  A block object to execute when the task finishes succcesfully. This block has no return value and takes two arguments: an `ARKCompanySearchResult` object containing the companies from the result set and an ARKError object which is not nil if the API returned an application error.
+ *  @param failure A block object to execute at the completion of an unsuccessful request. This block has no return value and takes one argument: the error that occured during the request.
+ */
+- (void)searchCompaniesWithString:(NSString *)string
+                           offset:(int)offset
+                             size:(int)size
+                         detailed:(BOOL)detailed
+                          success:(void (^)(ARKCompanySearchResult *results, ARKError *error))success
+                          failure:(void (^)(NSError *error))failure;
 
-///-----------------------
-/// @name Contact Requests
-///-----------------------
 
+/**
+ *  Requests the company with the given unique identifier.
+ *
+ *  @param companyID The unique identifier for the company requested.
+ *  @param success A block object to execute when the task finishes succcesfully. This block has no return value and takes two argumenta: the company from the response returned and an ARKError object which is not nil if the API returned an application error.
+ *  @param failure A block object to execute at the completion of an unsuccessful request. This block has no return value and takes one argument: the error that occured during the request.
+ */
+- (void)companyForID:(long)companyID
+             success:(void (^)(ARKCompany *company, ARKError *error))success
+             failure:(void (^)(NSError *error))failure;
 
 
 @end
