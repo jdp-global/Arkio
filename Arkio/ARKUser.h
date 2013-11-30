@@ -23,14 +23,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "ARKEntity.h"
 
 #import "ARKUserCredentials.h"
 
 /**
  *  The `ARKUser` class represents a single Data.com user's account.
  */
-@interface ARKUser : NSObject
+@interface ARKUser : ARKEntity
 
 /**
  *  The authentication credentials for this user's account.
