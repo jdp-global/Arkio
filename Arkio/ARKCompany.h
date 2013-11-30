@@ -23,17 +23,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "ARKEntity.h"
 
 /**
  *  A Company entity in the Data.com service.
  */
-@interface ARKCompany : NSObject
+@interface ARKCompany : ARKEntity
 
 /**
  *  The unique identifier of a company in Data.com.
  */
-@property (nonatomic, strong) NSNumber *companyId;
+@property long companyID;
 
 /**
  *  The name of a company.

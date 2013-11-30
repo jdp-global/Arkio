@@ -32,7 +32,7 @@
     self = [super init];
 	if (self) {
 		
-		self.companyId = [NSNumber numberWithInt:0];
+		self.companyID = 0;
 		self.name = @"";
 		self.phone = @"";
 		self.website = [[NSURL alloc] init];
@@ -68,7 +68,7 @@
 	
 #warning expand description
 	NSMutableString *string = [NSMutableString stringWithCapacity:1];
-	[string appendFormat:@"self.companyId = \'%i\'\n", [self.companyId intValue]];
+	[string appendFormat:@"self.companyId = \'%ld\'\n", self.companyID];
 	[string appendFormat:@"self.name = \'%@\'\n", self.name];
 	[string appendFormat:@"self.phone = \'%@\'\n", self.phone];
 	[string appendFormat:@"self.website = \'%@\'\n", self.website];
