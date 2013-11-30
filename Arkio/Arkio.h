@@ -32,7 +32,15 @@
 // Model
 #import "ARKUser.h"
 #import "ARKUserCredentials.h"
+
 #import "ARKContact.h"
+#import "ARKContactSearchResult.h"
+
+
+#import "ARKCompany.h"
+#import "ARKCompanySearchResult.h"
+#import "ARKCompanyStatistics.h"
+#import "ARKCompanyStatistic.h"
 
 // Error Handling
 #import "ARKErrors.h"
