@@ -44,6 +44,27 @@
                <Test
                   Identifier = "ArkioTests/testExample">
                </Test>
+               <Test
+                  Identifier = "ARKAuthenticationRequestTest/testAuthenticationRequest">
+               </Test>
+               <Test
+                  Identifier = "ARKAuthenticationRequestTest">
+               </Test>
+               <Test
+                  Identifier = "ARKCompanyStatisticsRequestTest">
+               </Test>
+               <Test
+                  Identifier = "ARKUserInformationRequestTest">
+               </Test>
+               <Test
+                  Identifier = "ARKCompanySearchRequestTest">
+               </Test>
+               <Test
+                  Identifier = "ArkioTests">
+               </Test>
+               <Test
+                  Identifier = "ARKCompanyRequestTest">
+               </Test>
             </SkippedTests>
             <LocationScenarioReference
                identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"

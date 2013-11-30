@@ -31,13 +31,19 @@
 		1827D2501842102000CE7FF3 /* ARKContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827D24F1842102000CE7FF3 /* ARKContact.m */; };
 		1827D2531842265400CE7FF3 /* ARKCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827D2521842265400CE7FF3 /* ARKCompany.m */; };
 		186009A61847510600EB13F0 /* ARKUserInformationRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 186009A51847510600EB13F0 /* ARKUserInformationRequestTest.m */; };
-		186009A8184751D300EB13F0 /* ARKSearchContactsRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 186009A7184751D300EB13F0 /* ARKSearchContactsRequestTest.m */; };
 		186009AB18475C5500EB13F0 /* ARKCompanyStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 186009AA18475C5500EB13F0 /* ARKCompanyStatistics.m */; };
 		186009AE184760C800EB13F0 /* ARKCompanyStatistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 186009AD184760C800EB13F0 /* ARKCompanyStatistic.m */; };
 		186009B318476D1600EB13F0 /* ARKCompanyStatisticsRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 186009B218476D1600EB13F0 /* ARKCompanyStatisticsRequestTest.m */; };
+		18C2259818489E8D006206FF /* ARKDDCError.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2259718489E8D006206FF /* ARKDDCError.m */; };
+		18C2259A1848B06C006206FF /* ARKCompanySearchRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C225991848B06C006206FF /* ARKCompanySearchRequestTest.m */; };
+		18C2259F1848B545006206FF /* ARKCompanySearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2259E1848B545006206FF /* ARKCompanySearchResult.m */; };
 		18D887E4184367AC0008AAC2 /* ARKURLFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D887E3184367AC0008AAC2 /* ARKURLFactory.m */; };
 		18D887E71843C48B0008AAC2 /* ARKSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D887E61843C48B0008AAC2 /* ARKSerialization.m */; };
 		18D887EB1843D1BC0008AAC2 /* ARKError.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D887EA1843D1BC0008AAC2 /* ARKError.m */; };
+		18DCB20B184A058E00224D0E /* ARKCompanyRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DCB20A184A058E00224D0E /* ARKCompanyRequestTest.m */; };
+		18DCB20E184A11F000224D0E /* ARKEntitySearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DCB20D184A11F000224D0E /* ARKEntitySearchResult.m */; };
+		18DCB211184A13BF00224D0E /* ARKContactSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DCB210184A13BF00224D0E /* ARKContactSearchResult.m */; };
+		18DCB213184A1AA400224D0E /* ARKContactSearchRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DCB212184A1AA400224D0E /* ARKContactSearchRequestTest.m */; };
 		18E5E2F7183F66C4000C8D78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E5E2F6183F66C4000C8D78 /* Foundation.framework */; };
 		18E5E2FC183F66C4000C8D78 /* Arkio.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18E5E2FB183F66C4000C8D78 /* Arkio.h */; };
 		18E5E2FE183F66C4000C8D78 /* Arkio.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5E2FD183F66C4000C8D78 /* Arkio.m */; };
@@ -94,18 +100,28 @@
 		1827D2511842265400CE7FF3 /* ARKCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKCompany.h; sourceTree = "<group>"; };
 		1827D2521842265400CE7FF3 /* ARKCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompany.m; sourceTree = "<group>"; };
 		186009A51847510600EB13F0 /* ARKUserInformationRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKUserInformationRequestTest.m; sourceTree = "<group>"; };
-		186009A7184751D300EB13F0 /* ARKSearchContactsRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKSearchContactsRequestTest.m; sourceTree = "<group>"; };
 		186009A918475C5500EB13F0 /* ARKCompanyStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKCompanyStatistics.h; sourceTree = "<group>"; };
 		186009AA18475C5500EB13F0 /* ARKCompanyStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompanyStatistics.m; sourceTree = "<group>"; };
 		186009AC184760C800EB13F0 /* ARKCompanyStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKCompanyStatistic.h; sourceTree = "<group>"; };
 		186009AD184760C800EB13F0 /* ARKCompanyStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompanyStatistic.m; sourceTree = "<group>"; };
 		186009B218476D1600EB13F0 /* ARKCompanyStatisticsRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompanyStatisticsRequestTest.m; sourceTree = "<group>"; };
+		18C2259618489E8D006206FF /* ARKDDCError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKDDCError.h; sourceTree = "<group>"; };
+		18C2259718489E8D006206FF /* ARKDDCError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKDDCError.m; sourceTree = "<group>"; };
+		18C225991848B06C006206FF /* ARKCompanySearchRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompanySearchRequestTest.m; sourceTree = "<group>"; };
+		18C2259D1848B545006206FF /* ARKCompanySearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKCompanySearchResult.h; sourceTree = "<group>"; };
+		18C2259E1848B545006206FF /* ARKCompanySearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompanySearchResult.m; sourceTree = "<group>"; };
 		18D887E2184367AC0008AAC2 /* ARKURLFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKURLFactory.h; sourceTree = "<group>"; };
 		18D887E3184367AC0008AAC2 /* ARKURLFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKURLFactory.m; sourceTree = "<group>"; };
 		18D887E51843C48B0008AAC2 /* ARKSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKSerialization.h; sourceTree = "<group>"; };
 		18D887E61843C48B0008AAC2 /* ARKSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKSerialization.m; sourceTree = "<group>"; };
 		18D887E91843D1BC0008AAC2 /* ARKError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKError.h; sourceTree = "<group>"; };
 		18D887EA1843D1BC0008AAC2 /* ARKError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKError.m; sourceTree = "<group>"; };
+		18DCB20A184A058E00224D0E /* ARKCompanyRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompanyRequestTest.m; sourceTree = "<group>"; };
+		18DCB20C184A11F000224D0E /* ARKEntitySearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKEntitySearchResult.h; sourceTree = "<group>"; };
+		18DCB20D184A11F000224D0E /* ARKEntitySearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKEntitySearchResult.m; sourceTree = "<group>"; };
+		18DCB20F184A13BF00224D0E /* ARKContactSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKContactSearchResult.h; sourceTree = "<group>"; };
+		18DCB210184A13BF00224D0E /* ARKContactSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKContactSearchResult.m; sourceTree = "<group>"; };
+		18DCB212184A1AA400224D0E /* ARKContactSearchRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKContactSearchRequestTest.m; sourceTree = "<group>"; };
 		18E5E2F3183F66C4000C8D78 /* libArkio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libArkio.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E5E2F6183F66C4000C8D78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18E5E2FA183F66C4000C8D78 /* Arkio-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Arkio-Prefix.pch"; sourceTree = "<group>"; };
@@ -180,14 +196,91 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
+		18C225A01848B5B0006206FF /* Company */ = {
+			isa = PBXGroup;
+			children = (
+				1827D2511842265400CE7FF3 /* ARKCompany.h */,
+				1827D2521842265400CE7FF3 /* ARKCompany.m */,
+				186009A918475C5500EB13F0 /* ARKCompanyStatistics.h */,
+				186009AA18475C5500EB13F0 /* ARKCompanyStatistics.m */,
+				186009AC184760C800EB13F0 /* ARKCompanyStatistic.h */,
+				186009AD184760C800EB13F0 /* ARKCompanyStatistic.m */,
+				18C2259D1848B545006206FF /* ARKCompanySearchResult.h */,
+				18C2259E1848B545006206FF /* ARKCompanySearchResult.m */,
+			);
+			name = Company;
+			sourceTree = "<group>";
+		};
+		18C225A11848B5D0006206FF /* User */ = {
+			isa = PBXGroup;
+			children = (
+				18E5E326183F7162000C8D78 /* ARKUser.h */,
+				18E5E327183F7162000C8D78 /* ARKUser.m */,
+				18E5E323183F7076000C8D78 /* ARKUserCredentials.h */,
+				18E5E324183F7076000C8D78 /* ARKUserCredentials.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		18C225A21848B5E3006206FF /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				1827D24E1842102000CE7FF3 /* ARKContact.h */,
+				1827D24F1842102000CE7FF3 /* ARKContact.m */,
+				18DCB20F184A13BF00224D0E /* ARKContactSearchResult.h */,
+				18DCB210184A13BF00224D0E /* ARKContactSearchResult.m */,
+			);
+			name = Contact;
+			sourceTree = "<group>";
+		};
+		18C225A31848B5F2006206FF /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				18F3C9FE1844CBAE00695C37 /* ARKEntity.h */,
+				18F3C9FF1844CBAE00695C37 /* ARKEntity.m */,
+				18DCB20C184A11F000224D0E /* ARKEntitySearchResult.h */,
+				18DCB20D184A11F000224D0E /* ARKEntitySearchResult.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
 		18D887E81843CA6A0008AAC2 /* Error Handling */ = {
 			isa = PBXGroup;
 			children = (
 				18F3C9FC1844A60A00695C37 /* ARKErrors.h */,
 				18D887E91843D1BC0008AAC2 /* ARKError.h */,
 				18D887EA1843D1BC0008AAC2 /* ARKError.m */,
+				18C2259618489E8D006206FF /* ARKDDCError.h */,
+				18C2259718489E8D006206FF /* ARKDDCError.m */,
 			);
 			name = "Error Handling";
+			sourceTree = "<group>";
+		};
+		18DCB214184A1BB900224D0E /* Company */ = {
+			isa = PBXGroup;
+			children = (
+				186009B218476D1600EB13F0 /* ARKCompanyStatisticsRequestTest.m */,
+				18C225991848B06C006206FF /* ARKCompanySearchRequestTest.m */,
+				18DCB20A184A058E00224D0E /* ARKCompanyRequestTest.m */,
+			);
+			name = Company;
+			sourceTree = "<group>";
+		};
+		18DCB215184A1BC000224D0E /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				18DCB212184A1AA400224D0E /* ARKContactSearchRequestTest.m */,
+			);
+			name = Contact;
+			sourceTree = "<group>";
+		};
+		18DCB216184A1BC700224D0E /* User */ = {
+			isa = PBXGroup;
+			children = (
+				181339CA184672130008F3E3 /* ARKAuthenticationRequestTest.m */,
+				186009A51847510600EB13F0 /* ARKUserInformationRequestTest.m */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 		18E5E2EA183F66C4000C8D78 = {
@@ -250,12 +343,11 @@
 		18E5E30C183F66C4000C8D78 /* ArkioTests */ = {
 			isa = PBXGroup;
 			children = (
-				181339CC184672670008F3E3 /* Core */,
 				18E5E312183F66C4000C8D78 /* ArkioTests.m */,
-				181339CA184672130008F3E3 /* ARKAuthenticationRequestTest.m */,
-				186009A51847510600EB13F0 /* ARKUserInformationRequestTest.m */,
-				186009B218476D1600EB13F0 /* ARKCompanyStatisticsRequestTest.m */,
-				186009A7184751D300EB13F0 /* ARKSearchContactsRequestTest.m */,
+				181339CC184672670008F3E3 /* Core */,
+				18DCB214184A1BB900224D0E /* Company */,
+				18DCB215184A1BC000224D0E /* Contact */,
+				18DCB216184A1BC700224D0E /* User */,
 				18E5E30D183F66C4000C8D78 /* Supporting Files */,
 			);
 			path = ArkioTests;
@@ -288,20 +380,10 @@
 		18E5E31D183F6DC0000C8D78 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				18F3C9FE1844CBAE00695C37 /* ARKEntity.h */,
-				18F3C9FF1844CBAE00695C37 /* ARKEntity.m */,
-				1827D24E1842102000CE7FF3 /* ARKContact.h */,
-				1827D24F1842102000CE7FF3 /* ARKContact.m */,
-				1827D2511842265400CE7FF3 /* ARKCompany.h */,
-				1827D2521842265400CE7FF3 /* ARKCompany.m */,
-				186009A918475C5500EB13F0 /* ARKCompanyStatistics.h */,
-				186009AA18475C5500EB13F0 /* ARKCompanyStatistics.m */,
-				186009AC184760C800EB13F0 /* ARKCompanyStatistic.h */,
-				186009AD184760C800EB13F0 /* ARKCompanyStatistic.m */,
-				18E5E326183F7162000C8D78 /* ARKUser.h */,
-				18E5E327183F7162000C8D78 /* ARKUser.m */,
-				18E5E323183F7076000C8D78 /* ARKUserCredentials.h */,
-				18E5E324183F7076000C8D78 /* ARKUserCredentials.m */,
+				18C225A31848B5F2006206FF /* Core */,
+				18C225A01848B5B0006206FF /* Company */,
+				18C225A21848B5E3006206FF /* Contact */,
+				18C225A11848B5D0006206FF /* User */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -453,9 +535,13 @@
 				18D887EB1843D1BC0008AAC2 /* ARKError.m in Sources */,
 				18F3CA001844CBAE00695C37 /* ARKEntity.m in Sources */,
 				18E5E32B183F76D7000C8D78 /* ARKServer.m in Sources */,
+				18C2259818489E8D006206FF /* ARKDDCError.m in Sources */,
 				18E5E320183F6E13000C8D78 /* ARKSession.m in Sources */,
 				181339BC184629B10008F3E3 /* NSString+ARKNetworking.m in Sources */,
+				18DCB20E184A11F000224D0E /* ARKEntitySearchResult.m in Sources */,
 				1827D2501842102000CE7FF3 /* ARKContact.m in Sources */,
+				18DCB211184A13BF00224D0E /* ARKContactSearchResult.m in Sources */,
+				18C2259F1848B545006206FF /* ARKCompanySearchResult.m in Sources */,
 				1827D2531842265400CE7FF3 /* ARKCompany.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,11 +551,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				18E5E313183F66C4000C8D78 /* ArkioTests.m in Sources */,
+				18DCB213184A1AA400224D0E /* ARKContactSearchRequestTest.m in Sources */,
 				186009B318476D1600EB13F0 /* ARKCompanyStatisticsRequestTest.m in Sources */,
 				181339CB184672130008F3E3 /* ARKAuthenticationRequestTest.m in Sources */,
 				186009A61847510600EB13F0 /* ARKUserInformationRequestTest.m in Sources */,
-				186009A8184751D300EB13F0 /* ARKSearchContactsRequestTest.m in Sources */,
+				18C2259A1848B06C006206FF /* ARKCompanySearchRequestTest.m in Sources */,
 				181339BF184636F30008F3E3 /* ARKXCNetworkingTest.m in Sources */,
+				18DCB20B184A058E00224D0E /* ARKCompanyRequestTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
