@@ -84,11 +84,11 @@
 /**
  *  Creates and returns a contact request URL with the given contact ID number.
  *
- *  @param number The ID number of the contact to request.
+ *  @param contactID The ID number of the contact to request.
  *
  *  @return A contact request URL for the given contact ID.
  */
-- (NSURL *)contactURLWithID:(NSNumber *)number;
+- (NSURL *)contactURLWithID:(long)contactID;
 
 /**
  *  Creates and returns a contact search URL with the given search string and result offset.
@@ -123,14 +123,14 @@
 /**
  *  Creates and returns a contact fact request URL with the given parameters.
  *
- *  @param number The ID number of the contact to challenge.
+ *  @param contactID The ID number of the contact to challenge.
  *  @param type   The type of fact to challenge.
  *  @param value  The proposed value of the fact.
  *  @param created The date this fact was created.
  *
  *  @return A contact fact URL for the given parameters.
  */
-- (NSURL *)contactFactURLWithID:(NSNumber *)number
+- (NSURL *)contactFactURLWithID:(long)contactID
                            type:(ARKFactType)type
                           value:(NSString *)value
                         created:(NSDate *)created;
@@ -155,27 +155,27 @@
 /**
  *  Creates and returns a company statistics URL for requesting the contact count statistics for a given company ID.
  *
- *  @param companyId The unique identifier for a company in Data.com.
+ *  @param companyID The unique identifier for a company in Data.com.
  *
  *  @return A company statistics URL for the given company ID.
  */
-- (NSURL *)companyStatisticsURLWithID:(long)companyId;
+- (NSURL *)companyStatisticsURLWithID:(long)companyID;
 
 /**
  *  Creates and returns a company request URL with the given company ID number.
  *
- *  @param number The ID number of the company to request.
+ *  @param companyID The ID number of the company to request.
  *
  *  @return A company request URL for the given company ID.
  */
-- (NSURL *)companyURLWithID:(NSNumber *)number;
+- (NSURL *)companyURLWithID:(long)companyID;
 #warning change NSNumber to long.
 
 /**
  *  Creates and returns a company search URL with the given search string and result offset.
  *
  *  @param string A string containing the text we want to use for a company search.
- *  @param offset A numeric offset from which to begin returning results from.
+ *  @param offset A numeric offset which to begin returning results from.
  *  @param size An `int` containing the number of results to return.
  *  @param detailed Set to `YES` to have detailed information for each contact, otherwise set to `NO`.
  *

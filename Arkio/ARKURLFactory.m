@@ -78,12 +78,12 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
 
 #pragma mark - Contact URLs
 
-- (NSURL *)contactURLWithID:(NSNumber *)number
+- (NSURL *)contactURLWithID:(long)contactID
 {
     NSMutableString *urlString = [NSMutableString stringWithCapacity:10];
     
 	[urlString setString:[self.session.server.endpoint absoluteString]];
-	[urlString appendFormat:@"contacts/%i.json?token=", [number intValue]];
+	[urlString appendFormat:@"contacts/%ld.json?token=", contactID];
 	[urlString appendString:self.session.APIDeveloperToken];
     [urlString appendString:[self credentialsAsParameterString]];
 	[urlString appendString:@"&purchaseFlag=true"];
@@ -270,7 +270,7 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
 	return [NSURL URLWithString:urlString];
 }
 
-- (NSURL *)contactFactURLWithID:(NSNumber *)number
+- (NSURL *)contactFactURLWithID:(long)contactID
                            type:(ARKFactType)type
                           value:(NSString *)value
                         created:(NSDate *)created
@@ -284,7 +284,7 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
     [urlString appendFormat:@"&%@=%@", [Arkio stringForFactType:type], value];
     
     if (type == ARKPhoneNumberFact) {
-        [urlString appendFormat:@"&contactId=%i", [number intValue]];
+        [urlString appendFormat:@"&contactId=%ld", contactID];
     }
     [urlString appendFormat:@"&fact=%@", value];
     
@@ -348,12 +348,12 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
 }
 
 
-- (NSURL *)companyURLWithID:(NSNumber *)number
+- (NSURL *)companyURLWithID:(long)companyID
 {
     NSMutableString *urlString = [NSMutableString stringWithCapacity:10];
 	
     [urlString setString:[self.session.server.endpoint absoluteString]];
-	[urlString appendFormat:@"companies/%i.json?token=", [number intValue]];
+	[urlString appendFormat:@"companies/%ld.json?token=", companyID];
 	[urlString appendString:self.session.APIDeveloperToken];
     [urlString appendString:[self credentialsAsParameterString]];
 	
