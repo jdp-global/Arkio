@@ -10,6 +10,8 @@
 
 #import "ARKError.h"
 #import "ARKCompanyStatistics.h"
+#import "ARKCompanySearchResult.h"
+#import "ARKContactSearchResult.h"
 
 /**
  *  Serializes JSON data into various objects.
@@ -31,7 +33,7 @@
  *
  *  @return an integer containing the number of points available to the user.
  */
-- (NSInteger)pointBalanceWithDictionary:(NSDictionary *)dictionary error:(ARKError **)error;
+- (NSInteger)pointBalanceWithDictionary:(NSDictionary *)dictionary error:(ARKError * __autoreleasing *)error;
 
 #pragma mark - Contacts
 
@@ -42,12 +44,24 @@
 /**
  *  Parses a list of `ARKContact` objects from a JSON object.
  *
- *  @param data  The JSON object to inspect for contacts.
+ *  @param dictionary The JSON object to parse for contacts.
  *  @param error An error is set if something went wrong during parsing.
  *
- *  @return An array of `ARKContact` objects.
+ *  @return A set of `ARKContact` objects.
  */
-- (NSArray *)contactsWithData:(NSData *)data error:(ARKError **)error;
+- (NSSet *)contactsWithDictionary:(NSDictionary *)dictionary
+                              error:(ARKError * __autoreleasing *)error;
+
+/**
+ *  Parses a contact search result set from a JSON object.
+ *
+ *  @param dictionary The JSON object to parse for contact search results.
+ *  @param error      An error is set if something went wrong during parsing.
+ *
+ *  @return An `ARKContactSearchResult` object containing the search results response.
+ */
+- (ARKContactSearchResult *)contactSearchResultWithDictionary:(NSDictionary *)dictionary
+                                                        error:(ARKError * __autoreleasing *)error;
 
 #pragma mark - Companies and Related Data
 
@@ -58,12 +72,13 @@
 /**
  *  Parses a list of `ARKCompany` objects from a JSON object.
  *
- *  @param data  The JSON object to parse for companies.
+ *  @param dictionary The JSON object to parse for companies.
  *  @param error An error is set if something went wrong during parsing.
  *
- *  @return An array of `ARKCompany` objects.
+ *  @return A set of `ARKCompany` objects.
  */
-- (NSArray *)companiesWithData:(NSData *)data error:(ARKError **)error;
+- (NSSet *)companiesWithDictionary:(NSDictionary *)dictionary
+                             error:(ARKError * __autoreleasing *)error;
 
 
 /**
@@ -75,7 +90,18 @@
  *  @return A `ARKCompanyStatistics` object containing the count statistics
  */
 - (ARKCompanyStatistics *)companyStatisticsWithDictionary:(NSDictionary *)dictionary
-                                                    error:(ARKError **)error;
+                                                    error:(ARKError * __autoreleasing *)error;
+
+/**
+ *  Parses a company search result set from a JSON object.
+ *
+ *  @param dictionary The JSON object to parse for company search results.
+ *  @param error      An error is set if something went wrong during parsing.
+ *
+ *  @return An `ARKCompanySearchResult` object containing the search results response.
+ */
+- (ARKCompanySearchResult *)companySearchResultWithDictionary:(NSDictionary *)dictionary
+                                                        error:(ARKError * __autoreleasing *)error;
 
 #pragma mark - Error Handling
 
@@ -91,7 +117,7 @@
  *
  *  @return an integer containing the error code or -1 (`ARKUnknownError`) if one wasn't found.
  */
-- (NSInteger)errorCodeWithData:(NSData *)data error:(ARKError **)error;
+- (NSInteger)errorCodeWithData:(NSData *)data error:(ARKError * __autoreleasing *)error;
 
 /**
  *  Parses an NSError from a JSON object for the given message key.
@@ -102,7 +128,7 @@
  *
  *  @return An error object representing the underlying Data.com API error.
  */
-- (NSError *)errorWithData:(NSData *)data key:(NSString *)key error:(ARKError **)error;
+- (NSError *)errorWithData:(NSData *)data key:(NSString *)key error:(ARKError * __autoreleasing *)error;
 
 /**
  *  Parses an NSError from a JSON object.
@@ -112,7 +138,7 @@
  *
  *  @return An error object representing the underlying Data.com API error.
  */
-- (NSError *)errorWithData:(NSData *)data error:(ARKError **)error;
+- (NSError *)errorWithData:(NSData *)data error:(ARKError * __autoreleasing *)error;
 
 
 
