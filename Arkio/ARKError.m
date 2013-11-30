@@ -9,10 +9,10 @@
 #import "ARKError.h"
 
 // Error Domain
-NSString *const ARKErrorDomain = @"com.alienhitcher.arkio.ErrorDomain";
+NSString * const ARKErrorDomain = @"com.alienhitcher.arkio.ErrorDomain";
 
 // Error Message Keys (for localization)
-NSString *const ARKAnUnknownErrorOccurredMessageKey = @"An unknown error occurred.";
+NSString * const ARKAnUnknownErrorOccurredMessageKey = @"An unknown error occurred.";
 
 @implementation ARKError
 
@@ -31,7 +31,7 @@ NSString *const ARKAnUnknownErrorOccurredMessageKey = @"An unknown error occurre
 
 - (id)initWithCode:(NSInteger)code userInfo:(NSDictionary *)dict
 {
-    self = [super initWithDomain:ARKErrorDomain code:code userInfo:dict];
+    self = [self initWithDomain:ARKErrorDomain code:code userInfo:dict];
     if (self) {
         
     }
