@@ -23,12 +23,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "ARKEntity.h"
 
 /**
  *  The `ARKUserCredentials` class is used to encapsulate the authentication credentials for a Data.com user account.
  */
-@interface ARKUserCredentials : NSObject
+@interface ARKUserCredentials : ARKEntity
 
 /**
  *  The user name associated with the Data.com account.
