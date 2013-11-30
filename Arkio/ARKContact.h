@@ -23,12 +23,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "ARKEntity.h"
 
 /**
  *  A Contact entity in the Data.com service.
  */
-@interface ARKContact : NSObject
+@interface ARKContact : ARKEntity
 
 
 /**
