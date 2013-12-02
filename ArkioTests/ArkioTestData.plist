@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>arkio.xctest.partner.token</key>
+	<string>mnwreiuhpaeflkjhg</string>
+	<key>arkio.xctest.search.offset</key>
+	<integer>0</integer>
+	<key>arkio.xctest.search.size</key>
+	<integer>25</integer>
+	<key>arkio.xctest.search.detailed</key>
+	<true/>
+	<key>arkio.xctest.company.name</key>
+	<string>Salesforce</string>
+	<key>arkio.xctest.company.id</key>
+	<integer>159110</integer>
+	<key>arkio.xctest.contact.firstlast</key>
+	<string>Marc Benioff</string>
+	<key>arkio.xctest.contact.level</key>
+	<integer>0</integer>
+</dict>
+</plist>
