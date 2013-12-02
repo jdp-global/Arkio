@@ -14,31 +14,21 @@
 
 @implementation ARKAuthenticationRequestTest
 
-- (void)setUp
-{
-    [super setUp];
-    // Put setup code here; it will be run once, before the first test case.
-}
-
-- (void)tearDown
-{
-    // Put teardown code here; it will be run once, after the last test case.
-    [super tearDown];
-}
-
 - (void)testAuthenticationRequest
 {
     [self.session authenticate:^(BOOL authenticated, ARKError *error) {
         
         if (!authenticated) {
-            XCTFail(@"Failed to authenticate default user credentials: %@", [error localizedDescription]);
+            XCTFail(@"%s failed to authenticate default user credentials: %@",
+                    __PRETTY_FUNCTION__,
+                    [error localizedDescription]);
         }
-        
-        NSLog(@"%s returned authentication value: %@", __PRETTY_FUNCTION__, authenticated ? @"YES" : @"NO");
         [self signalFinished];
     }
                        failure:^(NSError *error) {
-                           XCTFail(@"Authentication test fail with error message: %@", [error localizedDescription]);
+                           XCTFail(@"%s authentication test fail with error message: %@",
+                                   __PRETTY_FUNCTION__,
+                                   [error localizedDescription]);
                            [self signalFinished];
     }];
 
