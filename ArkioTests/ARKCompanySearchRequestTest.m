@@ -17,29 +17,23 @@
 
 @implementation ARKCompanySearchRequestTest
 
-- (void)setUp
-{
-    [super setUp];
-    // Put setup code here; it will be run once, before the first test case.
-}
-
-- (void)tearDown
-{
-    // Put teardown code here; it will be run once, after the last test case.
-    [super tearDown];
-}
-
 - (void)testCompanySearchRequest
 {
-    [self.session searchCompaniesWithString:@"salesforce"
-                                     offset:0
-                                       size:20
-                                   detailed:YES
+    NSString *string = (NSString *)[self testDataForKey:@"arkio.xctest.company.name"];
+    NSNumber *offset = (NSNumber *)[self testDataForKey:@"arkio.xctest.search.offset"];
+    NSNumber *size = (NSNumber *)[self testDataForKey:@"arkio.xctest.search.size"];
+    BOOL detailed = [(NSString *)[self testDataForKey:@"arkio.xctest.search.detailed"] boolValue];
+    
+    [self.session searchCompaniesWithString:string
+                                     offset:[offset intValue]
+                                       size:[size intValue]
+                                   detailed:detailed
                                     success:^(ARKCompanySearchResult *result, ARKError *error) {
                                         
-                                        XCTAssertNotNil(result, @"no result object returned.");
-                                        XCTAssertNotNil([result companies], @"no set of companies returned.");
-                                        XCTAssertNotEqual([[result companies] count], 0, @"result set contains no company objects.");
+                                        XCTAssertNotNil(result, @"%s no result object returned", __PRETTY_FUNCTION__);
+                                        XCTAssertNotNil([result companies], @"%s no set of companies returned", __PRETTY_FUNCTION__);
+                                        XCTAssertNotEqual([[result companies] count], 0, @"%s result set contains no company objects",
+                                                          __PRETTY_FUNCTION__);
 
                                         BOOL hasDetailedResults = NO;
                                         for (ARKCompany *company in [result companies]) {
@@ -48,20 +42,20 @@
                                                 break;
                                             }
                                         }
-                                        
-                                        XCTAssertTrue(hasDetailedResults, @"no detailed results found.");
+                                        XCTAssertEqual(detailed, hasDetailedResults,
+                                                       @"%s result detail, %@, doesn't match request detailed, %@",
+                                                       __PRETTY_FUNCTION__,
+                                                       detailed ? @"YES" : @"NO",
+                                                       hasDetailedResults ? @"YES" : @"NO");
                                         [self signalFinished];
                                     }
                                     failure:^(NSError *error) {
-                                        XCTFail(@"%s failed with network error: %@",
-                                                __PRETTY_FUNCTION__, [error localizedDescription]);
+                                        XCTFail(@"%s failed with error: %@", __PRETTY_FUNCTION__, [error localizedDescription]);
                                         [self signalFinished];
-
                                     }
      ];
     
     [self waitUntilFinished];
-
 }
 
 @end
