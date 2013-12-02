@@ -27,24 +27,5 @@
 
 @implementation Arkio
 
-+ (NSString *)stringForFactType:(ARKFactType)type
-{
-    NSString *returnValue = nil;
- 
-    switch (type) {
-        case ARKPhoneNumberFact:
-            returnValue = @"phone";
-            break;
-
-        case ARKEmailFact:
-            returnValue = @"email";
-            break;
-            
-        default:
-            break;
-    }
-
-    return returnValue;
-}
 
 @end
