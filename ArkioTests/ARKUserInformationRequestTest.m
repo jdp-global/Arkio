@@ -14,33 +14,23 @@
 
 @implementation ARKUserInformationRequestTest
 
-- (void)setUp
-{
-    [super setUp];
-    // Put setup code here; it will be run once, before the first test case.
-}
-
-- (void)tearDown
-{
-    // Put teardown code here; it will be run once, after the last test case.
-    [super tearDown];
-}
-
 - (void)testUserInformationRequest
 {
     [self.session userInformation:^(long points, ARKError *error) {
-
+        
         if (error) {
-            XCTFail(@"%s failed with ARK error: %@", __PRETTY_FUNCTION__, [error localizedDescription]);
+            XCTFail(@"%s failed with error: %@", __PRETTY_FUNCTION__, [error localizedDescription]);
         }
-        XCTAssertNotEqual(points, -1, @"No points value found for %s test", __PRETTY_FUNCTION__);
-        NSLog(@"%s returned %ld points.", __PRETTY_FUNCTION__, points);
+        XCTAssertNotEqual(points, -1, @"%s no points value found for test", __PRETTY_FUNCTION__);
         [self signalFinished];
         
-    } failure:^(NSError *error) {
-        XCTFail(@"%s failed with network error: %@", __PRETTY_FUNCTION__, [error localizedDescription]);
-        [self signalFinished];
-    }];
+    }
+                          failure:^(NSError *error) {
+                              
+                              XCTFail(@"%s failed with network error: %@", __PRETTY_FUNCTION__, [error localizedDescription]);
+                              [self signalFinished];
+                          }
+     ];
     
     [self waitUntilFinished];
 }
