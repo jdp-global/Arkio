@@ -16,21 +16,12 @@
 
 @implementation ARKCompanyStatisticsRequestTest
 
-- (void)setUp
-{
-    [super setUp];
-    // Put setup code here; it will be run once, before the first test case.
-}
-
-- (void)tearDown
-{
-    // Put teardown code here; it will be run once, after the last test case.
-    [super tearDown];
-}
-
 - (void)testCompanyStatisticsRequest 
-{    
-    [self.session statisticsForCompanyID:159110l
+{
+    NSNumber *IDNumber = (NSNumber *)[self testDataForKey:@"arkio.xctest.company.id"];
+    long companyID = [IDNumber longValue];
+    
+    [self.session statisticsForCompanyID:companyID
                                  success:^(ARKCompanyStatistics *stats, ARKError *error) {
                                      
                                      if (error) {
@@ -38,16 +29,19 @@
                                      }
                                      else {
 
-                                         XCTAssertTrue([stats companyID] > 0, @"Stats company ID is missing.");
-                                         XCTAssertNotNil([stats url], @"Stats page url is nil.");
-                                         XCTAssertTrue([[stats departments] count] > 0, @"departments missing.");
-                                         XCTAssertTrue([[stats levels] count] > 0, @"levels missing.");
+                                         XCTAssertTrue([stats companyID] == companyID, @"%s returned Company ID \'%ld\' doesn\'t match requested Company ID \'%ld\'",
+                                                       __PRETTY_FUNCTION__,
+                                                       [stats companyID],
+                                                       companyID);
+                                         
+                                         XCTAssertNotNil([stats url], @"%s page url is nil", __PRETTY_FUNCTION__);
+                                         XCTAssertTrue([[stats departments] count] > 0, @"%s departments missing", __PRETTY_FUNCTION__);
+                                         XCTAssertTrue([[stats levels] count] > 0, @"%s levels missing", __PRETTY_FUNCTION__);
                                      }
                                      [self signalFinished];
                                  }
                                  failure:^(NSError *error) {
-                                     XCTFail(@"%s failed with network error: %@",
-                                             __PRETTY_FUNCTION__, [error localizedDescription]);
+                                     XCTFail(@"%s failed with error: %@", __PRETTY_FUNCTION__, [error localizedDescription]);
                                      [self signalFinished];
                                  }
      ];
