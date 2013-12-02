@@ -26,7 +26,6 @@
 #import <Foundation/Foundation.h>
 
 #import "Arkio.h"
-#import "ARKSession.h"
 
 /**
  *  Creates Data.com API Request URLs for an `ARKSession`.
@@ -55,11 +54,11 @@
 
 
 #pragma mark - Constructing API Request URLs
-#pragma mark - User / Authentication URLs
+#pragma mark - User / Authentication Request URLs
 
-///------------------------------------------
-/// @name User Request URLs
-///------------------------------------------
+///-------------------------------------------
+/// @name User and Authentication Request URLs
+///-------------------------------------------
 
 /**
  *  Creates a URL to authenticate the user with Data.com.
@@ -75,11 +74,24 @@
  */
 - (NSURL *)userInfoURL;
 
-#pragma mark - Contact URLs
+#pragma mark - Partner Request URLs
 
-///------------------------------------------
+///---------------------------
+/// @name Partner Request URLs
+///---------------------------
+
+/**
+ *  Creates a URL to request partner info from Data.com.
+ *
+ *  @return An `NSURL` that can be used to request partner info from Data.com.
+ */
+- (NSURL *)partnerInfoURL;
+
+#pragma mark - Contact Request URLs
+
+///---------------------------
 /// @name Contact Request URLs
-///------------------------------------------
+///---------------------------
 
 /**
  *  Creates and returns a contact request URL with the given contact ID number.
@@ -120,37 +132,11 @@
                                     offset:(int)offset
                                       size:(int)size;
 
-/**
- *  Creates and returns a contact fact request URL with the given parameters.
- *
- *  @param contactID The ID number of the contact to challenge.
- *  @param type   The type of fact to challenge.
- *  @param value  The proposed value of the fact.
- *  @param created The date this fact was created.
- *
- *  @return A contact fact URL for the given parameters.
- */
-- (NSURL *)contactFactURLWithID:(long)contactID
-                           type:(ARKFactType)type
-                          value:(NSString *)value
-                        created:(NSDate *)created;
+#pragma mark - Company Request URLs
 
-/**
- *  Creates and returns a contact contribution URL for the set of contacts given.
- *
- *  @param contacts A set of contacts to contribute to Data.com
- *  @param error A pointer to an error object. If an error occurs while converting the contacts to a JSON representation, this pointer is set to an actual error object containing the error information. You may specify nil for this parameter if you do not want the error information.
- *
- *  @return A contact contribution URL for the given contact set.
- */
-- (NSURL *)contactContributionURLWithContacts:(NSSet *)contacts error:(NSError **)error;
-
-#pragma mark - Company URLs
-
-///------------------------------------------
+///---------------------------
 /// @name Company Request URLs
-///------------------------------------------
-
+///---------------------------
 
 /**
  *  Creates and returns a company statistics URL for requesting the contact count statistics for a given company ID.
@@ -160,16 +146,6 @@
  *  @return A company statistics URL for the given company ID.
  */
 - (NSURL *)companyStatisticsURLWithID:(long)companyID;
-
-/**
- *  Creates and returns a company request URL with the given company ID number.
- *
- *  @param companyID The ID number of the company to request.
- *
- *  @return A company request URL for the given company ID.
- */
-- (NSURL *)companyURLWithID:(long)companyID;
-#warning change NSNumber to long.
 
 /**
  *  Creates and returns a company search URL with the given search string and result offset.
