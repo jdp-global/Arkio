@@ -26,6 +26,51 @@
 #import "ARKEntity.h"
 
 /**
+ *  The level within a company the contact has reached
+ */
+typedef NS_ENUM(NSInteger, ARKContactLevel) {
+    
+    /**
+     *  Represents an aggregation of all contact levels.
+     */
+    ARKContactLevelAll,
+    
+    /**
+     *  Vice-President level.
+     */
+    ARKContactLevelVP,
+    
+    /**
+     *  Chief (Cxx) level.
+     */
+    ARKContactLevelC,
+    
+    /**
+     *  Director level.
+     */
+    ARKContactLevelDirector,
+    
+    /**
+     *  Manager level.
+     */
+    ARKContactLevelManager
+};
+
+/**
+ *  The type of fact that can be challanged for a contact.
+ */
+typedef NS_ENUM(NSInteger, ARKFactType) {
+    /**
+     *  Email address.
+     */
+    ARKEmailFact,
+    /**
+     *  Phone number.
+     */
+    ARKPhoneNumberFact
+};
+
+/**
  *  A Contact entity in the Data.com service.
  */
 @interface ARKContact : ARKEntity
