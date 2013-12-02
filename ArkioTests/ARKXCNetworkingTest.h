@@ -36,7 +36,7 @@
 @property BOOL loggingEnabled;
 @property (nonatomic, strong) ARKSession *session;
 @property (nonatomic, weak) ARKXCNetworkingTest *weakSelf;
-
+@property (nonatomic, strong) NSDictionary *testData;
 
 - (void)setLoggingEnabled:(BOOL)enabled;
 
@@ -46,6 +46,7 @@
 - (void)waitUntilFinished;
 - (void)signalFinished;
 
+- (NSObject *)testDataForKey:(NSString *)key;
 
 
 @end
