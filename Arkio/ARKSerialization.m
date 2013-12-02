@@ -320,6 +320,7 @@ static NSURL *ARKAPIJigsawBaseURL;
 	[company setZip:[dict objectForKey:kARKZipKey]];
 	[company setCountry:[dict objectForKey:kARKCountryKey]];
 	[company setActiveContacts:[NSNumber numberWithInt:[[dict objectForKey:kARKActiveContactsKey] intValue]]];
+#warning fix this http:// concat snaffu. 
 	[company setLinkInJigsaw:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",
                                                    [dict objectForKey:kARKLinkInJigsawKey]]]];
 	
