@@ -25,14 +25,33 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ARKContact.h"
+
+/**
+ *  Defines the type of modes an `ARKSession` can exist in. Sessions are created either for users or partner to interact with the Data.com API server.
+ */
+typedef NS_ENUM(NSInteger, ARKSessionMode) {
+    
+    /**
+     *  A Partner session.
+     */
+    ARKSessionPartnerMode,
+
+    /**
+     *  A User session.
+     */
+    ARKSessionUserMode
+};
+
 @class ARKUser;
+@class ARKPartner;
 @class ARKServer;
 @class ARKError;
 @class ARKCompany;
 @class ARKCompanyStatistics;
 @class ARKCompanySearchResult;
-@class ARKContact;
 @class ARKContactSearchResult;
+
 
 /**
  *  The `ARKSession` class provides methods for interacting with the Data.com API service on an `ARKServer` for an `ARKUser`.
@@ -45,6 +64,11 @@
 @property (nonatomic, strong, readonly) ARKUser *user;
 
 /**
+ *  The Partner on behalf of whom we are interfacing with the API server.
+ */
+@property (nonatomic, strong, readonly) ARKPartner *partner;
+
+/**
  *  The Data.com server instance to which API requests will be sent.
  */
 @property (nonatomic, strong, readonly) ARKServer *server;
@@ -54,10 +78,16 @@
  */
 @property (nonatomic, strong) NSString *APIDeveloperToken;
 
+/**
+ *  Indicates whether the session is acting on behalf of a user or a partner.
+ */
+@property (readonly) ARKSessionMode mode;
+
 #pragma mark - Designated Object Initializers
-///------------------------------------------
-/// @name Creating and Initializing a Session
-///------------------------------------------
+#pragma mark - Creating and Initializing a User Session
+///-----------------------------------------------
+/// @name Creating and Initializing a User Session
+///-----------------------------------------------
 
 /**
  *  Creates an `ARKSession`, initialized with the given Data.com account username and password.
@@ -103,21 +133,48 @@
                           server:(ARKServer *)server;
 
 /**
- *  Returns an `ARKSession`, initialized with the give `ARKUser` account credentials.
+ *  Returns an `ARKSession`, initialized with the give `ARKUser` account credentials and `ARKServer`.
  *
  *  @param user An `ARKUser` instance.
  *  @param server  An `ARKServer` to connect this `ARKSession` instance to.
  *
- *  @return an `ARKSession` instance initialized with the given account credentials and server.
+ *  @return An `ARKSession` instance initialized with the given account credentials and server.
  */
 - (instancetype)initWithUser:(ARKUser *)user
                       server:(ARKServer *)server;
 
-#pragma mark - User / Authentication
+#pragma mark - Creating and Initializing a Partner Session
 
-///-------------------------------------
+///--------------------------------------------------
+/// @name Creating and Initializing a Partner Session
+///--------------------------------------------------
+
+/**
+ *  Creates an `ARKSession`, initialized with the give `ARKParter` and sets the session mode to `ARKSessionPartnerMode`.
+ *
+ *  @param partner An `ARKPartner` instance.
+ *
+ *  @return An `ARKSession` instance initialized with the given partner details.
+ */
+- (instancetype)initWithPartner:(ARKPartner *)partner;
+
+/**
+ *  Returns an `ARKSession`, initialized with the give `ARKPartner` and `ARKServer`.
+ *
+ *  @param partner An `ARKPartner` instance.
+ *  @param server An `ARKServer` to connect this `ARKSession` instance to.
+ *
+ *  @return An `ARKSession` instance initialized with the given partner details and server.
+ */
+- (instancetype)initWithPartner:(ARKPartner *)partner
+                         server:(ARKServer *)server;
+
+
+#pragma mark - User / Authentication Requests
+
+///---------------------------------------
 /// @name User and Authentication Requests
-///-------------------------------------
+///---------------------------------------
 
 /**
  *  Authenticate a session with the Data.com service
@@ -137,6 +194,21 @@
  */
 - (void)userInformation:(void (^)(long points, ARKError *error))success
                 failure:(void (^)(NSError *error))failure;
+
+#pragma mark - Partner Information Requests
+
+///-----------------------------------
+/// @name Partner Information Requests
+///-----------------------------------
+
+/**
+ *  Requests the partner information (point balance) for the current session partner.
+ *
+ *  @param success A block object to execute when the task finishes succcesfully. This block has no return value and takes two argumenta: a long variable containing the number of points on a partner's account balance, and an ARKError object which is not nil if the API returned an application error.
+ *  @param failure A block object to execute at the completion of an unsuccessful request. This block has no return value and takes one argument: the error that occured during the request.
+ */
+- (void)partnerInformation:(void (^)(long points, ARKError *error))success
+                   failure:(void (^)(NSError *error))failure;
 
 #pragma mark - Contact Requests
 
@@ -159,7 +231,25 @@
                          success:(void (^)(ARKContactSearchResult *result, ARKError *error))success
                          failure:(void (^)(NSError *error))failure;
 
-;
+
+/**
+ *  Requests contacts matching the given method arguments.
+ *
+ *  @param companyName The name of the company the contact is employed by.
+ *  @param firstLast   The first and last name of a contact.
+ *  @param level       The level the contact is employed at.
+ *  @param offset      A numeric offset which to begin returning results from.
+ *  @param size        An `int` containing the number of results to return.
+ *  @param success     A block object to execute when the task finishes succcesfully. This block has no return value and takes two arguments: an `ARKCompanySearchResult` object containing the companies from the result set and an ARKError object which is not nil if the API returned an application error.
+ *  @param failure     A block object to execute at the completion of an unsuccessful request. This block has no return value and takes one argument: the error that occured during the request.
+ */
+- (void)searchContactsWithCompanyName:(NSString *)companyName
+                            firstLast:(NSString *)firstLast
+                                level:(ARKContactLevel)level
+                               offset:(int)offset
+                                 size:(int)size
+                              success:(void (^)(ARKContactSearchResult *result, ARKError *error))success
+                              failure:(void (^)(NSError *error))failure;
 
 #pragma mark - Company Requests
 
@@ -201,19 +291,6 @@
                          detailed:(BOOL)detailed
                           success:(void (^)(ARKCompanySearchResult *results, ARKError *error))success
                           failure:(void (^)(NSError *error))failure;
-
-
-/**
- *  Requests the company with the given unique identifier.
- *
- *  @param companyID The unique identifier for the company requested.
- *  @param success A block object to execute when the task finishes succcesfully. This block has no return value and takes two argumenta: the company from the response returned and an ARKError object which is not nil if the API returned an application error.
- *  @param failure A block object to execute at the completion of an unsuccessful request. This block has no return value and takes one argument: the error that occured during the request.
- */
-- (void)companyForID:(long)companyID
-             success:(void (^)(ARKCompany *company, ARKError *error))success
-             failure:(void (^)(NSError *error))failure;
-
 
 @end
 
