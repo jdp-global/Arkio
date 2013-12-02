@@ -26,6 +26,7 @@
 #import "ARKURLFactory.h"
 
 #import "ARKContact.h"
+#import "ARKPartner.h"
 
 static ARKURLFactory *sharedInstance;
 static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
@@ -57,7 +58,7 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
 }
 
 #pragma mark - Constructing API Request URLs
-#pragma mark - User / Authentication URLs
+#pragma mark - User / Authentication Request URLs
 
 - (NSURL *)userAuthURL
 {
@@ -73,10 +74,23 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
 	[urlString appendString:self.session.APIDeveloperToken];
 	[urlString appendString:[self credentialsAsParameterString]];
     
-	return [NSURL URLWithString:urlString];;
+	return [NSURL URLWithString:urlString];
 }
 
-#pragma mark - Contact URLs
+#pragma mark - Partner Request URLs
+
+- (NSURL *)partnerInfoURL
+{
+    NSMutableString *urlString = [NSMutableString stringWithCapacity:10];
+    
+	[urlString setString:[self.session.server.endpoint absoluteString]];
+	[urlString appendString:@"partner.json?token="];
+	[urlString appendString:self.session.partner.APIDeveloperToken];
+    
+	return [NSURL URLWithString:urlString];
+}
+
+#pragma mark - Contact Request URLs
 
 - (NSURL *)contactURLWithID:(long)contactID
 {
@@ -270,72 +284,8 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
 	return [NSURL URLWithString:urlString];
 }
 
-- (NSURL *)contactFactURLWithID:(long)contactID
-                           type:(ARKFactType)type
-                          value:(NSString *)value
-                        created:(NSDate *)created
-{
-    NSMutableString *urlString = [NSMutableString stringWithCapacity:0];
-    [urlString setString:[self.session.server.endpoint absoluteString]];
-    [urlString appendString:@"contactFact.json?token="];
-    [urlString appendString:self.session.APIDeveloperToken];
-    [urlString appendString:[self credentialsAsParameterString]];
-    [urlString appendFormat:@"&type=%@", [Arkio stringForFactType:type]];
-    [urlString appendFormat:@"&%@=%@", [Arkio stringForFactType:type], value];
-    
-    if (type == ARKPhoneNumberFact) {
-        [urlString appendFormat:@"&contactId=%ld", contactID];
-    }
-    [urlString appendFormat:@"&fact=%@", value];
-    
-    // created date
-    NSDateFormatter *timestampFormatter = [[NSDateFormatter alloc] init];
-    [timestampFormatter setDateFormat:ARKDateFormat];
-    
-    if (created == nil) {
-        created = [NSDate new];
-    }
 
-    [urlString appendFormat:@"&timestamp=%@", [timestampFormatter stringFromDate:created]];
-    NSString *escapedString = [urlString stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding];
-
-    return[NSURL URLWithString:escapedString];
-}
-
-- (NSURL *)contactContributionURLWithContacts:(NSSet *)contacts error:(NSError **)error
-{
-    NSMutableString *urlString = [NSMutableString stringWithCapacity:0];
-    [urlString setString:[self.session.server.endpoint absoluteString]];
-    [urlString appendString:@"contribution.json?token="];
-    [urlString appendString:self.session.APIDeveloperToken];
-    [urlString appendString:[self credentialsAsParameterString]];
-    
-    // append contacts as 'data' parameter
-    NSMutableDictionary *jsonDict = [NSMutableDictionary dictionaryWithCapacity:1];
-    NSMutableArray *jsonArray = [NSMutableArray arrayWithCapacity:[contacts count]];
-    
-    for (ARKContact *contact in contacts) {
-        [jsonArray addObject:[self dictionaryForContact:contact]];
-    }
-    
-    [jsonDict setObject:jsonArray forKey:@"contact"];
-    
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDict options:0 error:error];
-    
-    // return on error
-    if (jsonData == nil) {
-        return nil;
-    }
-#warning test NSUTF8StringEncoding
-    [urlString appendFormat:@"&data=%@", [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]];
-    NSString *escapedString = [urlString stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding];
-    
-    
-    NSURL *url = [NSURL URLWithString:escapedString];
-    return url;
-}
-
-#pragma mark - Company URLs
+#pragma mark - Company Request URLs
 - (NSURL *)companyStatisticsURLWithID:(long)companyId
 {
     NSMutableString *urlString = [NSMutableString stringWithCapacity:10];
@@ -345,19 +295,6 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
 	[urlString appendString:self.session.APIDeveloperToken];
     
     return [NSURL URLWithString:urlString];
-}
-
-
-- (NSURL *)companyURLWithID:(long)companyID
-{
-    NSMutableString *urlString = [NSMutableString stringWithCapacity:10];
-	
-    [urlString setString:[self.session.server.endpoint absoluteString]];
-	[urlString appendFormat:@"companies/%ld.json?token=", companyID];
-	[urlString appendString:self.session.APIDeveloperToken];
-    [urlString appendString:[self credentialsAsParameterString]];
-	
-	return [NSURL URLWithString:urlString];
 }
 
 
