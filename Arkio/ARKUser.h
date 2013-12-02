@@ -42,8 +42,11 @@
  */
 @property long points;
 
-
 #pragma mark - Designated Object Initializers
+
+///--------------------------------------
+///  @name Creating and Intializing Users
+///--------------------------------------
 
 /**
  *  Creates a new user object with the given `ARKUserCredentials`
@@ -54,8 +57,11 @@
  */
 - (instancetype)initWithUserCredentials:(ARKUserCredentials *)credendials;
 
-
 #pragma mark - Convenience Methods
+
+///--------------------------------------
+///  @name Getting a User's Point Balance
+///--------------------------------------
 
 /**
  *  Returns `YES` if the user has accumulated a number of Data.com points, otherwise this method returns `NO`.
