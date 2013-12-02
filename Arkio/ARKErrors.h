@@ -12,10 +12,11 @@ enum {
     
     ARKUnknownError = -1,
     
-    ARKJSONSerializationError   = 1,        // error has occurred in underlying JSON Serialization call
-    ARKInvalidArgumentsError    = 2,        // method contract wasn't upheld
-    ARKValueNoFoundError        = 3,        // expected value is missing
-    ARKValidationError          = 4,         // invalid data encountered
+    ARKJSONSerializationError           = 1,   // error has occurred in underlying JSON Serialization call
+    ARKInvalidArgumentsError            = 2,   // method contract wasn't upheld
+    ARKValueNoFoundError                = 3,   // expected value is missing
+    ARKValidationError                  = 4,   // invalid data encountered
+    ARKNetworkNotReachableError         = 5,   // no network connection. can't connect to network via wifi or GPRS/EDGE etc.
     
     
     // Data.com API Error Codes
