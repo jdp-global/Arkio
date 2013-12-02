@@ -31,11 +31,11 @@
 @property dispatch_semaphore_t semaphore;
 @property BOOL testFinished;
 
-
 @end
 
 @implementation ARKXCNetworkingTest
 @synthesize loggingEnabled = _loggingEnabled;
+
 
 - (void)setLoggingEnabled:(BOOL)enabled
 {
@@ -60,24 +60,30 @@
 {
     [super setUp];
     
-    // Set-up code here.
+    // init xctest instance
     _weakSelf = self;
     self.testFinished = NO;
     self.semaphore = dispatch_semaphore_create(0);
     [self setLoggingEnabled:YES];
     
+    // load Info.plist properties
     ARKUserCredentials *creds = [[ARKUserCredentials alloc] initWithDictionary:[[NSBundle bundleForClass:[self class]] infoDictionary]];
     ARKUser *user = [[ARKUser alloc] initWithUserCredentials:creds];
-    self.session = [[ARKSession alloc] initWithUser:user server:[[ARKServer alloc] init]];
     
+    self.session = [[ARKSession alloc] initWithUser:user server:[[ARKServer alloc] init]];
     XCTAssertNotNil(self.session, @"ARKSession is nil");
+    
+    // load test data
+    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+    NSString *dataFilePath = [testBundle pathForResource:@"ArkioTestData" ofType:@"plist"];
+    self.testData = [NSDictionary dictionaryWithContentsOfFile:dataFilePath];
+    XCTAssertNotNil(self.testData, @"no test data dictionary created from ArkioTestData.plist");
 }
 
 - (void)tearDown
 {
-    // Tear-down code here.
     [super tearDown];
-
+    
     if (self.loggingEnabled) {
         // [[AFNetworkActivityLogger sharedLogger] stopLogging];
     }
@@ -107,6 +113,13 @@
 - (void)verifyFailure:(NSError *)error
 {
     XCTFail(@"error = %@", [error localizedDescription]);
+}
+
+- (NSObject *)testDataForKey:(NSString *)key
+{
+    NSObject *obj = [self.testData objectForKey:key];
+    XCTAssertNotNil(obj, @"Test Data Error: object for key \'%@\' converted to nil.", key);
+    return obj;
 }
 
 @end
