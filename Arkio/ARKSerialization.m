@@ -267,8 +267,9 @@ static NSURL *ARKAPIJigsawBaseURL;
 - (ARKContact *)contactWithDictionary:(NSDictionary *)dict
 {
     ARKContact *contact  = [[ARKContact alloc] init];
-	[contact setContactId:[NSNumber numberWithInt:[[dict objectForKey:kARKContactIDKey] intValue]]];
-	[contact setCompanyId:[NSNumber numberWithInt:[[dict objectForKey:kARKCompanyIDKey]intValue]]];
+;
+	[contact setContactId:(long)[[dict objectForKey:kARKContactIDKey] longLongValue]];
+	[contact setCompanyId:(long)[[dict objectForKey:kARKCompanyIDKey]longLongValue]];
 	[contact setTitle:[dict objectForKey:kARKTitleKey]];
 	[contact setCompanyName:[dict objectForKey:kARKCompanyNameKey]];
 	
