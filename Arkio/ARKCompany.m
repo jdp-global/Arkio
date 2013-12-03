@@ -39,8 +39,8 @@
 		self.stockSymbol = @"";
 		self.stockExchange = @"";
 		self.ownership = @"";
-		self.fortuneRank = [NSNumber numberWithInt:0];
-		self.employeeCount = [NSNumber numberWithInt:0];
+		self.fortuneRank = 0;
+		self.employeeCount = 0;
 		self.employeeRange = @"";
 		self.revenue = @"";
 		self.industry1 = @"";
@@ -55,7 +55,7 @@
 		self.state = @"";
 		self.zip = @"";
 		self.country = @"";
-		self.activeContacts = [NSNumber numberWithInt:0];
+		self.activeContacts = 0;
 		self.linkInJigsaw = [[NSURL alloc] init];
 		self.createdOn = nil;
 		
@@ -75,8 +75,8 @@
 	[string appendFormat:@"self.stockSymbol = \'%@\'\n", self.stockSymbol];
 	[string appendFormat:@"self.stockExchange = \'%@\'\n", self.stockExchange];
 	[string appendFormat:@"self.ownership = \'%@\'\n", self.ownership];
-	[string appendFormat:@"self.fortuneRank = \'%@\'\n", self.fortuneRank];
-	[string appendFormat:@"self.employeeCount = \'%@\'\n", self.employeeCount];
+	[string appendFormat:@"self.fortuneRank = \'%ld\'\n", self.fortuneRank];
+	[string appendFormat:@"self.employeeCount = \'%ld\'\n", self.employeeCount];
 	[string appendFormat:@"self.employeeRange = \'%@\'\n", self.employeeRange];
 	[string appendFormat:@"self.revenue = \'%@\'\n", self.revenue];
 		
