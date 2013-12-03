@@ -68,12 +68,12 @@
 /**
  *  The Fortune 500 rank of a company.
  */
-@property (nonatomic, strong) NSNumber *fortuneRank;
+@property (nonatomic) long fortuneRank;
 
 /**
  *  The number of people currently employed by a company.
  */
-@property (nonatomic, strong) NSNumber *employeeCount;
+@property (nonatomic) long employeeCount;
 
 /**
  *  The minimum and maximum range within which the employee count value falls.
@@ -146,9 +146,9 @@
 @property (nonatomic, strong) NSString *country;
 
 /**
- *  The number of contacts for a company.
+ *  The number of active contacts for a company.
  */
-@property (nonatomic, strong) NSNumber *activeContacts;
+@property (nonatomic) long activeContacts;
 
 /**
  *  A LinkedIn Profile URL.
