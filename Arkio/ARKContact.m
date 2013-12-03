@@ -35,8 +35,8 @@
     self = [super init];
 	if (self){
 
-		self.contactId = [NSNumber numberWithInt:0];
-		self.companyId = [NSNumber numberWithInt:0];
+		self.contactId = 0;
+		self.companyId = 0;
 		self.title = @"";
 		self.companyName = @"";
 		self.updatedDate = nil;
