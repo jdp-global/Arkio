@@ -79,12 +79,12 @@ typedef NS_ENUM(NSInteger, ARKFactType) {
 /**
  *  The unique identifier for this contact in Data.com
  */
-@property (nonatomic, strong) NSNumber *contactId;
+@property (nonatomic) long contactId;
 
 /**
  *  The unique identifier for the company this contact is employed by.
  */
-@property (nonatomic, strong) NSNumber *companyId;
+@property (nonatomic) long companyId;
 
 /**
  *  The job title of this contact.
