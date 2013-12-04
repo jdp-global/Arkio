@@ -269,3 +269,4 @@ extern NSString * const kARKSICCodeKey;
 extern NSString * const kARKActiveContactsKey;
 extern NSString * const kARKLinkInJigsawKey;
 extern NSString * const kARKPointsKey;
+extern NSString * const kARKPointBalanceKey;
