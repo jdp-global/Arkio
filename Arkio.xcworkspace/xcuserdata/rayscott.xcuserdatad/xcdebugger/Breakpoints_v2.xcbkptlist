@@ -10,28 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Arkio/ARKSerialization.m"
-            timestampString = "407510066.192425"
+            timestampString = "407854284.520678"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "-companyStatisticsWithDictionary:error:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Arkio/ARKSerialization.m"
-            timestampString = "407510066.192425"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
-            landmarkName = "-companyWithDictionary:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,38 +57,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Arkio/ARKURLFactory.m"
-            timestampString = "407699726.748335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "-partnerInfoURL"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ArkioTests/ARKPartnerInformationRequestTest.m"
-            timestampString = "407699739.031471"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "-testPartnerInformationRequest"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ArkioTests/ARKPartnerInformationRequestTest.m"
             timestampString = "407700107.646165"
             startingColumnNumber = "9223372036854775807"
@@ -137,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Arkio/ARKSession.m"
-            timestampString = "407700131.375096"
+            filePath = "ArkioTests/ARKPartnerInformationRequestTest.m"
+            timestampString = "407785742.352477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
-            landmarkName = "-partnerInformation:failure:"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "-testPartnerInformationRequest"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -153,13 +105,241 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Arkio/ARKSession.m"
-            timestampString = "407700135.409953"
+            filePath = "ArkioTests/ARKUserInformationRequestTest.m"
+            timestampString = "407874507.433455"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
-            landmarkName = "-partnerInformation:failure:"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "-testUserInformationRequest"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ArkioTests/ARKAuthenticationRequestTest.m"
+            timestampString = "407874928.19293"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "-testAuthenticationRequest"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ArkioTests/ARKContactSearchRequestTest.m"
+            timestampString = "407875156.836573"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "-testContactSearchRequest"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__55-[ARKContactSearchRequestTest testContactSearchRequest]_block_invoke"
+                  moduleName = "ArkioTests"
+                  urlString = "file:///Users/rayscott/Developer/Source/GitHub/Arkio/ArkioTests/ARKContactSearchRequestTest.m"
+                  timestampString = "407877202.659356"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__55-[ARKContactSearchRequestTest testContactSearchRequest]_block_invoke"
+                  moduleName = "ArkioTests"
+                  urlString = "file:///Users/rayscott/Developer/Source/GitHub/Arkio/ArkioTests/ARKContactSearchRequestTest.m"
+                  timestampString = "407877202.659603"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "779">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__55-[ARKContactSearchRequestTest testContactSearchRequest]_block_invoke"
+                  moduleName = "ArkioTests"
+                  urlString = "file:///Users/rayscott/Developer/Source/GitHub/Arkio/ArkioTests/ARKContactSearchRequestTest.m"
+                  timestampString = "407877202.659866"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "5542">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ArkioTests/ARKContactSearchWithCompanyNameRequestTest.m"
+            timestampString = "407875303.080304"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "-testContactSearchWithCompanyNameRequest"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__85-[ARKContactSearchWithCompanyNameRequestTest testContactSearchWithCompanyNameRequest]_block_invoke"
+                  moduleName = "ArkioTests"
+                  urlString = "file:///Users/rayscott/Developer/Source/GitHub/Arkio/ArkioTests/ARKContactSearchWithCompanyNameRequestTest.m"
+                  timestampString = "407877575.633796"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__85-[ARKContactSearchWithCompanyNameRequestTest testContactSearchWithCompanyNameRequest]_block_invoke"
+                  moduleName = "ArkioTests"
+                  urlString = "file:///Users/rayscott/Developer/Source/GitHub/Arkio/ArkioTests/ARKContactSearchWithCompanyNameRequestTest.m"
+                  timestampString = "407877575.634032"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "779">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__85-[ARKContactSearchWithCompanyNameRequestTest testContactSearchWithCompanyNameRequest]_block_invoke"
+                  moduleName = "ArkioTests"
+                  urlString = "file:///Users/rayscott/Developer/Source/GitHub/Arkio/ArkioTests/ARKContactSearchWithCompanyNameRequestTest.m"
+                  timestampString = "407877575.63427"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "6142">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ArkioTests/ARKCompanySearchRequestTest.m"
+            timestampString = "407876593.997634"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "-testCompanySearchRequest"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__55-[ARKCompanySearchRequestTest testCompanySearchRequest]_block_invoke"
+                  moduleName = "ArkioTests"
+                  urlString = "file:///Users/rayscott/Developer/Source/GitHub/Arkio/ArkioTests/ARKCompanySearchRequestTest.m"
+                  timestampString = "407877575.634579"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "118">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__55-[ARKCompanySearchRequestTest testCompanySearchRequest]_block_invoke"
+                  moduleName = "ArkioTests"
+                  urlString = "file:///Users/rayscott/Developer/Source/GitHub/Arkio/ArkioTests/ARKCompanySearchRequestTest.m"
+                  timestampString = "407877575.634792"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "842">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__55-[ARKCompanySearchRequestTest testCompanySearchRequest]_block_invoke"
+                  moduleName = "ArkioTests"
+                  urlString = "file:///Users/rayscott/Developer/Source/GitHub/Arkio/ArkioTests/ARKCompanySearchRequestTest.m"
+                  timestampString = "407877575.635048"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "5670">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Arkio/ARKSerialization.m"
+            timestampString = "407876762.181379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-contactSearchResultWithDictionary:error:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Arkio/ARKSerialization.m"
+            timestampString = "407876916.506517"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-contactsWithDictionary:error:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

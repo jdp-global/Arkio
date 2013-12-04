@@ -51,19 +51,25 @@
                   Identifier = "ARKAuthenticationRequestTest">
                </Test>
                <Test
-                  Identifier = "ARKCompanyStatisticsRequestTest">
-               </Test>
-               <Test
                   Identifier = "ARKUserInformationRequestTest">
-               </Test>
-               <Test
-                  Identifier = "ARKCompanySearchRequestTest">
                </Test>
                <Test
                   Identifier = "ArkioTests">
                </Test>
                <Test
                   Identifier = "ARKCompanyRequestTest">
+               </Test>
+               <Test
+                  Identifier = "ARKContactSearchRequestTest">
+               </Test>
+               <Test
+                  Identifier = "ARKContactSearchWithCompanyNameRequestTest">
+               </Test>
+               <Test
+                  Identifier = "ARKCompanyStatisticsRequestTest">
+               </Test>
+               <Test
+                  Identifier = "ARKCompanySearchRequestTest">
                </Test>
             </SkippedTests>
             <LocationScenarioReference
