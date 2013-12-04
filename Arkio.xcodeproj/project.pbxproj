@@ -37,7 +37,6 @@
 		189CBBF7184C8BCA000B23D4 /* ARKContactSearchWithCompanyNameRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CBBF6184C8BCA000B23D4 /* ARKContactSearchWithCompanyNameRequestTest.m */; };
 		189CBBFB184CA6E1000B23D4 /* ARKPartner.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CBBFA184CA6E1000B23D4 /* ARKPartner.m */; };
 		189CBBFD184CBAA0000B23D4 /* ArkioTestData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 189CBBFC184CBAA0000B23D4 /* ArkioTestData.plist */; };
-		18C2259818489E8D006206FF /* ARKDDCError.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2259718489E8D006206FF /* ARKDDCError.m */; };
 		18C2259A1848B06C006206FF /* ARKCompanySearchRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C225991848B06C006206FF /* ARKCompanySearchRequestTest.m */; };
 		18C2259F1848B545006206FF /* ARKCompanySearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C2259E1848B545006206FF /* ARKCompanySearchResult.m */; };
 		18D887E4184367AC0008AAC2 /* ARKURLFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D887E3184367AC0008AAC2 /* ARKURLFactory.m */; };
@@ -112,16 +111,14 @@
 		189CBBF9184CA6E1000B23D4 /* ARKPartner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKPartner.h; sourceTree = "<group>"; };
 		189CBBFA184CA6E1000B23D4 /* ARKPartner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKPartner.m; sourceTree = "<group>"; };
 		189CBBFC184CBAA0000B23D4 /* ArkioTestData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArkioTestData.plist; sourceTree = "<group>"; };
-		18C2259618489E8D006206FF /* ARKDDCError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKDDCError.h; sourceTree = "<group>"; };
-		18C2259718489E8D006206FF /* ARKDDCError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKDDCError.m; sourceTree = "<group>"; };
 		18C225991848B06C006206FF /* ARKCompanySearchRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompanySearchRequestTest.m; sourceTree = "<group>"; };
 		18C2259D1848B545006206FF /* ARKCompanySearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKCompanySearchResult.h; sourceTree = "<group>"; };
 		18C2259E1848B545006206FF /* ARKCompanySearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompanySearchResult.m; sourceTree = "<group>"; };
 		18D887E2184367AC0008AAC2 /* ARKURLFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKURLFactory.h; sourceTree = "<group>"; };
 		18D887E3184367AC0008AAC2 /* ARKURLFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKURLFactory.m; sourceTree = "<group>"; };
 		18D887E51843C48B0008AAC2 /* ARKSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKSerialization.h; sourceTree = "<group>"; };
-		18D887E61843C48B0008AAC2 /* ARKSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKSerialization.m; sourceTree = "<group>"; };
-		18D887E91843D1BC0008AAC2 /* ARKError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKError.h; sourceTree = "<group>"; };
+		18D887E61843C48B0008AAC2 /* ARKSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ARKSerialization.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		18D887E91843D1BC0008AAC2 /* ARKError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ARKError.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		18D887EA1843D1BC0008AAC2 /* ARKError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKError.m; sourceTree = "<group>"; };
 		18DCB20C184A11F000224D0E /* ARKEntitySearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKEntitySearchResult.h; sourceTree = "<group>"; };
 		18DCB20D184A11F000224D0E /* ARKEntitySearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKEntitySearchResult.m; sourceTree = "<group>"; };
@@ -149,7 +146,6 @@
 		18E5E32A183F76D7000C8D78 /* ARKServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKServer.m; sourceTree = "<group>"; };
 		18E5E331183F8894000C8D78 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		18E6C931184CFD09003F4F2B /* ARKPartnerInformationRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKPartnerInformationRequestTest.m; sourceTree = "<group>"; };
-		18F3C9FC1844A60A00695C37 /* ARKErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKErrors.h; sourceTree = "<group>"; };
 		18F3C9FE1844CBAE00695C37 /* ARKEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKEntity.h; sourceTree = "<group>"; };
 		18F3C9FF1844CBAE00695C37 /* ARKEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKEntity.m; sourceTree = "<group>"; };
 		4784280918B14DDA883C3890 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,11 +259,8 @@
 		18D887E81843CA6A0008AAC2 /* Error Handling */ = {
 			isa = PBXGroup;
 			children = (
-				18F3C9FC1844A60A00695C37 /* ARKErrors.h */,
 				18D887E91843D1BC0008AAC2 /* ARKError.h */,
 				18D887EA1843D1BC0008AAC2 /* ARKError.m */,
-				18C2259618489E8D006206FF /* ARKDDCError.h */,
-				18C2259718489E8D006206FF /* ARKDDCError.m */,
 			);
 			name = "Error Handling";
 			sourceTree = "<group>";
@@ -563,7 +556,6 @@
 				18D887EB1843D1BC0008AAC2 /* ARKError.m in Sources */,
 				18F3CA001844CBAE00695C37 /* ARKEntity.m in Sources */,
 				18E5E32B183F76D7000C8D78 /* ARKServer.m in Sources */,
-				18C2259818489E8D006206FF /* ARKDDCError.m in Sources */,
 				18E5E320183F6E13000C8D78 /* ARKSession.m in Sources */,
 				189CBBFB184CA6E1000B23D4 /* ARKPartner.m in Sources */,
 				181339BC184629B10008F3E3 /* NSString+ARKNetworking.m in Sources */,
