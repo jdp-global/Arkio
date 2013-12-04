@@ -43,7 +43,6 @@
 #import "ARKCompanyStatistic.h"
 
 // Error Handling
-#import "ARKErrors.h"
 #import "ARKError.h"
 
 
@@ -53,8 +52,6 @@
  *  Arkio is an Objective-C client library for the Data.com API service.
  */
 @interface Arkio : NSObject
-
-
 
 @end
 
