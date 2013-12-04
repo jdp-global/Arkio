@@ -28,12 +28,26 @@
 /**
  *  Parses the number of user account points from a JSON object.
  *
- *  @param dictionary The JSON object to inspect for a point balance.
+ *  @param dictionary The JSON object to parse for a point balance.
  *  @param error An error is set if something went wrong during parsing.
  *
- *  @return an integer containing the number of points available to the user.
+ *  @return An integer containing the number of points available to the user.
  */
 - (NSInteger)pointBalanceWithDictionary:(NSDictionary *)dictionary error:(ARKError * __autoreleasing *)error;
+
+/**
+ *  Parses the point balance from a JSON object.
+ *
+ *  @param dictionary The JSON object to parse for a point balance.
+ *  @param key        The key for the point balance field in the JSON object.
+ *  @param error      An error is set if something went wrong during parsing.
+ *
+ *  @return An integer containing the point balance.
+ */
+- (NSInteger)pointBalanceWithDictionary:(NSDictionary *)dictionary
+                                    key:(NSString *)key
+                                  error:(ARKError * __autoreleasing *)error;
+
 
 #pragma mark - Contacts
 
@@ -112,33 +126,24 @@
 /**
  *  Parses an API error code from a JSON object.
  *
- *  @param data  The JSON object to inspect for an error code.
+ *  @param dictionary  The JSON object to parse for an error code.
  *  @param error An error is set if something went wrong during parsing.
  *
  *  @return an integer containing the error code or -1 (`ARKUnknownError`) if one wasn't found.
  */
-- (NSInteger)errorCodeWithData:(NSData *)data error:(ARKError * __autoreleasing *)error;
-
-/**
- *  Parses an NSError from a JSON object for the given message key.
- *
- *  @param data  The JSON object to inspect for an error.
- *  @param key   The error message key to inspect the JSON object for.
- *  @param error An error is set if something went wrong during parsing.
- *
- *  @return An error object representing the underlying Data.com API error.
- */
-- (NSError *)errorWithData:(NSData *)data key:(NSString *)key error:(ARKError * __autoreleasing *)error;
+- (NSInteger)errorCodeWithDictionary:(NSDictionary *)dictionary
+                               error:(ARKError * __autoreleasing *)error;
 
 /**
  *  Parses an NSError from a JSON object.
  *
- *  @param data  The JSON object to inspect for an error.
+ *  @param dictionary  The JSON object to parse for an error.
  *  @param error An error is set if something went wrong during parsing.
  *
  *  @return An error object representing the underlying Data.com API error.
  */
-- (NSError *)errorWithData:(NSData *)data error:(ARKError * __autoreleasing *)error;
+- (ARKError *)errorWithDictionary:(NSDictionary *)dictionary
+                            error:(ARKError * __autoreleasing *)error;
 
 
 
