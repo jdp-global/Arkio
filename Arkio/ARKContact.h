@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, ARKContactLevel) {
     ARKContactLevelVP,
     
     /**
-     *  Chief (Cxx) level.
+     *  C-suite (Cxx) level.
      */
     ARKContactLevelC,
     
