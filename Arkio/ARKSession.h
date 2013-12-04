@@ -27,22 +27,6 @@
 
 #import "ARKContact.h"
 
-/**
- *  Defines the type of modes an `ARKSession` can exist in. Sessions are created either for users or partner to interact with the Data.com API server.
- */
-typedef NS_ENUM(NSInteger, ARKSessionMode) {
-    
-    /**
-     *  A Partner session.
-     */
-    ARKSessionPartnerMode,
-
-    /**
-     *  A User session.
-     */
-    ARKSessionUserMode
-};
-
 @class ARKUser;
 @class ARKPartner;
 @class ARKServer;
@@ -78,13 +62,8 @@ typedef NS_ENUM(NSInteger, ARKSessionMode) {
  */
 @property (nonatomic, strong) NSString *APIDeveloperToken;
 
-/**
- *  Indicates whether the session is acting on behalf of a user or a partner.
- */
-@property (readonly) ARKSessionMode mode;
-
-#pragma mark - Designated Object Initializers
 #pragma mark - Creating and Initializing a User Session
+#pragma mark - Designated Object Initializers
 ///-----------------------------------------------
 /// @name Creating and Initializing a User Session
 ///-----------------------------------------------
@@ -117,7 +96,7 @@ typedef NS_ENUM(NSInteger, ARKSessionMode) {
  *  @return An `ARKSession` instance initialized with the `NSUserDefaults` user account credentials.
  */
 - (instancetype)initWithDefaultUser;
-#warning implement initWithDefaultUser method
+
 /**
  *  Creates an `ARKSession`, initialized with the given Data.com username and password
  *  and configured to connect to the given `ARKServer`.
