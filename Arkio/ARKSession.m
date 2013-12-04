@@ -46,7 +46,6 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
 @interface ARKSession ()
 @property (nonatomic, strong, readwrite) ARKUser *user;
 @property (nonatomic, strong, readwrite) ARKPartner *partner;
-@property (readwrite) ARKSessionMode mode;
 @property (nonatomic, strong, readwrite) ARKServer *server;
 @property (nonatomic, strong) ARKURLFactory *URLFactory;
 @property (nonatomic, strong) ARKSerialization *serializer;
@@ -56,6 +55,9 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
 
 // tests and responds to the AFNetworkReachabilityStatusNotReachable condition.
 - (BOOL)respondedToNetworkFailure:(void (^)(NSError *error))failure;
+
+// parses an error from the response object
+- (ARKError *)errorWithResponse:(id)responseObject;
 
 @end
 
@@ -90,7 +92,6 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
         ARKUser *user = [[ARKUser alloc] initWithUserCredentials:credentials];
         self.user = user;
         self.server = [[ARKServer alloc] init];
-        self.mode = ARKSessionUserMode;
         [self initialize];
     }
     return self;
@@ -102,9 +103,7 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     if (self) {
         self.user = user;
         self.server = [[ARKServer alloc] init];
-        self.mode = ARKSessionUserMode;
         [self initialize];
-        
     }
     return self;
 }
@@ -120,7 +119,6 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
         ARKUser *user = [[ARKUser alloc] initWithUserCredentials:credentials];
         self.user = user;
         self.server = server;
-        self.mode = ARKSessionUserMode;
         [self initialize];
     }
     return self;
@@ -134,12 +132,23 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     if (self) {
         self.user = user;
         self.server = server;
-        self.mode = ARKSessionUserMode;
         [self initialize];
     }
     return self;
 }
 
+- (instancetype)initWithDefaultUser
+{
+    self = [self init];
+    if (self) {
+        //ARKUserCredentials *credentials = [ARKUserCredentials defaultCredentials]
+        self.user = [[ARKUser alloc] initWithUserCredentials:[ARKUserCredentials defaultCredentials]];
+        self.server = [[ARKServer alloc] init];
+        [self initialize];
+    }
+    
+    return self;
+}
 
 #pragma mark - Creating and Initializing a Partner Session
 
@@ -149,7 +158,6 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     if (self) {
         self.partner = partner;
         self.server = [[ARKServer alloc] init];
-        self.mode = ARKSessionPartnerMode;
         [self initialize];
     }
     return self;
@@ -163,7 +171,6 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     if (self) {
         self.partner = partner;
         self.server = server;
-        self.mode = ARKSessionPartnerMode;        
         [self initialize];        
     }
     return self;
@@ -182,23 +189,18 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
         parameters:[url queryDictionary]
            success:^(NSURLSessionDataTask *task, id responseObject) {
                
-               ARKError *arkError = nil;
-               NSInteger points = [self.serializer pointBalanceWithDictionary:(NSDictionary *)responseObject error:&arkError];
+               // check for Data.com API errors
+               ARKError *error = [self errorWithResponse:responseObject];
+               if (error) {
+                   success(NO, error);
+                   return;
+               }
                
-               success((points > 0)? YES : NO, arkError);
+               NSInteger points = [self.serializer pointBalanceWithDictionary:(NSDictionary *)responseObject error:&error];
+               success((points > 0)? YES : NO, error);
            }
            failure:^(NSURLSessionDataTask *task, NSError *error) {
-               
-               // mark an HTTP response code of 403 as a authentication failure
-               NSRange range = [[error localizedDescription] rangeOfString:@"(403)"];
-               if (range.location != NSNotFound) {
-                   ARKError *arkError = [ARKError errorWithCode:ARKValidationError message:NSLocalizedString(@"Invalid username or password.", nil)];
-                   success(NO, arkError);
-               }
-               else {
-                   // HTTP request failed for some other reason
-                   failure(error);
-               }
+               failure(error);
            }
      ];
 }
@@ -215,11 +217,16 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
         parameters:[url queryDictionary]
            success:^(NSURLSessionDataTask *task, id responseObject) {
                
-               ARKError *arkError = nil;
-               NSInteger points = [self.serializer pointBalanceWithDictionary:(NSDictionary *)responseObject
-                                                                        error:&arkError];
+               // check for Data.com API errors
+               ARKError *error = [self errorWithResponse:responseObject];
+               if (error) {
+                   success(-1, error);
+                   return;
+               }
                
-               success(points, arkError);
+               NSInteger points = [self.serializer pointBalanceWithDictionary:(NSDictionary *)responseObject
+                                                                        error:&error];
+               success(points, error);
            }
            failure:^(NSURLSessionDataTask *task, NSError *error) {
                
@@ -241,7 +248,18 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     [self.http GET:[url path]
         parameters:[url queryDictionary]
            success:^(NSURLSessionDataTask *task, id responseObject) {
-               NSLog(@"%@", responseObject);
+            
+               // check for Data.com API errors
+               ARKError *error = [self errorWithResponse:responseObject];
+               if (error) {
+                   success(-1, error);
+                   return;
+               }
+               
+               NSInteger points = [self.serializer pointBalanceWithDictionary:(NSDictionary *)responseObject
+                                                                          key:kARKPointBalanceKey
+                                                                        error:&error];
+               success(points, error);
            }
            failure:^(NSURLSessionDataTask *task, NSError *error) {
                failure(error);
@@ -266,10 +284,17 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     [self.http GET:[url path]
         parameters:[url queryDictionary]
            success:^(NSURLSessionDataTask *task, id responseObject) {
-               ARKError *arkError = nil;
+               
+               // check for Data.com API errors
+               ARKError *error = [self errorWithResponse:responseObject];
+               if (error) {
+                   success(nil, error);
+                   return;
+               }
+
                ARKContactSearchResult *result = [self.serializer contactSearchResultWithDictionary:(NSDictionary *)responseObject
-                                                                                             error:&arkError];
-               success(result, arkError);
+                                                                                             error:&error];
+               success(result, error);
            }
            failure:^(NSURLSessionDataTask *task, NSError *error) {
                failure(error);
@@ -296,10 +321,17 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     [self.http GET:[url path]
         parameters:[url queryDictionary]
            success:^(NSURLSessionDataTask *task, id responseObject) {
-               ARKError *arkError = nil;
+               
+               // check for Data.com API errors
+               ARKError *error = [self errorWithResponse:responseObject];
+               if (error) {
+                   success(nil, error);
+                   return;
+               }
+               
                ARKContactSearchResult *result = [self.serializer contactSearchResultWithDictionary:(NSDictionary *)responseObject
-                                                                                             error:&arkError];
-               success(result, arkError);
+                                                                                             error:&error];
+               success(result, error);
            }
            failure:^(NSURLSessionDataTask *task, NSError *error) {
                failure(error);
@@ -322,10 +354,16 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
         parameters:[url queryDictionary]
            success:^(NSURLSessionDataTask *task, id responseObject) {
                
-               ARKError *arkError = nil;
+               // check for Data.com API errors
+               ARKError *error = [self errorWithResponse:responseObject];
+               if (error) {
+                   success(nil, error);
+                   return;
+               }
+               
                ARKCompanyStatistics *stats = [self.serializer companyStatisticsWithDictionary:(NSDictionary *)responseObject
-                                                                                        error:&arkError];
-               success(stats, arkError);
+                                                                                        error:&error];
+               success(stats, error);
            }
            failure:^(NSURLSessionDataTask *task, NSError *error) {
                failure(error);
@@ -349,10 +387,17 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     [self.http GET:[url path]
         parameters:[url queryDictionary]
            success:^(NSURLSessionDataTask *task, id responseObject) {
-               ARKError *arkError = nil;
+               
+               // check for Data.com API errors
+               ARKError *error = [self errorWithResponse:responseObject];
+               if (error) {
+                   success(nil, error);
+                   return;
+               }
+               
                ARKCompanySearchResult *results = [self.serializer companySearchResultWithDictionary:(NSDictionary *)responseObject
-                                                                                              error:&arkError];
-               success(results, arkError);
+                                                                                              error:&error];
+               success(results, error);
            }
            failure:^(NSURLSessionDataTask *task, NSError *error) {
                failure(error);
@@ -361,12 +406,27 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     
 }
 
-
+- (NSString *)description
+{
 #warning add a description method
+    return nil;
+}
+
 #pragma mark - Class Extentions
 - (void)initialize
 {
     self.http = [[AFHTTPSessionManager alloc] initWithBaseURL:self.server.endpoint];
+    NSMutableIndexSet *codes = [NSMutableIndexSet indexSetWithIndexesInRange:NSMakeRange(200, 100)];
+    
+    // to support DDC errors and application errrors, we treat these response status codes as successful.
+    [codes addIndex:400];
+    [codes addIndexesInRange:NSMakeRange(403, 3)];
+    [codes addIndex:500];
+    [codes addIndex:501];
+    [codes addIndex:503];
+    
+    [self.http.responseSerializer setAcceptableStatusCodes:codes];
+    
     [self.http.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
         
@@ -386,6 +446,24 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     }
     
     return responded;
+}
+
+- (ARKError *)errorWithResponse:(id)responseObject
+{
+    ARKError *error = nil;
+    NSDictionary *dictionary = nil;
+    
+    if ([responseObject isKindOfClass:[NSArray class]]) {
+        NSArray *responseArray = (NSArray *)responseObject;
+        dictionary = [responseArray firstObject];
+    }
+    else {
+        dictionary = responseObject;
+    }
+    
+    ARKError *apiError = [self.serializer errorWithDictionary:dictionary
+                                                        error:&error];
+    return (error) ? error : apiError;
 }
 
 @end
