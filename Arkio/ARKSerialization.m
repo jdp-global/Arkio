@@ -12,14 +12,17 @@
 #import "ARKContact.h"
 #import "ARKCompany.h"
 #import "ARKError.h"
-#import "ARKErrors.h"
 #import "ARKCompanyStatistics.h"
 #import "ARKCompanyStatistic.h"
 
 static NSString * const kJigsawSecureHost = @"https://www.jigsaw.com";
 
-static NSString * const kARKDefaultAPIErrorCodeKey = @"errorCode";
-static NSString * const kARKDefaultAPIErrorMessageKey = @"errorMsg";
+// API Errors
+static NSString * const kARKErrorCodeAPIKey = @"errorCode";
+static NSString * const kARKErrorMessageAPIKey = @"errorMsg";
+static NSString * const kARKHTTPStatusCodeAPIKey = @"httpStatusCode";
+static NSString * const kARKStackTraceAPIKey = @"stackTrace";
+
 static NSString * const kARKContactsAPIKey = @"contacts";
 static NSString * const kARKCompaniesAPIKey = @"companies";
 static NSString * const kARKIDAPIKey = @"id";
@@ -41,6 +44,7 @@ static NSURL *ARKAPIJigsawBaseURL;
 // builds a set of ARKCompanyStatistic objects from a JSON object (array) for a given group type
 - (NSSet *)group:(ARKStatisticGroupType)type statistics:(NSArray *)statistics;
 
+
 @end
 
 @implementation ARKSerialization
@@ -58,30 +62,38 @@ static NSURL *ARKAPIJigsawBaseURL;
 
 - (NSInteger)pointBalanceWithDictionary:(NSDictionary *)dictionary error:(ARKError * __autoreleasing *)error
 {
-    if (dictionary == nil) {
-        *error = [ARKError errorWithCode:ARKInvalidArgumentsError message:@"Dictionary argument is nil."];
+	return [self pointBalanceWithDictionary:dictionary key:kARKPointsKey error:error];
+}
+
+- (NSInteger)pointBalanceWithDictionary:(NSDictionary *)dictionary
+                                    key:(NSString *)key
+                                  error:(ARKError * __autoreleasing *)error
+{
+    if (!dictionary) {
+        *error = [ARKError errorWithCode:ARKInvalidArgumentError message:@"Dictionary argument is nil."];
         return -1;
     }
-
-    NSNumber *points = [dictionary objectForKey:kARKPointsKey];
+    
+    NSNumber *points = dictionary[key];
     if (!points) {
-        *error = [ARKError errorWithCode:ARKValueNoFoundError message:@"No points value returned."];
+        *error = [ARKError errorWithCode:ARKValueNotFoundError message:@"No points value returned."];
         return -1;
     }
 	return [points longValue];
-
+    
 }
+
 
 #pragma mark - Contact Serialization
 
 - (NSSet *)contactsWithDictionary:(NSDictionary *)dictionary error:(ARKError *__autoreleasing *)error
 {
-    if (dictionary == nil) {
-        *error = [ARKError errorWithCode:ARKInvalidArgumentsError message:@"Dictionary argument is nil."];
+    if (!dictionary) {
+        *error = [ARKError errorWithCode:ARKInvalidArgumentError message:@"Dictionary argument is nil."];
         return nil;
     }
     
-	NSArray *contactDicts = [dictionary objectForKey:kARKContactsAPIKey];
+	NSArray *contactDicts = dictionary[kARKContactsAPIKey];
 	NSMutableSet *contacts = [[NSMutableSet alloc] initWithCapacity:1];
 	
 	for (NSDictionary *dict in contactDicts) {
@@ -97,9 +109,14 @@ static NSURL *ARKAPIJigsawBaseURL;
 - (ARKContactSearchResult *)contactSearchResultWithDictionary:(NSDictionary *)dictionary
                                                         error:(ARKError * __autoreleasing *)error
 {
+    if (!dictionary) {
+        *error = [ARKError errorWithCode:ARKInvalidArgumentError message:@"Dictionary argument is nil."];
+        return nil;
+    }
+    
     ARKContactSearchResult *result = [[ARKContactSearchResult alloc] init];
     
-    NSNumber *totalHits = [dictionary objectForKey:kARKTotalHitsAPIKey];
+    NSNumber *totalHits = dictionary[kARKTotalHitsAPIKey];
     if (totalHits) {
         [result setTotalHits:[totalHits longValue]];
     }
@@ -115,12 +132,12 @@ static NSURL *ARKAPIJigsawBaseURL;
 - (NSSet *)companiesWithDictionary:(NSDictionary *)dictionary
                              error:(ARKError * __autoreleasing *)error
 {
-    if (dictionary == nil) {
-        *error = [ARKError errorWithCode:ARKInvalidArgumentsError message:@"Dictionary argument is nil."];
+    if (!dictionary) {
+        *error = [ARKError errorWithCode:ARKInvalidArgumentError message:@"Dictionary argument is nil."];
         return nil;
     }
     
-	NSArray *companyDicts = [dictionary objectForKey:kARKCompaniesAPIKey];
+	NSArray *companyDicts = dictionary[kARKCompaniesAPIKey];
     NSMutableSet *companies = [[NSMutableSet alloc] initWithCapacity:1];
 	
 	for (NSDictionary *dict in companyDicts) {
@@ -136,33 +153,36 @@ static NSURL *ARKAPIJigsawBaseURL;
 - (ARKCompanyStatistics *)companyStatisticsWithDictionary:(NSDictionary *)dictionary
                                                     error:(ARKError * __autoreleasing *)error
 {
-    if (dictionary == nil) {
-        *error = [ARKError errorWithCode:ARKInvalidArgumentsError message:@"Dictionary argument is nil."];
+    if (!dictionary) {
+        *error = [ARKError errorWithCode:ARKInvalidArgumentError message:@"Dictionary argument is nil."];
         return nil;
     }
 
     // company ID
-    NSNumber *companyID = [dictionary objectForKey:kARKIDAPIKey];
-#warning TODO test for nil to return with error
+    NSNumber *companyID = dictionary[kARKIDAPIKey];
+    if (!companyID) {
+        *error = [ARKError errorWithCode:ARKValueNotFoundError message:@"companyID is missing."];
+        return nil;
+    }
     
     ARKCompanyStatistics *stats = [[ARKCompanyStatistics alloc] initWithCompanyID:[companyID longValue]];
     
     // URL
-    NSString *urlString = [dictionary objectForKey:kARKURLAPIKey];
+    NSString *urlString = dictionary[kARKURLAPIKey];
     if (urlString && urlString.length > 0) {
         NSURL *url = [NSURL URLWithString:urlString];
         [stats setUrl:url];
     }
     
     // total contacts
-    NSNumber *total = [dictionary objectForKey:kARKTotalCountAPIKey];
+    NSNumber *total = dictionary[kARKTotalCountAPIKey];
     if (total) {
         [stats setCount:[total longValue]];
     }
 
     // department and level breakdowns
-    [stats setDepartments:[self group:ARKStatisticGroupDepartment statistics:[dictionary objectForKey:kARKDeparmentsAPIKey]]];
-    [stats setLevels:[self group:ARKStatisticGroupLevel statistics:[dictionary objectForKey:kARKLevelsAPIKey]]];
+    [stats setDepartments:[self group:ARKStatisticGroupDepartment statistics:dictionary[kARKDeparmentsAPIKey]]];
+    [stats setLevels:[self group:ARKStatisticGroupLevel statistics:dictionary[kARKLevelsAPIKey]]];
     
     return stats;
 }
@@ -170,9 +190,14 @@ static NSURL *ARKAPIJigsawBaseURL;
 - (ARKCompanySearchResult *)companySearchResultWithDictionary:(NSDictionary *)dictionary
                                                         error:(ARKError *__autoreleasing *)error
 {
+    if (!dictionary) {
+        *error = [ARKError errorWithCode:ARKInvalidArgumentError message:@"Dictionary argument is nil."];
+        return nil;
+    }
+    
     ARKCompanySearchResult *result = [[ARKCompanySearchResult alloc] init];
     
-    NSNumber *totalHits = [dictionary objectForKey:kARKTotalHitsAPIKey];
+    NSNumber *totalHits = dictionary[kARKTotalHitsAPIKey];
     if (totalHits) {
         [result setTotalHits:[totalHits longValue]];
     }
@@ -186,29 +211,13 @@ static NSURL *ARKAPIJigsawBaseURL;
 
 
 #pragma mark - Error Handling
-
-- (NSInteger)errorCodeWithData:(NSData *)data error:(ARKError * __autoreleasing *)error
+- (NSInteger)errorCodeWithDictionary:(NSDictionary *)dictionary
+                               error:(ARKError * __autoreleasing *)error
 {
-    if (data == nil) return 0;
+    if (!dictionary) return ARKUnknownError;
     
     NSInteger code = ARKUnknownError;
-    
-    id obj = [NSJSONSerialization JSONObjectWithData:data
-                                             options:0
-                                               error:(NSError *__autoreleasing *)&error];
-    // return on error
-    if (obj == nil) return ARKUnknownError;
-    
-    NSDictionary *dict = nil;
-    
-    if ([obj isKindOfClass:[NSDictionary class]]) {
-        dict = obj;
-    }
-    else {
-        dict = [obj objectAtIndex:0];
-    }
-    
-    NSString *codeString = (NSString *)[dict objectForKey:kARKDefaultAPIErrorCodeKey];
+    NSString *codeString = (NSString *)dictionary[kARKErrorCodeAPIKey];
 
     if (codeString) {
         code = [codeString intValue];
@@ -217,49 +226,31 @@ static NSURL *ARKAPIJigsawBaseURL;
     return code;
 }
 
-- (NSError *)errorWithData:(NSData *)data key:(NSString *)key error:(ARKError * __autoreleasing *)error;
+- (ARKError *)errorWithDictionary:(NSDictionary *)dictionary
+                            error:(ARKError * __autoreleasing *)error
 {
-    if (key == nil || data == nil) return nil;
+    if (!dictionary) {
+        *error = [ARKError errorWithCode:ARKInvalidArgumentError
+                                 message:@"Dictionary argument is nil."];
+        return nil;
+    }
+    
+    // bail if we don't find a Data.com error code string
+    NSString *errorCode = dictionary[kARKErrorCodeAPIKey];
+    if (!errorCode) {
+        return nil;
+    }
+    
+    // pull out the HTTP Status Code
+    NSInteger statusCode = ARKUnknownError;
+    NSString *statusCodeString = (NSString *)[dictionary objectForKey:kARKHTTPStatusCodeAPIKey];
+    statusCode = !statusCodeString ? : [statusCodeString intValue];
 
-    id obj = [NSJSONSerialization JSONObjectWithData:data
-                                             options:0
-                                               error:(NSError *__autoreleasing *)&error];
-    // return on error
-    if (obj == nil) return nil;
-
-    NSDictionary *dict = nil;
-    
-    if ([obj isKindOfClass:[NSDictionary class]]) {
-        dict = obj;
-    }
-    else {
-        dict = [obj objectAtIndex:0];
-    }
-
-    // pull out the error code
-    NSInteger code = ARKUnknownError;
-    NSString *codeString = (NSString *)[dict objectForKey:kARKDefaultAPIErrorCodeKey];
-    
-    if (codeString) {
-        code = [codeString intValue];
-    }
-    
-    // pull out the error message
-    NSString *message = [dict objectForKey:key];
-    
-    if (!message) {
-        message = ARKAnUnknownErrorOccurredMessageKey;
-    }
-    
-    ARKError *arkError = [ARKError errorWithCode:code message:message];
-    
-    
+    ARKError *arkError = [ARKError errorWithCode:errorCode
+                                  httpStatusCode:statusCode
+                                         message:dictionary[kARKErrorMessageAPIKey]
+                                      stackTrace:dictionary[kARKStackTraceAPIKey]];
     return arkError;
-}
-
-- (NSError *)errorWithData:(NSData *)data error:(ARKError * __autoreleasing *)error
-{
-    return [self errorWithData:data key:kARKDefaultAPIErrorMessageKey error:error];
 }
 
 
@@ -267,29 +258,33 @@ static NSURL *ARKAPIJigsawBaseURL;
 - (ARKContact *)contactWithDictionary:(NSDictionary *)dict
 {
     ARKContact *contact  = [[ARKContact alloc] init];
-;
-	[contact setContactId:(long)[[dict objectForKey:kARKContactIDKey] longLongValue]];
-	[contact setCompanyId:(long)[[dict objectForKey:kARKCompanyIDKey]longLongValue]];
-	[contact setTitle:[dict objectForKey:kARKTitleKey]];
-	[contact setCompanyName:[dict objectForKey:kARKCompanyNameKey]];
+
+	[contact setContactId:(long)[dict[kARKContactIDKey] longLongValue]];
+	[contact setCompanyId:(long)[dict[kARKCompanyIDKey]longLongValue]];
+	[contact setTitle:dict[kARKTitleKey]];
+	[contact setCompanyName:dict[kARKCompanyNameKey]];
 	
-	NSString *dateString = [dict objectForKey:kARKUpdatedDateKey];
+	NSString *dateString = dict[kARKUpdatedDateKey];
 	NSDate *updatedDate = [ARKAPIDateFormatter dateFromString:dateString];
 	[contact setUpdatedDate:updatedDate];
 	
-	[contact setFirstName:[dict objectForKey:kARKFirstNameKey]];
-	[contact setLastName:[dict objectForKey:kARKLastNameKey]];
-	[contact setAddress:[dict objectForKey:kARKAddressKey]];
-	[contact setCity:[dict objectForKey:kARKCityKey]];
-	[contact setState:[dict objectForKey:kARKStateKey]];
-	[contact setCountry:[dict objectForKey:kARKCountryKey]];
-	[contact setZip:[dict objectForKey:kARKZipKey]];
-	[contact setContactUrl:[NSURL URLWithString:[dict objectForKey:kARKContactURLKey]]];
-	[contact setAreaCode:[dict objectForKey:kARKAreaCodeKey]];
-	[contact setPhone:[dict objectForKey:kARKPhoneKey]];
-	[contact setEmail:[dict objectForKey:kARKEmailKey]];
-	[contact setOwned:[[dict objectForKey:kARKOwnedKey] boolValue]];
-	[contact setOwnedType:[dict objectForKey:kARKOwnedTypeKey]];
+	[contact setFirstName:dict[kARKFirstNameKey]];
+	[contact setLastName:dict[kARKLastNameKey]];
+	[contact setAddress:dict[kARKAddressKey]];
+	[contact setCity:dict[kARKCityKey]];
+	[contact setState:dict[kARKStateKey]];
+	[contact setCountry:dict[kARKCountryKey]];
+	[contact setZip:dict[kARKZipKey]];
+    
+    if (dict[kARKContactURLKey] && [(NSString *)dict[kARKContactURLKey] length] > 0) {
+        [contact setContactUrl:[NSURL URLWithString:dict[kARKContactURLKey]]];
+    }
+
+    [contact setAreaCode:dict[kARKAreaCodeKey]];
+	[contact setPhone:dict[kARKPhoneKey]];
+	[contact setEmail:dict[kARKEmailKey]];
+	[contact setOwned:[dict[kARKOwnedKey] boolValue]];
+	[contact setOwnedType:dict[kARKOwnedTypeKey]];
 	
 	return contact;
 }
@@ -297,35 +292,42 @@ static NSURL *ARKAPIJigsawBaseURL;
 - (ARKCompany *)companyWithDictionary:(NSDictionary *)dict
 {
     ARKCompany *company = [[ARKCompany alloc] init];
-	[company setCompanyID:[[dict objectForKey:kARKCompanyIDKey] longValue]];
-	[company setName:[dict objectForKey:kARKNameKey]];
-	[company setPhone:[dict objectForKey:kARKPhoneKey]];
-	[company setWebsite:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",[dict objectForKey:kARKWebsiteKey]]]];
-	[company setStockSymbol:[dict objectForKey:kARKStockSymbolKey]];
-	[company setStockExchange:[dict objectForKey:kARKStockExchangeKey]];
-	[company setOwnership:[dict objectForKey:kARKOwnershipKey]];
-	[company setFortuneRank:[NSNumber numberWithInt:[[dict objectForKey:kARKFortuneRankKey] intValue]]];
-	[company setEmployeeCount:[NSNumber numberWithInt:[[dict objectForKey:kARKEmployeeCountKey] intValue]]];
-	[company setEmployeeRange:[dict objectForKey:kARKEmployeeRangeKey]];
-	[company setRevenue:[dict objectForKey:kARKRevenueRangeKey]];
-	[company setIndustry1:[dict objectForKey:kARKIndustry1Key]];
-	[company setIndustry2:[dict objectForKey:kARKIndustry2Key]];
-	[company setIndustry3:[dict objectForKey:kARKIndustry3Key]];
-	[company setSubIndustry1:[dict objectForKey:kARKSubIndustry1Key]];
-	[company setSubIndustry2:[dict objectForKey:kARKSubIndustry2Key]];
-	[company setSubIndustry3:[dict objectForKey:kARKSubIndustry3Key]];
-	[company setSicCode:[dict objectForKey:kARKSICCodeKey]];
-	[company setAddress:[dict objectForKey:kARKAddressKey]];
-	[company setCity:[dict objectForKey:kARKCityKey]];
-	[company setState:[dict objectForKey:kARKStateKey]];
-	[company setZip:[dict objectForKey:kARKZipKey]];
-	[company setCountry:[dict objectForKey:kARKCountryKey]];
-	[company setActiveContacts:[NSNumber numberWithInt:[[dict objectForKey:kARKActiveContactsKey] intValue]]];
-#warning fix this http:// concat snaffu. 
-	[company setLinkInJigsaw:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",
-                                                   [dict objectForKey:kARKLinkInJigsawKey]]]];
+	[company setCompanyID:[dict[kARKCompanyIDKey] longValue]];
+	[company setName:dict[kARKNameKey]];
+	[company setPhone:dict[kARKPhoneKey]];
+    
+    if (dict[kARKWebsiteKey] && [(NSString *)dict[kARKWebsiteKey] length] > 0) {
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@",dict[kARKWebsiteKey]]];
+        [company setWebsite:url];
+    }
+    
+    [company setStockSymbol:dict[kARKStockSymbolKey]];
+	[company setStockExchange:dict[kARKStockExchangeKey]];
+	[company setOwnership:dict[kARKOwnershipKey]];
+	[company setFortuneRank:(long)[dict[kARKFortuneRankKey] longLongValue]];
+	[company setEmployeeCount:(long)[dict[kARKEmployeeCountKey] longLongValue]];
+	[company setEmployeeRange:dict[kARKEmployeeRangeKey]];
+	[company setRevenue:dict[kARKRevenueRangeKey]];
+	[company setIndustry1:dict[kARKIndustry1Key]];
+	[company setIndustry2:dict[kARKIndustry2Key]];
+	[company setIndustry3:dict[kARKIndustry3Key]];
+	[company setSubIndustry1:dict[kARKSubIndustry1Key]];
+	[company setSubIndustry2:dict[kARKSubIndustry2Key]];
+	[company setSubIndustry3:dict[kARKSubIndustry3Key]];
+	[company setSicCode:dict[kARKSICCodeKey]];
+	[company setAddress:dict[kARKAddressKey]];
+	[company setCity:dict[kARKCityKey]];
+	[company setState:dict[kARKStateKey]];
+	[company setZip:dict[kARKZipKey]];
+	[company setCountry:dict[kARKCountryKey]];
+	[company setActiveContacts:(long)[dict[kARKActiveContactsKey] longLongValue]];
+    
+    if (dict[kARKLinkInJigsawKey] && [(NSString *)dict[kARKLinkInJigsawKey] length] > 0) {
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@",dict[kARKWebsiteKey]]];
+        [company setLinkInJigsaw:url];
+    }
 	
-	NSString *dateString = [dict objectForKey:kARKUpdatedDateKey];
+	NSString *dateString = dict[kARKUpdatedDateKey];
 	NSDate *createdDate = [ARKAPIDateFormatter dateFromString:dateString];
 	[company setCreatedOn:createdDate];
 	
@@ -341,16 +343,16 @@ static NSURL *ARKAPIJigsawBaseURL;
         ARKCompanyStatistic *stat = [[ARKCompanyStatistic alloc] initWithGroupType:type];
         
         // name
-        [stat setName:[dict objectForKey:kARKNameKey]];
+        [stat setName:dict[kARKNameKey]];
 
         // contact count
-        NSNumber *count = [dict objectForKey:kARKCountAPIKey];
+        NSNumber *count = dict[kARKCountAPIKey];
         if (count) {
             [stat setCount:[count longValue]];
         }
 
         // url
-        NSString *path = [dict objectForKey:kARKURLAPIKey];
+        NSString *path = dict[kARKURLAPIKey];
         if (path) {
             [stat setUrl:[NSURL URLWithString:path relativeToURL:ARKAPIJigsawBaseURL]];
         }
