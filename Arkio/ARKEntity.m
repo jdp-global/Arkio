@@ -15,7 +15,7 @@ NSString * const kARKStateKey       = @"state";
 NSString * const kARKCountryKey     = @"country";
 NSString * const kARKZipKey         = @"zip";
 NSString * const kARKPhoneKey       = @"phone";
-NSString * const kARKUpdatedDateKey = @"udpatedDate";
+NSString * const kARKUpdatedDateKey = @"updatedDate";
 
 // Contact keys
 NSString * const kARKContactIDKey   = @"contactId";
@@ -52,6 +52,7 @@ NSString * const kARKLinkInJigsawKey    = @"linkInJigsaw";
 
 // User keys
 NSString * const kARKPointsKey       = @"points";
+NSString * const kARKPointBalanceKey = @"pointBalance";
 
 @implementation ARKEntity
 
