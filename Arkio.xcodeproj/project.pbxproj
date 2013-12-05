@@ -41,6 +41,7 @@
 		18D887E4184367AC0008AAC2 /* ARKURLFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D887E3184367AC0008AAC2 /* ARKURLFactory.m */; };
 		18D887E71843C48B0008AAC2 /* ARKSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D887E61843C48B0008AAC2 /* ARKSerialization.m */; };
 		18D887EB1843D1BC0008AAC2 /* ARKError.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D887EA1843D1BC0008AAC2 /* ARKError.m */; };
+		18D9AF0B1850893A001666A1 /* NSObject+ARKFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9AF0A1850893A001666A1 /* NSObject+ARKFoundation.m */; };
 		18DCB20E184A11F000224D0E /* ARKEntitySearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DCB20D184A11F000224D0E /* ARKEntitySearchResult.m */; };
 		18DCB211184A13BF00224D0E /* ARKContactSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DCB210184A13BF00224D0E /* ARKContactSearchResult.m */; };
 		18DCB213184A1AA400224D0E /* ARKContactSearchRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DCB212184A1AA400224D0E /* ARKContactSearchRequestTest.m */; };
@@ -116,6 +117,8 @@
 		18D887E61843C48B0008AAC2 /* ARKSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ARKSerialization.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		18D887E91843D1BC0008AAC2 /* ARKError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ARKError.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		18D887EA1843D1BC0008AAC2 /* ARKError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKError.m; sourceTree = "<group>"; };
+		18D9AF091850893A001666A1 /* NSObject+ARKFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ARKFoundation.h"; sourceTree = "<group>"; };
+		18D9AF0A1850893A001666A1 /* NSObject+ARKFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ARKFoundation.m"; sourceTree = "<group>"; };
 		18DCB20C184A11F000224D0E /* ARKEntitySearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKEntitySearchResult.h; sourceTree = "<group>"; };
 		18DCB20D184A11F000224D0E /* ARKEntitySearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKEntitySearchResult.m; sourceTree = "<group>"; };
 		18DCB20F184A13BF00224D0E /* ARKContactSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARKContactSearchResult.h; sourceTree = "<group>"; };
@@ -181,6 +184,8 @@
 				181339B71846283E0008F3E3 /* NSURL+ARKNetworking.m */,
 				181339BA184629B10008F3E3 /* NSString+ARKNetworking.h */,
 				181339BB184629B10008F3E3 /* NSString+ARKNetworking.m */,
+				18D9AF091850893A001666A1 /* NSObject+ARKFoundation.h */,
+				18D9AF0A1850893A001666A1 /* NSObject+ARKFoundation.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 				186009AE184760C800EB13F0 /* ARKCompanyStatistic.m in Sources */,
 				18E5E325183F7076000C8D78 /* ARKUserCredentials.m in Sources */,
 				18D887E4184367AC0008AAC2 /* ARKURLFactory.m in Sources */,
+				18D9AF0B1850893A001666A1 /* NSObject+ARKFoundation.m in Sources */,
 				18D887EB1843D1BC0008AAC2 /* ARKError.m in Sources */,
 				18F3CA001844CBAE00695C37 /* ARKEntity.m in Sources */,
 				18E5E32B183F76D7000C8D78 /* ARKServer.m in Sources */,
