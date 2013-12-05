@@ -28,7 +28,6 @@
 #import "ARKContact.h"
 
 @class ARKUser;
-@class ARKPartner;
 @class ARKServer;
 @class ARKError;
 @class ARKCompany;
@@ -46,11 +45,6 @@
  *  The Data.com user account  incl. authentication credentials to use for API requests to the server.
  */
 @property (nonatomic, strong, readonly) ARKUser *user;
-
-/**
- *  The Partner on behalf of whom we are interfacing with the API server.
- */
-@property (nonatomic, strong, readonly) ARKPartner *partner;
 
 /**
  *  The Data.com server instance to which API requests will be sent.
@@ -122,33 +116,6 @@
 - (instancetype)initWithUser:(ARKUser *)user
                       server:(ARKServer *)server;
 
-#pragma mark - Creating and Initializing a Partner Session
-
-///--------------------------------------------------
-/// @name Creating and Initializing a Partner Session
-///--------------------------------------------------
-
-/**
- *  Creates an `ARKSession`, initialized with the give `ARKParter` and sets the session mode to `ARKSessionPartnerMode`.
- *
- *  @param partner An `ARKPartner` instance.
- *
- *  @return An `ARKSession` instance initialized with the given partner details.
- */
-- (instancetype)initWithPartner:(ARKPartner *)partner;
-
-/**
- *  Returns an `ARKSession`, initialized with the give `ARKPartner` and `ARKServer`.
- *
- *  @param partner An `ARKPartner` instance.
- *  @param server An `ARKServer` to connect this `ARKSession` instance to.
- *
- *  @return An `ARKSession` instance initialized with the given partner details and server.
- */
-- (instancetype)initWithPartner:(ARKPartner *)partner
-                         server:(ARKServer *)server;
-
-
 #pragma mark - User / Authentication Requests
 
 ///---------------------------------------
@@ -173,21 +140,6 @@
  */
 - (void)userInformation:(void (^)(long points, ARKError *error))success
                 failure:(void (^)(NSError *error))failure;
-
-#pragma mark - Partner Information Requests
-
-///-----------------------------------
-/// @name Partner Information Requests
-///-----------------------------------
-
-/**
- *  Requests the partner information (point balance) for the current session partner.
- *
- *  @param success A block object to execute when the task finishes succcesfully. This block has no return value and takes two argumenta: a long variable containing the number of points on a partner's account balance, and an ARKError object which is not nil if the API returned an application error.
- *  @param failure A block object to execute at the completion of an unsuccessful request. This block has no return value and takes one argument: the error that occured during the request.
- */
-- (void)partnerInformation:(void (^)(long points, ARKError *error))success
-                   failure:(void (^)(NSError *error))failure;
 
 #pragma mark - Contact Requests
 

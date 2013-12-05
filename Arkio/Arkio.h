@@ -32,7 +32,6 @@
 // Model
 #import "ARKUser.h"
 #import "ARKUserCredentials.h"
-#import "ARKPartner.h"
 
 #import "ARKContact.h"
 #import "ARKContactSearchResult.h"

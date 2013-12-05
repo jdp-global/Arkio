@@ -45,7 +45,6 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
 
 @interface ARKSession ()
 @property (nonatomic, strong, readwrite) ARKUser *user;
-@property (nonatomic, strong, readwrite) ARKPartner *partner;
 @property (nonatomic, strong, readwrite) ARKServer *server;
 @property (nonatomic, strong) ARKURLFactory *URLFactory;
 @property (nonatomic, strong) ARKSerialization *serializer;
@@ -150,32 +149,6 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     return self;
 }
 
-#pragma mark - Creating and Initializing a Partner Session
-
-- (instancetype)initWithPartner:(ARKPartner *)partner
-{
-    self = [self init];
-    if (self) {
-        self.partner = partner;
-        self.server = [[ARKServer alloc] init];
-        [self initialize];
-    }
-    return self;
-}
-
-- (instancetype)initWithPartner:(ARKPartner *)partner
-                         server:(ARKServer *)server
-
-{
-    self = [self init];
-    if (self) {
-        self.partner = partner;
-        self.server = server;
-        [self initialize];        
-    }
-    return self;
-}
-
 #pragma mark - User / Authentication
 
 - (void)authenticate:(void (^)(BOOL authenticated, ARKError *error))success
@@ -235,38 +208,6 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
            }
      ];
 }
-
-#pragma mark - Partner Information Requests
-
-- (void)partnerInformation:(void (^)(long points, ARKError *error))success
-                   failure:(void (^)(NSError *error))failure
-{
-    if ([self respondedToNetworkFailure:failure]) return;
-    
-    NSURL *url = [self.URLFactory partnerInfoURL];
-    
-    [self.http GET:[url path]
-        parameters:[url queryDictionary]
-           success:^(NSURLSessionDataTask *task, id responseObject) {
-            
-               // check for Data.com API errors
-               ARKError *error = [self errorWithResponse:responseObject];
-               if (error) {
-                   success(-1, error);
-                   return;
-               }
-               
-               NSInteger points = [self.serializer pointBalanceWithDictionary:(NSDictionary *)responseObject
-                                                                          key:kARKPointBalanceKey
-                                                                        error:&error];
-               success(points, error);
-           }
-           failure:^(NSURLSessionDataTask *task, NSError *error) {
-               failure(error);
-           }
-     ];
-}
-
 
 #pragma mark - Contact Requests
 

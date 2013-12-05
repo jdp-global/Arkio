@@ -26,7 +26,6 @@
 #import "ARKURLFactory.h"
 
 #import "ARKContact.h"
-#import "ARKPartner.h"
 
 static ARKURLFactory *sharedInstance;
 static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
@@ -77,18 +76,6 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
 	return [NSURL URLWithString:urlString];
 }
 
-#pragma mark - Partner Request URLs
-
-- (NSURL *)partnerInfoURL
-{
-    NSMutableString *urlString = [NSMutableString stringWithCapacity:10];
-    
-	[urlString setString:[self.session.server.endpoint absoluteString]];
-	[urlString appendString:@"partner.json?token="];
-	[urlString appendString:self.session.partner.APIDeveloperToken];
-    
-	return [NSURL URLWithString:urlString];
-}
 
 #pragma mark - Contact Request URLs
 

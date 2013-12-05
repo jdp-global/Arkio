@@ -74,18 +74,6 @@
  */
 - (NSURL *)userInfoURL;
 
-#pragma mark - Partner Request URLs
-
-///---------------------------
-/// @name Partner Request URLs
-///---------------------------
-
-/**
- *  Creates a URL to request partner info from Data.com.
- *
- *  @return An `NSURL` that can be used to request partner info from Data.com.
- */
-- (NSURL *)partnerInfoURL;
 
 #pragma mark - Contact Request URLs
 
