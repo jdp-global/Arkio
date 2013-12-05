@@ -305,8 +305,6 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
     
 	[urlString appendString:[NSString stringWithFormat:@"&offset=%i&pageSize=%i", offset, size]];
 	
-	// Note: should be set to true to fix a Jigsaw JSON bug 19/07/2009
-#warning write this up in the documentation
     if (detailed) {
         [urlString appendString:@"&showDetail=true"];
     }
