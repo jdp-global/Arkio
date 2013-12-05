@@ -173,4 +173,14 @@ typedef NS_ENUM(NSInteger, ARKFactType) {
  */
 @property (nonatomic, strong) NSString *ownedType;
 
+/**
+ *  The URL of the SEO web page on Data.com for this contact.
+ */
+@property (nonatomic, strong) NSURL *seoContactURL;
+
+/**
+ *  The contact sales figure for this contact.
+ */
+@property (nonatomic) long contactSales;
+
 @end
