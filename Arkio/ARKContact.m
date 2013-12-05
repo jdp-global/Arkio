@@ -54,6 +54,8 @@
 		self.email = @"";
 		self.owned = NO;
 		self.ownedType = @"";
+        self.seoContactURL = nil;
+        self.contactSales = 0;
 		
 	}
 	return self;
