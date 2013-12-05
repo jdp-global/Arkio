@@ -158,6 +158,13 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     
     NSURL *url = [self.URLFactory userAuthURL];
 
+    if (!url) {
+        NSError *error = [ARKError errorWithCode:ARKMalformedURLError
+                                         message:@"URLFactory failed to create URL."];
+        failure(error);
+        return;
+    }
+    
     [self.http GET:[url path]
         parameters:[url queryDictionary]
            success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -185,6 +192,13 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     if ([self respondedToNetworkFailure:failure]) return;
 
     NSURL *url = [self.URLFactory userInfoURL];
+    
+    if (!url) {
+        NSError *error = [ARKError errorWithCode:ARKMalformedURLError
+                                         message:@"URLFactory failed to create URL."];
+        failure(error);
+        return;
+    }
     
     [self.http GET:[url path]
         parameters:[url queryDictionary]
@@ -222,6 +236,14 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     NSURL *url = [self.URLFactory contactSearchURLWithString:string
                                                       offset:offset
                                                         size:size];
+    
+    if (!url) {
+        NSError *error = [ARKError errorWithCode:ARKMalformedURLError
+                                         message:@"URLFactory failed to create URL."];
+        failure(error);
+        return;
+    }
+    
     [self.http GET:[url path]
         parameters:[url queryDictionary]
            success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -259,6 +281,13 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
                                                            offset:offset
                                                              size:size];
     
+    if (!url) {
+        NSError *error = [ARKError errorWithCode:ARKMalformedURLError
+                                         message:@"URLFactory failed to create URL."];
+        failure(error);
+        return;
+    }
+    
     [self.http GET:[url path]
         parameters:[url queryDictionary]
            success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -290,6 +319,13 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
     if ([self respondedToNetworkFailure:failure]) return;
     
     NSURL *url = [self.URLFactory companyStatisticsURLWithID:companyID];
+    
+    if (!url) {
+        NSError *error = [ARKError errorWithCode:ARKMalformedURLError
+                                         message:@"URLFactory failed to create URL."];
+        failure(error);
+        return;
+    }
     
     [self.http GET:[url path]
         parameters:[url queryDictionary]
@@ -325,6 +361,13 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
                                                       offset:offset
                                                         size:size
                                                     detailed:detailed];
+    if (!url) {
+        NSError *error = [ARKError errorWithCode:ARKMalformedURLError
+                                         message:@"URLFactory failed to create URL."];
+        failure(error);
+        return;
+    }
+    
     [self.http GET:[url path]
         parameters:[url queryDictionary]
            success:^(NSURLSessionDataTask *task, id responseObject) {
