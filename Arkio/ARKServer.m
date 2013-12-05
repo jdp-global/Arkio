@@ -25,8 +25,6 @@
 
 #import "ARKServer.h"
 
-#warning add the correct Data.com API endpoint URL
-
 NSString * const kArkioApiDefaultEndpoint = @"https://www.jigsaw.com/rest/";
 
 NSString * const kArkioApiUrlKey = @"arkio.api.url";
