@@ -247,6 +247,8 @@ extern NSString * const kARKAreaCodeKey;
 extern NSString * const kARKEmailKey;
 extern NSString * const kARKOwnedKey;
 extern NSString * const kARKOwnedTypeKey;
+extern NSString * const kARKContactSalesKey;
+extern NSString * const kARKseoContactURLKey;
 
 // company keys
 extern NSString * const kARKCompanyIDKey;
