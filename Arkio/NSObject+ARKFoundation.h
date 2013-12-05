@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  Utilities for NSObjects
+ */
 @interface NSObject (ARKFoundation)
 
 /**

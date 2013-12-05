@@ -8,31 +8,52 @@
 
 #import <Foundation/Foundation.h>
 
-/* NSError codes in the ARKErrorDomain.
+/**
+ *  NSError codes in the ARKErrorDomain.
+ *
+ *  @param NSInteger    <#NSInteger description#>
+ *  @param ARKErrorCode <#ARKErrorCode description#>
+ *
+ *  @return <#return value description#>
  */
-enum {
+typedef NS_ENUM(NSInteger, ARKErrorCode) {
     
+    /// Unknown error.
     ARKUnknownError                     = -1,
     
-    ARKJSONSerializationError           = 1,   // error has occurred in underlying JSON Serialization call
-    ARKInvalidArgumentError             = 2,   // method contract wasn't upheld
-    ARKValueNotFoundError               = 3,   // expected value is missing
-    ARKValidationError                  = 4,   // invalid data encountered
-    ARKNetworkNotReachableError         = 5,   // no network connection. can't connect to network via wifi or GPRS/EDGE etc.
-    ARKMalformedURLError                = 6,   // for ARKURLFactory errors
+    /// error has occurred in underlying JSON Serialization call
+    ARKJSONSerializationError           = 1,
+    /// method contract wasn't upheld
+    ARKInvalidArgumentError             = 2,
+    /// expected value is missing
+    ARKValueNotFoundError               = 3,
+    /// invalid data encountered
+    ARKValidationError                  = 4,
+    /// no network connection. can't connect to network via wifi or GPRS/EDGE etc.
+    ARKNetworkNotReachableError         = 5,
+    /// ARKURLFactory errors
+    ARKMalformedURLError                = 6,
+    
     
     
     // HTTP Error Codes
     // 400s
-    ARKHTTPBadRequestError              = 400,  // bad request E.G missing or incorrect parameter
-    ARKHTTPForbiddenError               = 403,  // typical failure, E.G. authentication failure, or incorrect developer token
-    ARKHTTPNotFoundError                = 404,  // attempt to access non-existent data, E.G. contact not found for ID
-    ARKHTTPMethodNotAllowedError        = 405,  // E.G. on contact not owned.
+    /// bad request E.G missing or incorrect parameter
+    ARKHTTPBadRequestError              = 400,
+    /// typical failure, E.G. authentication failure, or incorrect developer token
+    ARKHTTPForbiddenError               = 403,
+    /// attempt to access non-existent data, E.G. contact not found for ID
+    ARKHTTPNotFoundError                = 404,
+    /// E.G. on contact not owned.
+    ARKHTTPMethodNotAllowedError        = 405,
     
     // 500s
-    ARKHTTPInternalServerError          = 500,  // typically caused by a system or search error
-    ARKHTTPNotSupportedError            = 501,  // attempted to acceess an unimplemented feature
-    ARKHTTPServiceAvailableError        = 503   // the service is unavailable
+    /// typically caused by a system or search error
+    ARKHTTPInternalServerError          = 500,
+    /// attempted to acceess an unimplemented feature
+    ARKHTTPNotSupportedError            = 501,
+    /// the service is unavailable
+    ARKHTTPServiceAvailableError        = 503
 };
 
 /**
@@ -42,7 +63,16 @@ enum {
 
 #pragma mark - Designated Object Initializers
 
-
+/**
+ *  Creates an error in the ARKErrorDomain witht the given parameters.
+ *
+ *  @param code           The Data.com API error code string.
+ *  @param httpStatusCode The status code returned with the HTTP response.
+ *  @param message        The Data.com API error message.
+ *  @param stackTrace     The stack trace data returned by the Data.com API.
+ *
+ *  @return An `ARKError` in the `ARKErrorDomain` with the specified parameters. 
+ */
 + (instancetype)errorWithCode:(NSString *)code
                httpStatusCode:(NSInteger)httpStatusCode
                       message:(NSString *)message
