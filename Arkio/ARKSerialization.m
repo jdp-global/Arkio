@@ -285,6 +285,13 @@ static NSURL *ARKAPIJigsawBaseURL;
 	[contact setEmail:dict[kARKEmailKey]];
 	[contact setOwned:[dict[kARKOwnedKey] boolValue]];
 	[contact setOwnedType:dict[kARKOwnedTypeKey]];
+    
+    if (dict[kARKseoContactURLKey] && [(NSString *)dict[kARKseoContactURLKey] length] > 0) {
+        [contact setSeoContactURL:[NSURL URLWithString:dict[kARKseoContactURLKey]]];
+    }
+
+    
+    [contact setContactSales:(long)[dict[kARKContactSalesKey]longLongValue]];
 	
 	return contact;
 }
