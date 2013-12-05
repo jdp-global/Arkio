@@ -28,6 +28,8 @@ NSString * const kARKAreaCodeKey    = @"areaCode";
 NSString * const kARKEmailKey       = @"email";
 NSString * const kARKOwnedKey       = @"owned";
 NSString * const kARKOwnedTypeKey   = @"ownedType";
+NSString * const kARKContactSalesKey   = @"contactSales";
+NSString * const kARKseoContactURLKey  = @"seoContactURL";
 
 // Company keys
 NSString * const kARKCompanyIDKey       = @"companyId";
