@@ -17,17 +17,11 @@ PODS:
   - AFNetworking/Serialization (2.0.2)
   - AFNetworking/UIKit (2.0.2):
     - AFNetworking/NSURLConnection
-  - AHDispatch (0.9)
-  - ISO8601DateFormatter (0.6)
 
 DEPENDENCIES:
   - AFNetworking (= 2.0.2)
-  - AHDispatch (= 0.9)
-  - ISO8601DateFormatter (= 0.6)
 
 SPEC CHECKSUMS:
   AFNetworking: e663917201cdb73f4ad2ba239ad35be8dc9a1e3c
-  AHDispatch: a129480648626054e3a1add080e803246e561bf1
-  ISO8601DateFormatter: 72ad8f5b4f51bd8fb317d7284c32fee5f54a6584
 
 COCOAPODS: 0.28.0
