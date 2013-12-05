@@ -26,6 +26,7 @@
 #import "ARKURLFactory.h"
 
 #import "ARKContact.h"
+#import "NSObject+ARKFoundation.h"
 
 static ARKURLFactory *sharedInstance;
 static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
@@ -351,4 +352,12 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
     
     return dict;
 }
+
+#pragma mark - NSObject Overrides
+
+-(NSString *)description
+{
+    return [self autoDescription];
+}
+
 @end

@@ -8,6 +8,8 @@
 
 #import "ARKCompanySearchResult.h"
 
+#import "NSObject+ARKFoundation.h"
+
 @implementation ARKCompanySearchResult
 
 - (NSSet *)companies
@@ -18,6 +20,12 @@
 - (void)setCompanies:(NSSet *)companies
 {
     self.entities = companies;
+}
+
+#pragma mark - NSObject Overrides
+- (NSString *)description
+{
+    return [self autoDescription];
 }
 
 @end

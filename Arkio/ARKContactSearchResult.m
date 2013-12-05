@@ -8,8 +8,9 @@
 
 #import "ARKContactSearchResult.h"
 
-@implementation ARKContactSearchResult
+#import "NSObject+ARKFoundation.h"
 
+@implementation ARKContactSearchResult
 
 - (NSSet *)contacts
 {
@@ -20,4 +21,12 @@
 {
     self.entities = contacts;
 }
+
+#pragma mark - NSObject Overrides
+
+- (NSString *)description
+{
+    return [self autoDescription];
+}
+
 @end

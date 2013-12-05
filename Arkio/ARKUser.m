@@ -25,6 +25,8 @@
 
 #import "ARKUser.h"
 
+#import "NSObject+ARKFoundation.h"
+
 @implementation ARKUser
 
 #pragma mark - Designated Object Initializers
@@ -46,5 +48,9 @@
     return (self.points >= 0);
 }
 
-#warning add a description
+#pragma mark - NSObject Overrides
+- (NSString *)description
+{
+    return [self autoDescription];
+}
 @end

@@ -25,6 +25,8 @@
 
 #import "ARKUserCredentials.h"
 
+#import "NSObject+ARKFoundation.h"
+
 NSString * const kARKAccountUsernameKey = @"arkio.account.username";
 NSString * const kARKAccountPasswordKey = @"arkio.account.password";
 
@@ -70,6 +72,10 @@ NSString * const kARKAccountPasswordKey = @"arkio.account.password";
     return defaultCredentials;
 }
 
-#warning add a description
+#pragma mark - NSObject Overrides
+- (NSString *)description
+{
+    return [self autoDescription];
+}
 
 @end

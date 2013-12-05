@@ -25,6 +25,8 @@
 
 #import "ARKCompany.h"
 
+#import "NSObject+ARKFoundation.h"
+
 @implementation ARKCompany
 
 - (instancetype)init {
@@ -63,24 +65,11 @@
 	return self;
 }
 
+#pragma mark - NSObject Overrides
 
 - (NSString *)description {
-	
-#warning expand description
-	NSMutableString *string = [NSMutableString stringWithCapacity:1];
-	[string appendFormat:@"self.companyId = \'%ld\'\n", self.companyID];
-	[string appendFormat:@"self.name = \'%@\'\n", self.name];
-	[string appendFormat:@"self.phone = \'%@\'\n", self.phone];
-	[string appendFormat:@"self.website = \'%@\'\n", self.website];
-	[string appendFormat:@"self.stockSymbol = \'%@\'\n", self.stockSymbol];
-	[string appendFormat:@"self.stockExchange = \'%@\'\n", self.stockExchange];
-	[string appendFormat:@"self.ownership = \'%@\'\n", self.ownership];
-	[string appendFormat:@"self.fortuneRank = \'%ld\'\n", self.fortuneRank];
-	[string appendFormat:@"self.employeeCount = \'%ld\'\n", self.employeeCount];
-	[string appendFormat:@"self.employeeRange = \'%@\'\n", self.employeeRange];
-	[string appendFormat:@"self.revenue = \'%@\'\n", self.revenue];
-		
-	return (NSString *)string;
+
+    return [self autoDescription];
 }
 
 @end

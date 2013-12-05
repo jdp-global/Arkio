@@ -8,6 +8,8 @@
 
 #import "ARKCompanyStatistics.h"
 
+#import "NSObject+ARKFoundation.h"
+
 @implementation ARKCompanyStatistics
 
 #pragma mark - Designated Object Initializers
@@ -21,5 +23,10 @@
     return self;
 }
 
+#pragma mark - NSObject Overrides
+- (NSString *)description
+{
+    return [self autoDescription];
+}
 
 @end

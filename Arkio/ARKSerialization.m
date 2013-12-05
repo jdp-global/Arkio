@@ -14,6 +14,8 @@
 #import "ARKError.h"
 #import "ARKCompanyStatistics.h"
 #import "ARKCompanyStatistic.h"
+#import "NSObject+ARKFoundation.h"
+
 
 static NSString * const kJigsawSecureHost = @"https://www.jigsaw.com";
 
@@ -369,4 +371,12 @@ static NSURL *ARKAPIJigsawBaseURL;
     
     return groups;
 }
+
+#pragma mark - NSObject Overrides
+
+- (NSString *)description
+{
+    return [self autoDescription];
+}
+
 @end

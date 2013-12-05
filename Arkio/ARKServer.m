@@ -25,6 +25,8 @@
 
 #import "ARKServer.h"
 
+#import "NSObject+ARKFoundation.h"
+
 NSString * const kArkioApiDefaultEndpoint = @"https://www.jigsaw.com/rest/";
 
 NSString * const kArkioApiUrlKey = @"arkio.api.url";
@@ -125,6 +127,10 @@ NSString * const kArkioApiPathKey = @"arkio.api.path";
     
     return self;
 }
-#warning add a description
+
+- (NSString *)description
+{
+    return [self autoDescription];
+}
 
 @end

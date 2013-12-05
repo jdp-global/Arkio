@@ -27,7 +27,7 @@
 
 
 #import "ARKSession.h"
-
+#import "NSObject+ARKFoundation.h"
 #import "ARKServer.h"
 #import "ARKUser.h"
 #import "ARKUserCredentials.h"
@@ -392,8 +392,7 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
 
 - (NSString *)description
 {
-#warning add a description method
-    return nil;
+    return [self autoDescription];
 }
 
 #pragma mark - Class Extentions

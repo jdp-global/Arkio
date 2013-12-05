@@ -8,6 +8,15 @@
 
 #import "ARKEntitySearchResult.h"
 
+#import "NSObject+ARKFoundation.h"
+
 @implementation ARKEntitySearchResult
+
+#pragma mark - NSObject Overrides
+
+- (NSString *)description
+{
+    return [self autoDescription];
+}
 
 @end

@@ -25,8 +25,9 @@
 
 #import "ARKContact.h"
 
-@implementation ARKContact
+#import "NSObject+ARKFoundation.h"
 
+@implementation ARKContact
 
 #pragma mark - Designated Object Initializers
 
@@ -61,5 +62,11 @@
 	return self;
 }
 
-#warning add a description method
+#pragma mark - NSObject Overrides
+
+- (NSString *)description
+{
+    return [self autoDescription];
+}
+
 @end
