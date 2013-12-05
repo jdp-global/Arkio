@@ -44,8 +44,7 @@
 #pragma mark - Convenience Methods
 - (BOOL)hasPoints
 {
-#warning find out why, historically, we're equating zero points, with hasPoints = TRUE.
-    return (self.points >= 0);
+    return (self.points > 0);
 }
 
 #pragma mark - NSObject Overrides
