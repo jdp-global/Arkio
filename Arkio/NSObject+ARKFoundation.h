@@ -16,7 +16,7 @@
 /**
  *  Generates a property name-value list.
  *
- *  @return a string containing a description of the objects properties and values.
+ *  @return A string containing a description of the objects properties and values.
  */
 - (NSString *) autoDescription;
 
@@ -25,7 +25,7 @@
  *
  *  @param classType The type of class we want a description of.
  *
- *  @return a string containing a description of the objects properties and values.
+ *  @return A string containing a description of the objects properties and values.
  */
 - (NSString *) autoDescriptionForClassType:(Class)classType;
 
