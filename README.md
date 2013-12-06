@@ -52,8 +52,15 @@ pod install
 ###Install via Xcode
 
 ##<a name="configuration">Configuration</a>
-To interface successfully with the Data.com API you will need a Developer token/key. Add your developer token to you app's Info.plist file as the value for the key `arkio.api.developer.token` as below:
-  
+To interface successfully with the Data.com API you will need a Developer Token/Key. The easiet way to configure Arkio is to add your developer token to you app's Info.plist file as the value for the key **arkio.api.developer.token** as below:
+
+![Token Config](https://raw.github.com/rayascott/Arkio/master/Arkio/arkio-api-developer-token-example.png?token=86224__eyJzY29wZSI6IlJhd0Jsb2I6cmF5YXNjb3R0L0Fya2lvL21hc3Rlci9Bcmtpby9hcmtpby1hcGktZGV2ZWxvcGVyLXRva2VuLWV4YW1wbGUucG5nIiwiZXhwaXJlcyI6MTM4NjkzMjI0NH0%3D--960a8be3343c2413c30d9778003b89f145a15147)  
+
+This allows `ARKSession` instances to pick up the value automatically. Alternately, you can set the token value directly on the session as below:
+
+```
+[arkSession setAPIDeveloperToken:@"developertokentext"];
+```
 
 ##<a name="quickstart">Quick Start</a>
 After installation, include the library header file somewhere in your code:
