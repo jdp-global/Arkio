@@ -4,7 +4,7 @@ Arkio is an Objective-C client library for [Data.com](http://data.com).
 
 <table width="100%" border=0>
 	<tr>
-		<td width="50%">1. <a href="#features">Features</a></td><td>5. <a href="#quickstart">Quick Start</a></td>
+		<td width="50%">1. <a href="#features">Features</a></td><td>5. <a href="#quickstart">Coding Quick Start</a></td>
 	</tr>
 	<tr>
 		<td>2. <a href="#overview">Overview</a></td><td>6. <a href="#referencedocs">Reference Documentation</a></td>
@@ -35,7 +35,7 @@ Full implementation of the Data.com Connect API means that you are able to do th
 
 
 ##<a name="installation">Installation</a>
-In addition to manual Xcode project installation, the Arkio source code is also available via CocoaPods. Bear in mind that you will not get the unit test suite or the ability to install the docset locally, if installing via the CcocoaPods route.  
+In addition to manual Xcode project installation, the Arkio source code is also available via CocoaPods. Bear in mind that you will not get the unit test suite or the ability to install the docset locally, if installing via the CocoaPods route.  
 
 ###Install via CocoaPods 
 Simply add the following line to your project's [Podfile](http://docs.cocoapods.org/podfile.html):
@@ -62,13 +62,38 @@ This allows `ARKSession` instances to pick up the value automatically. Alternate
 [arkSession setAPIDeveloperToken:@"developertokentext"];
 ```
 
-##<a name="quickstart">Quick Start</a>
-After installation, include the library header file somewhere in your code:
+##<a name="quickstart">Coding Quick Start</a>
+After <a href="#installation">installation</a> and <a href="#configuration">configuration</a>, import the library header file somewhere in your code:
 
 ```
-#include "Arkio.h"
+#import "Arkio.h"
 ```
-Then, 
+Then, initialize an `ARKSession` with a valid Data.com username and password, and use the methods on the session to interface with the API.
+
+```
+
+    ARKSession *session = [[ARKSession alloc] initWithUsername:@"me@example.com" 
+    												  password:@"foobar"];
+    												  
+    [session userInformation:^(long points, ARKError *error) {
+        
+        if (!error) {
+            NSLog(@"user with name %@ as %ld points.",
+                  self.session.user.credentials.username,
+                  points);
+        }
+        else {
+            // we receive an application error message from Data.com
+            NSLog(@"ark error: %@", error);
+        }
+    }
+                     failure:^(NSError *error) {
+                         // an unexpected HTTP network error occurred
+                         NSLog(@"failed with network error: %@", error);
+                     }
+    ];
+
+```
 
 ##<a name="referencedocs">Reference Documentation</a>
 
