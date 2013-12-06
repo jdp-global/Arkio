@@ -58,7 +58,9 @@ If you would like to install the included AppleDocs docset locally so the docset
 
 
 ##<a name="configuration">Configuration</a>
-To interface successfully with the Data.com API you will need a Developer Token/Key. The easiet way to configure Arkio is to add your developer token to you app's Info.plist file as the value for the key **arkio.api.developer.token**.
+To interface successfully with the Data.com API you will need a Developer Token/Key. The easiet way to configure Arkio is to add your developer token to you app's Info.plist file as the value for the key "*arkio.api.developer.token*", as below:
+
+![Token Config](Arkio/arkio-api-developer-token-example.png)
 
 This allows `ARKSession` instances to pick up the value automatically. Alternately, you can set the token value directly on the session as below:
 
