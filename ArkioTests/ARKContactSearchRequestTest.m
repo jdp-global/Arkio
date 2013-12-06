@@ -28,6 +28,7 @@
                                       size:[size intValue]
                                    success:^(ARKContactSearchResult *result, ARKError *error) {
 
+                                       XCTAssertNil(error, @"%s failed with ARK error: %@", __PRETTY_FUNCTION__, [error localizedDescription]);
                                        XCTAssertNotNil(result, @"%s no result object returned", __PRETTY_FUNCTION__);
                                        XCTAssertTrue([result totalHits] > 0, @"%s total hits returned is 0", __PRETTY_FUNCTION__);
                                        

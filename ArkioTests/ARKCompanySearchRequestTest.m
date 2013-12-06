@@ -30,6 +30,7 @@
                                    detailed:detailed
                                     success:^(ARKCompanySearchResult *result, ARKError *error) {
                                         
+                                        XCTAssertNil(error, @"%s failed with ARK error: %@", __PRETTY_FUNCTION__, [error localizedDescription]);
                                         XCTAssertNotNil(result, @"%s no result object returned", __PRETTY_FUNCTION__);
                                         XCTAssertNotNil([result companies], @"%s no set of companies returned", __PRETTY_FUNCTION__);
                                         XCTAssertNotEqual([[result companies] count], 0, @"%s result set contains no company objects",

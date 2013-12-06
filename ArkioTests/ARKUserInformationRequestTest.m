@@ -18,6 +18,7 @@
 {
     [self.session userInformation:^(long points, ARKError *error) {
         
+        XCTAssertNil(error, @"%s failed with ARK error: %@", __PRETTY_FUNCTION__, [error localizedDescription]);
         if (error) {
             XCTFail(@"%s failed with error: %@", __PRETTY_FUNCTION__, [error localizedDescription]);
         }

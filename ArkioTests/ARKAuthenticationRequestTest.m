@@ -18,10 +18,12 @@
 {
     [self.session authenticate:^(BOOL authenticated, ARKError *error) {
         
+        XCTAssertNil(error, @"%s failed with ARK error: %@", __PRETTY_FUNCTION__, [error localizedDescription]);
+        
         if (!authenticated) {
-            XCTFail(@"%s failed to authenticate default user credentials: %@",
+            XCTFail(@"%s failed to authenticate as username: %@",
                     __PRETTY_FUNCTION__,
-                    [error localizedDescription]);
+                    self.session.user.credentials.username);
         }
         [self signalFinished];
     }
