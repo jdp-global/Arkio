@@ -182,6 +182,17 @@
                               success:(void (^)(ARKContactSearchResult *result, ARKError *error))success
                               failure:(void (^)(NSError *error))failure;
 
+/**
+ *  Gets a Contact's full data from the Data.com API, as a point spend.
+ *
+ *  @param contactID the ID of the contact to purchase.
+ *  @param success   A block object to execute when the task finishes succcesfully. This block has no return value and takes two arguments: an `ARKContact` object with the contactID requested and an ARKError object which is not nil if the API returned an application error, such as a user not having enough points.
+ *  @param failure   A block object to execute at the completion of an unsuccessful request. This block has no return value and takes one argument: the error that occured during the request.
+ */
+- (void)contactWithID:(long)contactID
+              success:(void (^)(ARKContact *contact, ARKError *error))success
+              failure:(void (^)(NSError *error))failure;
+
 #pragma mark - Company Requests
 
 ///--------------------------------------

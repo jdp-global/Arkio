@@ -309,6 +309,48 @@ NSString * const kARKAPIDeveloperTokenKey = @"arkio.api.developer.token";
      ];
 }
 
+- (void)contactWithID:(long)contactID
+              success:(void (^)(ARKContact *contact, ARKError *error))success
+              failure:(void (^)(NSError *error))failure
+{
+    if ([self respondedToNetworkFailure:failure]) return;
+    
+    NSURL *url = [self.URLFactory contactURLWithID:contactID];
+    
+    if (!url) {
+        NSError *error = [ARKError errorWithCode:ARKMalformedURLError
+                                         message:@"URLFactory failed to create URL."];
+        failure(error);
+        return;
+    }
+    
+    [self.http GET:[url path]
+        parameters:[url queryDictionary]
+           success:^(NSURLSessionDataTask *task, id responseObject) {
+               
+               // check for Data.com API errors
+               ARKError *error = [self errorWithResponse:responseObject];
+               if (error) {
+                   success(nil, error);
+                   return;
+               }
+               
+               NSSet *contacts = [self.serializer contactsWithDictionary:(NSDictionary *)responseObject
+                                                                   error:&error];
+               
+               ARKContact *contact = nil;
+               if (contacts && [contacts count] > 0) {
+                   contact = [contacts anyObject];
+               }
+               
+               success(contact, error);
+           }
+           failure:^(NSURLSessionDataTask *task, NSError *error) {
+               failure(error);
+           }
+     ];
+    
+}
 
 #pragma mark - Company Requests
 
