@@ -70,7 +70,7 @@ After <a href="#installation">installation</a> and <a href="#configuration">conf
 ```
 Then, initialize an `ARKSession` with a valid Data.com username and password, and use the methods on the session to interface with the API.
 
-```
+```objective-c
 
     ARKSession *session = [[ARKSession alloc] initWithUsername:@"me@example.com" 
     												  password:@"foobar"];
