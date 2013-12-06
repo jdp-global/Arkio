@@ -57,6 +57,16 @@
  */
 - (instancetype)initWithUserCredentials:(ARKUserCredentials *)credendials;
 
+/**
+ *  Creates a new user object with the given username and password.
+ *
+ *  @param username The Data.com account username for this user.
+ *  @param password The password for the account username on Data.com.
+ *
+ *  @return A new `ARKUser` object initialized with the given Data.com account username and password.
+ */
+- (instancetype)initWithUsername:(NSString *)username password:(NSString *)password;
+
 #pragma mark - Convenience Methods
 
 ///--------------------------------------

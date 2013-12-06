@@ -40,6 +40,16 @@
     return self;
 }
 
+- (instancetype)initWithUsername:(NSString *)username password:(NSString *)password
+{
+    self = [super init];
+    if (self) {
+        ARKUserCredentials *creds = [[ARKUserCredentials alloc] initWithUsername:username
+                                                                        password:password];
+        self.credentials = creds;
+    }
+    return self;
+}
 
 #pragma mark - Convenience Methods
 - (BOOL)hasPoints
