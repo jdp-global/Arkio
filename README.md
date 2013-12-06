@@ -104,13 +104,13 @@ Cloning the repo from GitHub will give you access to the XCTest unit tests. They
 **ArkioTests** folder, and are a good place to find working examples of using Arkio. 
 
 ###Configure
-The tests require 3 configuration settings before they'll run against a Data.com API endpoint. Navigate to the "ArkioTests/Supporting Files" folder and add values for the following keys in the ["*ArkioTests-Info.plist*"](ArkioTests/ArkioTests-Info.plist) file:
+The tests require 3 configuration settings before they'll run against a Data.com API endpoint. Navigate to the "ArkioTests/Supporting Files" folder and add values for the following keys in the [*ArkioTests-Info.plist*](ArkioTests/ArkioTests-Info.plist) file:
 
 - arkio.api.developer.token
 - arkio.account.username
 - arkio.account.password
 
-Parameters for the API calls made in the unit tests are stored in the supporting file named "*ArkioTestData.plist*".
+Parameters for the API calls made in the unit tests are stored in the supporting file named [*ArkioTestData.plist*](ArkioTests/ArkioTestData.plist).
 
 ###Build
 You will need to run the CocoaPods command `pod install` in the root directory of the repo before building for testing with ⇧⌘U. 
