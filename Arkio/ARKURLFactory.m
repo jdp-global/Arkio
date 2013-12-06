@@ -143,8 +143,6 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
 	[urlString setString:[self.session.server.endpoint absoluteString]];
 	[urlString appendString:@"searchContact.json?token="];
 	[urlString appendString:self.session.APIDeveloperToken];
-	[urlString appendString:[self credentialsAsParameterString]];
-
 	
 	// append either email or first/last params
 	if (emailSearch) {
@@ -170,7 +168,6 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
 	[urlString setString:[self.session.server.endpoint absoluteString]];
 	[urlString appendString:@"searchContact.json?token="];
 	[urlString appendString:self.session.APIDeveloperToken];
-	[urlString appendString:[self credentialsAsParameterString]];
 	[urlString appendFormat:@"&companyName=%@", companyName];
 	[urlString appendString:[NSString stringWithFormat:@"&offset=%i&pageSize=%i", offset, size]];
 	
@@ -296,7 +293,6 @@ static NSString *ARKDateFormat = @"yyyy-MM-dd HH:mm:ss";
 	[urlString setString:[self.session.server.endpoint absoluteString]];
 	[urlString appendString:@"searchCompany.json?token="];
 	[urlString appendString:self.session.APIDeveloperToken];
-	[urlString appendString:[self credentialsAsParameterString]];
     
     // trim and replace spaces with commas
     NSString *parameterizedString = [string stringByReplacingOccurrencesOfString:@" " withString:@","];
