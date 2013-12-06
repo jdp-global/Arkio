@@ -107,6 +107,7 @@
 		186009AD184760C800EB13F0 /* ARKCompanyStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompanyStatistic.m; sourceTree = "<group>"; };
 		186009B218476D1600EB13F0 /* ARKCompanyStatisticsRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKCompanyStatisticsRequestTest.m; sourceTree = "<group>"; };
 		187DB7EB1851E12200D5AD6A /* arkio-api-developer-token-example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arkio-api-developer-token-example.png"; sourceTree = "<group>"; };
+		187DB7EC1851E2B600D5AD6A /* Arkio.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Arkio.podspec; sourceTree = "<group>"; };
 		1894A21718509A5A003BA547 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		189CBBF6184C8BCA000B23D4 /* ARKContactSearchWithCompanyNameRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARKContactSearchWithCompanyNameRequestTest.m; sourceTree = "<group>"; };
 		189CBBFC184CBAA0000B23D4 /* ArkioTestData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArkioTestData.plist; sourceTree = "<group>"; };
@@ -308,6 +309,7 @@
 				18E5E30C183F66C4000C8D78 /* ArkioTests */,
 				18E5E2F5183F66C4000C8D78 /* Frameworks */,
 				18E5E2F4183F66C4000C8D78 /* Products */,
+				187DB7EC1851E2B600D5AD6A /* Arkio.podspec */,
 				18E5E331183F8894000C8D78 /* README.md */,
 				1894A21718509A5A003BA547 /* Podfile */,
 				F69568D91757450CAE1A9922 /* Pods.xcconfig */,
