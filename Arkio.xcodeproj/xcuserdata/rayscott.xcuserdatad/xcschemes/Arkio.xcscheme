@@ -39,34 +39,13 @@
             </BuildableReference>
             <SkippedTests>
                <Test
-                  Identifier = "ARKXCNetworkingTest">
-               </Test>
-               <Test
                   Identifier = "ArkioTests/testExample">
-               </Test>
-               <Test
-                  Identifier = "ARKAuthenticationRequestTest/testAuthenticationRequest">
-               </Test>
-               <Test
-                  Identifier = "ARKUserInformationRequestTest">
                </Test>
                <Test
                   Identifier = "ArkioTests">
                </Test>
                <Test
                   Identifier = "ARKCompanyRequestTest">
-               </Test>
-               <Test
-                  Identifier = "ARKContactSearchRequestTest">
-               </Test>
-               <Test
-                  Identifier = "ARKContactSearchWithCompanyNameRequestTest">
-               </Test>
-               <Test
-                  Identifier = "ARKCompanyStatisticsRequestTest">
-               </Test>
-               <Test
-                  Identifier = "ARKCompanySearchRequestTest">
                </Test>
             </SkippedTests>
             <LocationScenarioReference
