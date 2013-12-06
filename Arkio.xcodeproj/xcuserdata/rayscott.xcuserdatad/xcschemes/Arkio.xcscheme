@@ -68,9 +68,6 @@
                <Test
                   Identifier = "ARKCompanySearchRequestTest">
                </Test>
-               <Test
-                  Identifier = "ARKAuthenticationRequestTest">
-               </Test>
             </SkippedTests>
             <LocationScenarioReference
                identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
