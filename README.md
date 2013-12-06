@@ -7,25 +7,25 @@ Arkio is an Objective-C client library for [Data.com](http://data.com).
 		<td width="50%">1. <a href="#features">Features</a></td><td>5. <a href="#quickstart">Coding Quick Start</a></td>
 	</tr>
 	<tr>
-		<td>2. <a href="#overview">Overview</a></td><td>6. <a href="#referencedocs">Reference Documentation</a></td>
+		<td>2. <a href="#overview">API Overview</a></td><td>6. <a href="#unittests">Unit Tests</a></td>
 	</tr>
 	<tr>
-		<td>3. <a href="#installation">Installation</a></td><td>7. <a href="#contact">Contact</a></td>
+		<td>3. <a href="#installation">Installation</a></td><td>7. <a href="#referencedocs">Reference Documentation</a></td>
 	</tr>
 	<tr>
-		<td>4. <a href="#configuration">Configuration</a></td><td>8. <a href="#license">License</a></td>
+		<td>4. <a href="#configuration">Configuration</a></td><td>8. <a href="#contact">Contact</a></td>
 	</tr>
 
 </table>
 
 ##<a name="features">Features</a>
 - Full implementation of the Data.com Connect API. ([PDF](http://www.data.com/export/sites/data/common/assets/pdf/DS_Datadotcom_Connect_API_Docs.pdf)) 
-- XCText unit test suite
-- Available via CocoaPods
-- Complete AppleDocs with a build to install the docset in Xcode
-- Built on top of AFNetworking 2.0
+- XCText unit test suite.
+- CocoaPods integration.
+- Complete AppleDocs with a build to install the docset in Xcode.
+- Built on top of AFNetworking 2.0.
 
-##<a name="overview">Overview</a>
+##<a name="overview">API Overview</a>
 Full implementation of the Data.com Connect API means that you are able to do the following with Arkio:
 
 - Search for Contacts.
@@ -35,9 +35,9 @@ Full implementation of the Data.com Connect API means that you are able to do th
 
 
 ##<a name="installation">Installation</a>
-In addition to manual Xcode project installation, the Arkio source code is also available via CocoaPods. Bear in mind that you will not get the unit test suite or the ability to install the docset locally, if installing via the CocoaPods route.  
+Arkio depends on CocoaPods in order to build successfully. Installation via CocoaPods is the only recommended way of integrating Arkio with your project. Why? Arkio depends on AFNetworking, and that is most easily available via CocoaPods. 
 
-###Install via CocoaPods 
+###CocoaPods 
 Simply add the following line to your project's [Podfile](http://docs.cocoapods.org/podfile.html):
 
 ```
@@ -49,12 +49,16 @@ then, at the command line, from the same directory as your Podfile, run
 pod install
 ```
 
-###Install via Xcode
+Bear in mind that you will not get the unit test suite or the ability to install the AppleDoc docset locally if simply integrating Arkio with your project as explained above. 
+
+###Unit Tests & the Docset
+
+If you would like to install the included AppleDocs docset locally so the docset appears in the Xcode Documentation Viewer, or view and run the XCTest unit test suite you will need to clone the repo from GitHub to your local machine. You will need to run the CocoaPods command `pod install` in the root directory of the repo before building the "*Install AppleDocs*" target for the project. By default, the docset is installed to the *"~/Library/Developer/Shared/Documentation/DocSets"* location with the package name of "*com.alienhitcher.Arkio.docset*".
+
+
 
 ##<a name="configuration">Configuration</a>
-To interface successfully with the Data.com API you will need a Developer Token/Key. The easiet way to configure Arkio is to add your developer token to you app's Info.plist file as the value for the key **arkio.api.developer.token** as below:
-
-![Token Config](https://raw.github.com/rayascott/Arkio/master/Arkio/arkio-api-developer-token-example.png?token=86224__eyJzY29wZSI6IlJhd0Jsb2I6cmF5YXNjb3R0L0Fya2lvL21hc3Rlci9Bcmtpby9hcmtpby1hcGktZGV2ZWxvcGVyLXRva2VuLWV4YW1wbGUucG5nIiwiZXhwaXJlcyI6MTM4NjkzMjI0NH0%3D--960a8be3343c2413c30d9778003b89f145a15147)  
+To interface successfully with the Data.com API you will need a Developer Token/Key. The easiet way to configure Arkio is to add your developer token to you app's Info.plist file as the value for the key **arkio.api.developer.token**.
 
 This allows `ARKSession` instances to pick up the value automatically. Alternately, you can set the token value directly on the session as below:
 
@@ -63,7 +67,7 @@ This allows `ARKSession` instances to pick up the value automatically. Alternate
 ```
 
 ##<a name="quickstart">Coding Quick Start</a>
-After <a href="#installation">installation</a> and <a href="#configuration">configuration</a>, import the library header file somewhere in your code:
+After <a href="#installation">installation</a> and <a href="#configuration">configuration</a>, import the library header file somewhere sensible in your code:
 
 ```
 #import "Arkio.h"
@@ -78,9 +82,7 @@ Then, initialize an `ARKSession` with a valid Data.com username and password, an
     [session userInformation:^(long points, ARKError *error) {
         
         if (!error) {
-            NSLog(@"user with name %@ as %ld points.",
-                  self.session.user.credentials.username,
-                  points);
+            NSLog(@"points = %ld ", points);
         }
         else {
             // we receive an application error message from Data.com
@@ -94,6 +96,22 @@ Then, initialize an `ARKSession` with a valid Data.com username and password, an
     ];
 
 ```
+
+##<a name="unittests">Unit Tests</a>
+Cloning the repo from GitHub will give you access to the XCTest unit tests. They live in the 
+**ArkioTests** folder, and are a good place to find working examples of using Arkio. 
+
+###Configure
+The tests require 3 configuration settings before they'll run against a Data.com API endpoint. Navigate to the "ArkioTests/Supporting Files" folder and add values for the following keys in the ["*ArkioTests-Info.plist*"](ArkioTests/ArkioTests-Info.plist) file:
+
+- arkio.api.developer.token
+- arkio.account.username
+- arkio.account.password
+
+Parameters for the API calls made in the unit tests are stored in the supporting file named "*ArkioTestData.plist*".
+
+###Build
+You will need to run the CocoaPods command `pod install` in the root directory of the repo before building for testing with ⇧⌘U. 
 
 ##<a name="referencedocs">Reference Documentation</a>
 
