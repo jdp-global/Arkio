@@ -4,28 +4,28 @@ Arkio is an Objective-C client library for [Data.com](http://data.com).
 
 <table width="100%" border=0>
 	<tr>
-		<td width="50%">1. <a href="#features">Features</a></td><td>5. <a href="#quickstart">Coding Quick Start</a></td>
+		<td width="50%">1. <a href="#features">Features</a></td><td>5. <a href="#configuration">Configuration</a></td>
 	</tr>
 	<tr>
-		<td>2. <a href="#overview">API Overview</a></td><td>6. <a href="#unittests">Unit Tests</a></td>
+		<td>2. <a href="#overview">API Overview</a></td><td>6. <a href="#quickstart">Coding Quick Start</a></td>
 	</tr>
 	<tr>
-		<td>3. <a href="#installation">Installation</a></td><td>7. <a href="#referencedocs">Reference Documentation</a></td>
+		<td>3. <a href="#requirements">Requirements</a></td><td>7. <a href="#unittests">Unit Tests</a></td>
 	</tr>
 	<tr>
-		<td>4. <a href="#configuration">Configuration</a></td><td>8. <a href="#contact">Contact</a></td>
+		<td>4. <a href="#installation">Installation</a></td><td>8. <a href="#referencedocs">Reference Documentation</a></td>
 	</tr>
 
 </table>
 
-##<a name="features">Features</a>
+##1. <a name="features">Features</a>
 - Full implementation of the Data.com Connect API. ([PDF](http://www.data.com/export/sites/data/common/assets/pdf/DS_Datadotcom_Connect_API_Docs.pdf)) 
 - XCText unit test suite.
 - [CocoaPods](http://www.cocoapods.org) integration.
 - Complete AppleDocs with a build to install the docset in Xcode.
 - Built on top of [AFNetworking](http://afnetworking.com) 2.0.
 
-##<a name="overview">API Overview</a>
+##2. <a name="overview">API Overview</a>
 Full implementation of the Data.com Connect API means that you are able to do the following with Arkio:
 
 - Search for Contacts.
@@ -33,8 +33,15 @@ Full implementation of the Data.com Connect API means that you are able to do th
 - Retrieve a Company's Contact Count Statistics.
 - Retrieve a User's point balance.
 
+##3. <a name="requirements">Requirements</a>
+Arkio is written for ARC-enabled apps. By default your build target will need to comply with one of the following:
 
-##<a name="installation">Installation</a>
+* iOS 6 or later
+* OS X 10.8 and later
+
+If you aren't using ARC, you can still use Arkio by specifying the [`-fobjc-arc`](http://clang.llvm.org/docs/AutomaticReferenceCounting.html#general) compiler flag for the implementation files (\*.m) in your target's *Compile Sources*  section of the *Build Phases* tab.
+
+##4. <a name="installation">Installation</a>
 Arkio depends on CocoaPods in order to build successfully. Installation via CocoaPods is the only recommended way of integrating Arkio with your project. Why? Arkio depends on AFNetworking, and that is most easily available via CocoaPods. 
 
 ###CocoaPods 
@@ -57,7 +64,7 @@ If you would like to install the included AppleDocs docset locally so the docset
 
 
 
-##<a name="configuration">Configuration</a>
+##5. <a name="configuration">Configuration</a>
 To interface successfully with the Data.com API you will need a Developer Token/Key. The easiet way to configure Arkio is to add your developer token to you app's Info.plist file as the value for the key "*arkio.api.developer.token*", as below:
 
 ![Token Config](Arkio/arkio-api-developer-token-example.png)
@@ -68,7 +75,7 @@ This allows `ARKSession` instances to pick up the value automatically. Alternate
 [arkSession setAPIDeveloperToken:@"developertokentext"];
 ```
 
-##<a name="quickstart">Coding Quick Start</a>
+##6. <a name="quickstart">Coding Quick Start</a>
 After <a href="#installation">installation</a> and <a href="#configuration">configuration</a>, import the library header file somewhere sensible in your code:
 
 ```
@@ -99,7 +106,7 @@ Then, initialize an `ARKSession` with a valid Data.com username and password, an
 
 ```
 
-##<a name="unittests">Unit Tests</a>
+##7. <a name="unittests">Unit Tests</a>
 Cloning the repo from GitHub will give you access to the XCTest unit tests. They live in the 
 **ArkioTests** folder, and are a good place to find working examples of using Arkio. 
 
@@ -115,7 +122,7 @@ Parameters for the API calls made in the unit tests are stored in the supporting
 ###Build
 You will need to run the CocoaPods command `pod install` in the root directory of the repo before building for testing with ⇧⌘U. 
 
-##<a name="referencedocs">Reference Documentation</a>
+##8. <a name="referencedocs">Reference Documentation</a>
 
 - The [class reference documentation](http://cocoadocs.org/docsets/Arkio/) can be found on Cocoadocs.org.
 - Official Data.com Connect API Documentation ([PDF](http://www.data.com/export/sites/data/common/assets/pdf/DS_Datadotcom_Connect_API_Docs.pdf)) from the Data.com [Connect Developer Program](http://www.data.com/data-resources/connect-developer/index.jsp).
