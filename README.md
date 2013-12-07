@@ -21,9 +21,9 @@ Arkio is an Objective-C client library for [Data.com](http://data.com).
 ##<a name="features">Features</a>
 - Full implementation of the Data.com Connect API. ([PDF](http://www.data.com/export/sites/data/common/assets/pdf/DS_Datadotcom_Connect_API_Docs.pdf)) 
 - XCText unit test suite.
-- CocoaPods integration.
+- [CocoaPods](http://www.cocoapods.org) integration.
 - Complete AppleDocs with a build to install the docset in Xcode.
-- Built on top of AFNetworking 2.0.
+- Built on top of [AFNetworking](http://afnetworking.com) 2.0.
 
 ##<a name="overview">API Overview</a>
 Full implementation of the Data.com Connect API means that you are able to do the following with Arkio:
