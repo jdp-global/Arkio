@@ -1,5 +1,4 @@
 Pod::Spec.new do |s|
-	# custom pod stuffs here
 	s.name		= 'Arkio'
 	s.version	= '0.9'
 	s.summary 	= 'Objective-C client library for Data.com'
@@ -15,7 +14,6 @@ Pod::Spec.new do |s|
 	s.source_files = 'Arkio/*.{h,m}'
 	s.dependency 'AFNetworking'
 	s.requires_arc = true
-	s.platform = :ios
 	s.ios.deployment_target = '6.0'
   	s.osx.deployment_target = '10.8'
 end
